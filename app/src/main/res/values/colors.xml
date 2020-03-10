@@ -5,4 +5,9 @@
     <color name="colorBackground">#7EBDC3</color>
     <color name="colorText">#7B8D93</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <!-- Base Android Colors -->
+    <color name="colorPrimary">#27FF00</color>
+    <color name="colorPrimaryDark">#FF0000</color>
+    <color name="colorAccent">#FFE500</color>
 </resources>
