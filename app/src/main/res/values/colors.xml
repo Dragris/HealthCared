@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Light colors -->
     <color name="colorForeground">#42AEBD</color>
     <color name="colorButtons">#D8C99B</color>
     <color name="colorBackground">#7EBDC3</color>
