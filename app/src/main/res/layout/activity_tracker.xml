@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient">
+    android:background="@drawable/gradient"
+    android:weightSum="6">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -34,6 +35,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -42,6 +44,7 @@
         />
 
     <TextView
+        android:layout_marginTop="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -49,21 +52,24 @@
         android:layout_gravity="center"
         />
 
-
-
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
-
-        android:layout_marginTop="0dp"
-        android:layout_marginStart="0dp"
-        android:layout_marginBottom="300dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+        android:layout_height="581dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_weight="1"
 
         android:background="@drawable/gradient"
-        tools:context=".Tracker"
+        tools:context=".Tracker" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         />
+
 
 
 
