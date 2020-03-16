@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.healthcared">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -28,18 +27,17 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
         <activity
             android:name=".Tracker"
-            android:label="@string/title_activity_tracker"></activity>
-        <activity android:name=".Inicio"></activity>
-
+            android:label="@string/title_activity_tracker" />
+        <activity android:name=".Inicio" />
         <activity android:name=".Home" />
         <activity android:name=".Singup2" />
-        <activity android:name=".Singup1" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Singup1"/>
+        <activity android:name=".LogIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

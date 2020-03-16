@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".MainActivity">
+    tools:context=".LogIn">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#00BCD4"
         android:minHeight="?attr/actionBarSize"
-app:title="Log in"
+        app:title="Log in"
         app:titleTextColor="@color/colorWhite"
         app:titleMarginStart="300dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -107,5 +107,3 @@ app:title="Log in"
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
