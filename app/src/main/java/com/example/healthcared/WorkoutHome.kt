@@ -19,7 +19,7 @@ class WorkoutHome : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, Home::class.java)
+        //val intent = Intent(this, Home::class.java)
         startActivity(intent)
     }
 
