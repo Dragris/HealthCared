@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".CreatePlan">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/toolbar_workout"
+        android:layout_height="@dimen/toolbar"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/abc_vector_test"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="goBack"
+            android:contentDescription="@string/back_text"/>
+
+        <TextView
+            android:id="@+id/create_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            android:text="@string/create_plan_title"
+            android:textStyle="bold"
+            android:textSize="@dimen/header_text"/>
+
+        <TextView
+            android:id="@+id/profile_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_text"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/header_text"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="goProfile"/>
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="@dimen/header_text"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_disabled"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/profile_text"
+            android:onClick="goProfile"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_workout"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plan_name_form"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginTop="@dimen/new_margin"/>
+        <EditText
+            android:id="@+id/plan_name_creator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/header_text"
+            android:text="@string/plan_name_form"
+            android:background="@color/transparency_white"
+            android:layout_marginTop="@dimen/new_margin"
+            android:layout_marginBottom="@dimen/top_margin"
+            android:inputType="text"
+            android:textColor="@color/colorWhite"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/objective_form"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginBottom="@dimen/new_margin"
+            />
+
+        <androidx.gridlayout.widget.GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:filterTouchesWhenObscured="true"
+            android:background="#00000000"
+            app:columnCount="2"
+            android:layout_marginBottom="@dimen/top_margin">
+            <Button
+                android:layout_width="@dimen/button_size"
+                android:layout_height="match_parent"
+                android:background="@color/transparency_white"
+                android:text="@string/option1_obj"/>
+
+            <Button
+                android:layout_width="@dimen/button_size"
+                android:layout_height="match_parent"
+                android:background="@color/transparency_white"
+                android:text="@string/option2_obj" />
+            <Button
+                android:layout_width="@dimen/button_size"
+                android:layout_height="match_parent"
+                android:background="@color/transparency_white"
+                android:text="@string/option3_obj"/>
+            <Button
+                android:layout_width="@dimen/button_size"
+                android:layout_height="match_parent"
+                android:background="@color/transparency_white"
+                android:text="@string/option4_obj"/>
+        </androidx.gridlayout.widget.GridLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dxw"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginBottom="@dimen/new_margin"
+            />
+
+        <Spinner
+            android:id="@+id/spinner_days"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/top_margin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/skill_form"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginBottom="@dimen/new_margin"
+            />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <SeekBar
+                android:id="@+id/seekBar"
+                style="@style/Widget.AppCompat.SeekBar.Discrete"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:max="5"
+                android:progress="0"
+                android:layout_marginTop="@dimen/new_margin"
+                android:layout_centerHorizontal="true"/>
+
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rookie"
+            android:layout_alignLeft="@id/seekBar"
+            android:layout_below="@id/seekBar"
+            android:textSize="@dimen/header_text"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pro"
+                android:layout_alignRight="@id/seekBar"
+                android:layout_below="@id/seekBar"
+                android:textSize="@dimen/header_text"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:paddingHorizontal="@dimen/side_margin"
+        android:id="@+id/start"
+        android:layout_height="wrap_content"
+        android:background="@color/transparency_white"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/side_margin"
+        android:text="@string/create_plan_title"
+        android:textSize="@dimen/header_text"
+        android:layout_centerHorizontal="true"
+        android:onClick="addPlan"/>
+</RelativeLayout>

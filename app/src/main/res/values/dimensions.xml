@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="header_text">20sp</dimen>
+    <dimen name="normal_text">25sp</dimen>
+    <dimen name="small_text">15sp</dimen>
+    <dimen name="toolbar">60dp</dimen>
+    <dimen name="separation">50dp</dimen>
+    <dimen name="side_margin">40dp</dimen>
+    <dimen name="top_margin">30dp</dimen>
+    <dimen name="new_margin">10dp</dimen>
+    <dimen name="button_size">140dp</dimen>
+</resources>
