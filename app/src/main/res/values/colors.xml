@@ -9,6 +9,8 @@
     <color name="colorBlack">#000000</color>
     <color name="aux">#058ED9</color>
     <color name="aux2">#00F2F2</color>
+    <color name="transparency_white">#9BEDF3</color>
+
 
     <!-- Base Android Colors -->
     <color name="colorPrimary">#27FF00</color>

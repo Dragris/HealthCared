@@ -1,4 +1,45 @@
 <resources>
+    <!-- Workout Home activity -->
+    <string name="workout_home_title">Workout Plans</string>
+    <!-- Plan preview activity -->
+    <string name="start_text">Start</string>
+
+    <!-- Current plan activity -->
+    <string name="current_ex">Current Exercise</string>
+    <string name="next_ex">Next Exercise</string>
+    <string name="timer">Timer</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="finish">Finish</string>
+    <string name="next">Next</string>
+
+    <!-- Create plan activity -->
+    <string name="create_plan_title">Create Plan</string>
+    <string name="plan_name_form">Plan name</string>
+    <string name="objective_form">Objective</string>
+    <string name="dxw">Days per week</string>
+    <string name="skill_form">Skill</string>
+    <string name="rookie">Rookie</string>
+    <string name="pro">Pro</string>
+    <string name="option1_obj">Lose weight</string>
+    <string name="option2_obj">Stay in shape</string>
+    <string name="option3_obj">Gain Strenght</string>
+    <string name="option4_obj">Muslce volume</string>
+
+
+    <!-- Other strings -->
     <string name="app_name">HealthCared</string>
-    <string name="title_activity_tracker">Tracker</string>
+    <string name="profile_text">Profile</string>
+    <string name="back_text">Back</string>
+
+    <!-- Example strings -->
+    <string name="plan_name_1">Plan 1</string>
+    <string name="plan_name_2">Plan 2</string>
+    <string name="exercise_name_1">Exercise 1</string>
+    <string name="exercise_name_2">Exercise 2</string>
+    <string name="exercise_name_3">Exercise 3</string>
+    <string name="exercise_name_4">Exercise 4</string>
+    <string name="repetitions">Repetitions: X</string>
+    <string name="sets">Sets: Y</string>
+    <string name="rest">Rest (sec): Z</string>
 </resources>

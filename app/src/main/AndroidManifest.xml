@@ -15,7 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -28,9 +27,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".Tracker"
-            android:label="@string/title_activity_tracker" />
+        <activity android:name=".Tracker"/>
         <activity android:name=".Inicio" />
         <activity android:name=".Home" />
         <activity android:name=".Singup2" />
@@ -41,6 +38,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".CreatePlan"></activity>
+        <activity android:name=".StartExercise" />
+        <activity android:name=".PlanPreview"/>
+        <activity android:name=".WorkoutHome" />
+        <activity android:name=".MainActivity"/>
+
     </application>
 
 </manifest>
