@@ -1,6 +1,7 @@
 package com.example.healthcared
 
 import android.content.Intent
+import android.net.wifi.hotspot2.pps.HomeSp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -18,7 +19,7 @@ class WorkoutHome : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, Home::class.java)
         startActivity(intent)
     }
 

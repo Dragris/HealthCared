@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.CheckBox
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_signup1.*
+//import kotlinx.android.synthetic.main.activity_signup1.*
 
 
 class LogIn : AppCompatActivity() {

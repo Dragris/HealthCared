@@ -47,7 +47,6 @@
         <activity android:name=".StartExercise" />
         <activity android:name=".PlanPreview" />
         <activity android:name=".WorkoutHome" />
-        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
