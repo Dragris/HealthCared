@@ -26,6 +26,21 @@
     <string name="option3_obj">Gain Strenght</string>
     <string name="option4_obj">Muslce volume</string>
 
+    <!-- Profile activity -->
+    <string name="profile_title">Profile</string>
+    <string name="personal_info_title">Personal information</string>
+    <string name="personal_settings1">Update Weight</string>
+    <string name="personal_settings2">Update Height</string>
+    <string name="settings_button">App Settings</string>
+
+    <!-- Settings activity -->
+    <string name="settings_title">Settings</string>
+    <string name="Appsettings_title">App Settings</string>
+    <string name="setting1">Change Username</string>
+    <string name="setting2">Change Password</string>
+    <string name="setting3">Support</string>
+    <string name="setting4">FAQ</string>
+    <string name="setting5">Sign Out :(</string>
 
     <!-- Other strings -->
     <string name="app_name">HealthCared</string>
