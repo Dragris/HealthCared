@@ -28,10 +28,14 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <activity
             android:name=".Tracker"
             android:label="@string/title_activity_tracker"></activity>
+        <activity android:name=".Inicio"></activity>
+
+        <activity android:name=".Home" />
+        <activity android:name=".Singup2" />
+        <activity android:name=".Singup1" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
