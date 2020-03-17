@@ -1,6 +1,8 @@
 package com.example.healthcared
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.data.BarData
@@ -19,7 +21,7 @@ class History : AppCompatActivity() {
 
 
         setBarChart()
-        }
+    }
 
 
     private fun setBarChart() {
@@ -55,5 +57,17 @@ class History : AppCompatActivity() {
         barChart.setScaleEnabled(false);
         barChart.animateY(5000)
     }
+
+
+    fun goBack(view: View) {
+        val intent = Intent(this, Inicio::class.java)
+        startActivity(intent)
+    }
+
+    fun goProfile(view: View){
+        //val intent = Intent(this, profile::class.java)
+        //startActivity(intent)
+    }
+
 
 }

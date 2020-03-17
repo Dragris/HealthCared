@@ -14,7 +14,14 @@
     <string name="weight">Weight (kg)</string>
     <string name="height">Height (cm)</string>
 
-
+    <!-- History activity -->
+    <string name="history_title">History</string>
+    <string name="today">Today</string>
+    <string name="walked">You walked:</string>
+    <string name="km">km</string>
+    <string name="inactivity">You were inactive:</string>
+    <string name="h">h</string>
+    
     <!-- Workout Home activity -->
     <string name="workout_home_title">Workout Plans</string>
     <!-- Plan preview activity -->

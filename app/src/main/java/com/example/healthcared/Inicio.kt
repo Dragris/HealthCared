@@ -12,7 +12,12 @@ class Inicio : AppCompatActivity() {
         setContentView(R.layout.activity_inicio)
     }
 
-    fun clicl (view: View){
+    fun history (view: View){
+        val intent = Intent(this, History::class.java)
+        startActivity(intent)
+    }
+
+    fun workouts (view: View){
         val intent = Intent(this, WorkoutHome::class.java)
         startActivity(intent)
     }
