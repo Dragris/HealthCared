@@ -3,6 +3,18 @@
     <string name="login_title">Log In</string>
     <string name="user">Username</string>
     <string name="passw">Password</string>
+
+    <!-- Sign Up activities -->
+    <string name="signup_title">Sign Up</string>
+    <string name="e_mail">E-Mail</string>
+    <string name="full_name">Full Name</string>
+    <string name="repeat_psw">Repeat Password</string>
+    <string name="terms"><u>Terms of Use &amp; Privacy Policy</u></string>
+    <string name="birth">Date of Birth (YYYY/MM/DD)</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="height">Height (cm)</string>
+
+
     <!-- Workout Home activity -->
     <string name="workout_home_title">Workout Plans</string>
     <!-- Plan preview activity -->

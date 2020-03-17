@@ -1,64 +1,45 @@
 package com.example.healthcared
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import kotlinx.android.synthetic.main.activity_singup2.*
 
-class Singup2 : AppCompatActivity() {
-
+class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+    val gender = arrayOf("-- Slect Gender --", "Male", "Female")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
         setContentView(R.layout.activity_singup2)
 
-        val btnfemale = findViewById<Button>(R.id.femalebtn)
-        val btn = findViewById<Button>(R.id.malebtn)
-        val ages = arrayOf("18","19","20","21","22","23","24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40")
-        val spinner = findViewById<Spinner>(R.id.spinnerx)
+        // Gender Spinner
+        spinner_gender!!.setOnItemSelectedListener(this)
+        val arrayAdapter = ArrayAdapter<String>(this, R.layout.spinner_item, gender)
+        arrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinner_gender!!.setAdapter(arrayAdapter)
 
 
-        spinner.adapter = ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,ages)
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) { // Con este codigo  me pita la app cuando entre al Layout Singup2
-                //result_age.text = ages.get(position)
-            }
-
-
-
-        }
-        /*
-        Cambair los colores del los botones MAle y Female
-         */
-     btn.setOnClickListener(View.OnClickListener {
-         btnfemale.setBackgroundColor(Color.WHITE)
-         btn.setBackgroundColor(Color.GRAY)
-
-     })
-/*
-        Cambair los colores del los botones MAle y Female
-         */
-        btnfemale.setOnClickListener(View.OnClickListener {
-            btn.setBackgroundColor(Color.WHITE)
-            btnfemale.setBackgroundColor(Color.GRAY)
-
-
-        })
     }
 
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        //THINGS
+    }
 
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        //THINGS
+    }
 
+    fun home(view: View){
+        val intent = Intent(this, Inicio::class.java)
+        startActivity(intent)
+    }
 
-
+    fun goBack(view: View){
+        val intent = Intent(this, Singup1::class.java)
+        startActivity(intent)
+    }
 }

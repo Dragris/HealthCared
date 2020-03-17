@@ -10,6 +10,7 @@
     <color name="aux">#058ED9</color>
     <color name="aux2">#00F2F2</color>
     <color name="transparency_white">#9BEDF3</color>
+    <color name="hintC">#808080</color>
 
 
     <!-- Base Android Colors -->

@@ -23,16 +23,19 @@ class Singup1 : AppCompatActivity() {
     }
 
 
-    fun actionterms(view: View) {
+    fun signup2(view: View) {
         if(checkBox.isChecked){
             val intent = Intent(this,Singup2::class.java)
             startActivity(intent)
-
         }
         else{
-            Toast.makeText(applicationContext, "You have to accpete the terms first!", Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, "You have to accept the terms first!", Toast.LENGTH_LONG).show()
         }
+    }
 
+    fun goBack(view: View){
+        val intent = Intent(this, LogIn::class.java)
+        startActivity(intent)
     }
 
 
