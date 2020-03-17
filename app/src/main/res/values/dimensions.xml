@@ -9,4 +9,10 @@
     <dimen name="top_margin">30dp</dimen>
     <dimen name="new_margin">10dp</dimen>
     <dimen name="button_size">140dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="margin2">20dp</dimen>
+    <dimen name="textbox_height">40dp</dimen>
+    <dimen name="side_margin2">70dp</dimen>
+    <dimen name="sidex2">150dp</dimen>
+
 </resources>

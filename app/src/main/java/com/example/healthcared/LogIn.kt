@@ -18,13 +18,12 @@ class LogIn : AppCompatActivity() {
     }
 
     fun login(view: View) {
-
-        val intent = Intent(this,Inicio::class.java)
+        val intent = Intent(this, Inicio::class.java)
         startActivity(intent)
     }
 
-    fun action1(view: View) {
-        val intent = Intent(this,Singup1::class.java)
+    fun signup1(view: View) {
+        val intent = Intent(this, Singup1::class.java)
         startActivity(intent)
     }
 

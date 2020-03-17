@@ -1,4 +1,8 @@
 <resources>
+    <!-- Log In activity -->
+    <string name="login_title">Log In</string>
+    <string name="user">Username</string>
+    <string name="passw">Password</string>
     <!-- Workout Home activity -->
     <string name="workout_home_title">Workout Plans</string>
     <!-- Plan preview activity -->
@@ -58,6 +62,7 @@
     <string name="sets">Sets: Y</string>
     <string name="rest">Rest (sec): Z</string>
     <string name="title_activity_history">History</string>
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
