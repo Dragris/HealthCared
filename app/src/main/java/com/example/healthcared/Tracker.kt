@@ -1,5 +1,6 @@
 package com.example.healthcared
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -42,8 +43,13 @@ class Tracker : AppCompatActivity(), OnMapReadyCallback {
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 
-    fun goBack (view: View){
-        finish()
+    fun goBack(view: View) {
+        val intent = Intent(this, Inicio::class.java)
+        startActivity(intent)
     }
 
+    fun settings(view: View){
+        val intent = Intent(this, Settings::class.java)
+        startActivity(intent)
+    }
 }

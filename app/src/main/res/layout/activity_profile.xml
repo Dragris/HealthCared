@@ -33,72 +33,87 @@
             android:text="@string/profile_title"
             android:textSize="@dimen/header_text"
             android:textStyle="bold" />
+        <TextView
+            android:id="@+id/profile_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_text"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="@dimen/header_text"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="settings"/>
+
         <ImageView
             android:id="@+id/profile_image"
             android:layout_width="@dimen/header_text"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_disabled"
             android:clickable="true"
-            android:focusable="true"
             android:contentDescription="@string/profile_text"
-            android:onClick="changeProfileImage"/>
+            android:focusable="true"
+            android:onClick="settings"
+            app:srcCompat="@android:drawable/ic_menu_manage" />
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/personal_info_title"
+        android:textSize="@dimen/normal_text"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/margin2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/toolbar_workout"/>
 
     <LinearLayout
+        android:id="@+id/updates"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar_workout"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text"
         android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/btn">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/personal_info_title"
-
-            android:textSize="@dimen/normal_text" />
-
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textbox_height"
+            android:background="@color/transparency_white"
+            android:hint="@string/height"
+            android:paddingHorizontal="@dimen/new_margin"
+            android:textStyle="bold"
+            android:layout_marginBottom="@dimen/new_margin"
+            android:inputType="numberDecimal"/>
         <Button
             android:id="@+id/button4"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorButtons"
-            android:text="@string/personal_settings1" />
-
+            android:backgroundTint="@color/transparency_white"
+            android:textSize="@dimen/header_text"
+            android:text="@string/personal_settings2"
+            android:layout_marginBottom="@dimen/top_margin"/>
+        <EditText
+            android:id="@+id/fullname"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/textbox_height"
+            android:hint="@string/weight"
+            android:background="@color/transparency_white"
+            android:textStyle="bold"
+            android:paddingHorizontal="@dimen/new_margin"
+            android:layout_marginBottom="@dimen/new_margin"
+            android:inputType="numberDecimal"/>
         <Button
             android:id="@+id/button5"
-            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorButtons"
-            android:text="@string/personal_settings2" />
-
-        <Button
-            android:id="@+id/button6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorButtons"
-            android:padding="10dp"
-            android:text="@string/settings_button" />
-
+            android:backgroundTint="@color/transparency_white"
+            android:textSize="@dimen/header_text"
+            android:text="@string/personal_settings1" />
     </LinearLayout>
-
-
-
-
 </RelativeLayout>

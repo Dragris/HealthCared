@@ -21,9 +21,13 @@
     <string name="km">km</string>
     <string name="inactivity">You were inactive:</string>
     <string name="h">h</string>
-    
+
+    <!-- Tracker Activity -->
+    <string name="title">Tracker</string>
+
     <!-- Workout Home activity -->
     <string name="workout_home_title">Workout Plans</string>
+
     <!-- Plan preview activity -->
     <string name="start_text">Start</string>
 
@@ -54,7 +58,7 @@
     <string name="personal_info_title">Personal information</string>
     <string name="personal_settings1">Update Weight</string>
     <string name="personal_settings2">Update Height</string>
-    <string name="settings_button">App Settings</string>
+    <string name="settings_button">Settings</string>
 
     <!-- Settings activity -->
     <string name="settings_title">Settings</string>
@@ -67,7 +71,7 @@
 
     <!-- Other strings -->
     <string name="app_name">HealthCared</string>
-    <string name="profile_text">Profile</string>
+    <string name="profile_text">Settings</string>
     <string name="back_text">Back</string>
 
     <!-- Example strings -->

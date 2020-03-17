@@ -13,8 +13,7 @@ class Settings : AppCompatActivity() {
     }
 
     fun goBack(view: View){
-        val intent = Intent(this, Profile::class.java)
-        startActivity(intent)
+        finish()
     }
     fun changeUsername(view: View){
         //Change Username.

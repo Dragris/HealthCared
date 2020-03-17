@@ -25,11 +25,6 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         startActivity(intent)
     }
 
-    fun goProfile(view: View){
-        //val intent = Intent(this, profile::class.java)
-        //startActivity(intent)
-    }
-
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         //THINGS
     }

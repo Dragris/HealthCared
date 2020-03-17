@@ -64,9 +64,9 @@ class History : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun goProfile(view: View){
-        //val intent = Intent(this, profile::class.java)
-        //startActivity(intent)
+    fun settings(view: View){
+        val intent = Intent(this, Settings::class.java)
+        startActivity(intent)
     }
 
 

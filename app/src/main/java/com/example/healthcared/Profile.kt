@@ -1,5 +1,6 @@
 package com.example.healthcared
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,10 +14,13 @@ class Profile : AppCompatActivity() {
     }
 
     fun goBack(view: View){
-        val intent = Intent(this, WorkoutHome::class.java)
-        startActivity(intent)
+        val intent = Intent(this, Inicio::class.java)
     }
 
+    fun settings (view: View){
+        val intent = Intent(this, Settings::class.java)
+        startActivity(intent)
+    }
     fun changeProfileImage(view: View){
         //Change profile picture.
     }
