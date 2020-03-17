@@ -62,7 +62,7 @@
             android:paddingHorizontal="@dimen/new_margin"
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/margin2"
-            android:inputType="date"/>
+            android:inputType="datetime"/>
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
@@ -71,7 +71,8 @@
             android:hint="@string/height"
             android:paddingHorizontal="@dimen/new_margin"
             android:textStyle="bold"
-            android:layout_marginBottom="@dimen/margin2"/>
+            android:layout_marginBottom="@dimen/margin2"
+            android:inputType="numberDecimal"/>
         <EditText
             android:id="@+id/fullname"
             android:layout_width="match_parent"
@@ -80,7 +81,8 @@
             android:background="@color/transparency_white"
             android:textStyle="bold"
             android:paddingHorizontal="@dimen/new_margin"
-            android:layout_marginBottom="@dimen/margin2"/>
+            android:layout_marginBottom="@dimen/margin2"
+            android:inputType="numberDecimal"/>
 
         <Button
             android:id="@+id/login_btn"
