@@ -21,7 +21,7 @@
     <string name="km">km</string>
     <string name="inactivity">You were inactive:</string>
     <string name="h">h</string>
-
+    <string name="diet">Diet</string>
     <!-- Tracker Activity -->
     <string name="title">Tracker</string>
 

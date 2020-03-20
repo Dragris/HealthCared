@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Diet"></activity>
         <activity android:name=".History" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -30,15 +31,14 @@
 
         <activity android:name=".Tracker" />
         <activity android:name=".Inicio" />
-
         <activity android:name=".Singup2" />
         <activity android:name=".Singup1" />
         <activity android:name=".Profile" />
         <activity android:name=".Settings" />
-        <activity android:name=".LogIn"/>
-        <activity android:name=".animescreen"
+        <activity android:name=".LogIn" />
+        <activity
+            android:name=".animescreen"
             android:theme="@style/Splashscreen">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

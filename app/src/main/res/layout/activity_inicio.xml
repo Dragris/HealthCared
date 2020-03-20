@@ -6,27 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".Inicio"
     android:background="@drawable/gradient">
+
+    <Button
+        android:id="@+id/btn_pause"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="320dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Pause"
+        android:clickable="true"
+        />
+
+    <Button
+        android:id="@+id/btn_pause1hr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="166dp"
+        android:layout_marginLeft="320dp"
+        android:layout_marginTop="320dp"
+        android:layout_toEndOf="@+id/btn_pause"
+        android:background="@android:color/holo_orange_dark"
+        android:text="Pause 1h"
+        android:clickable="true"
+        />
+
+    <RelativeLayout
+        android:clickable="true"
+        android:layout_width="250dp"
+        android:layout_marginLeft="80dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="55dp"
+
+        android:onClick="history">
+
+
+        <TextView
+            android:onClick="history"
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="inactive time"
+            android:textColor="@color/colorBlack"
+            android:textSize="25dp"
+            />
+    </RelativeLayout>
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="300dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginBottom="@dimen/side_margin"
+        android:layout_weight="16" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/toolbar_workout"
         android:layout_height="@dimen/toolbar"
         android:orientation="horizontal">
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+
+        <ImageView
+            android:id="@+id/home_image"
+            android:layout_width="20sp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:clickable="true"
+            app:srcCompat="@drawable/home"
+
+
+
+            />
 
         <TextView
+
             android:id="@+id/create_toolbar"
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="2"
             android:text="Home"
-            android:textStyle="bold"
-            android:textSize="@dimen/header_text"/>
+            android:textSize="@dimen/header_text"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/profile_text"
@@ -41,6 +107,7 @@
             android:onClick="settings"/>
 
         <ImageView
+
             android:id="@+id/profile_image"
             android:layout_width="@dimen/header_text"
             android:layout_height="40dp"
@@ -52,49 +119,52 @@
             android:onClick="settings"
             app:srcCompat="@android:drawable/ic_menu_preferences" />
 
+
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="4dp"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+
         <Button
             android:id="@+id/history"
-            android:layout_width="match_parent"
+            android:layout_width="136dp"
             android:layout_height="wrap_content"
-            android:onClick="history"
-            android:text="History"
+            android:layout_gravity="bottom|left"
             android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
+            android:onClick="diet"
+            android:padding="@dimen/margin2"
+            android:text="Diet"
+            android:textSize="@dimen/header_text" />
+
         <Button
+
             android:id="@+id/tracker"
-            android:layout_width="match_parent"
+            android:layout_width="138dp"
             android:layout_height="wrap_content"
-            android:onClick="tracker"
-            android:text="Tracker"
             android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
+            android:onClick="tracker"
+            android:padding="@dimen/margin2"
+            android:text="Tracker"
+            android:textSize="@dimen/header_text" />
+
         <Button
+            android:layout_marginBottom="0.5dp"
             android:id="@+id/workouts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/transparency_white"
             android:onClick="workouts"
+            android:padding="@dimen/margin2"
             android:text="Workouts"
-            android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
-        <Button
-            android:id="@+id/prof"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="profile"
-            android:text="Profile"
-            android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
+            android:textSize="@dimen/header_text" />
+
+
 
 
     </LinearLayout>
