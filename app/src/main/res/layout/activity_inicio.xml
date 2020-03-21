@@ -50,52 +50,50 @@
             android:contentDescription="@string/profile_text"
             android:focusable="true"
             android:onClick="settings"
-            app:srcCompat="@android:drawable/ic_menu_preferences" />
+            app:srcCompat="@drawable/setings_btn"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:orientation="vertical">
-        <Button
-            android:id="@+id/history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/new_margin"
+        android:paddingVertical="@dimen/new_margin"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/history_btn"
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="history"
-            android:text="History"
-            android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
-        <Button
-            android:id="@+id/tracker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
             android:onClick="tracker"
-            android:text="Tracker"
-            android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
-        <Button
-            android:id="@+id/workouts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="workouts"
-            android:text="Workouts"
-            android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
-        <Button
-            android:id="@+id/prof"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="profile"
-            android:text="Profile"
-            android:backgroundTint="@color/transparency_white"
-            android:textSize="@dimen/header_text"
-            android:padding="@dimen/margin2"/>
-
-
+            android:layout_weight="1"
+            app:srcCompat="@drawable/tracker_btn"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="tracker"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/workouts_btn"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="tracker"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/diets_btn"/>
     </LinearLayout>
 </RelativeLayout>

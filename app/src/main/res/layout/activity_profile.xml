@@ -55,7 +55,7 @@
             android:contentDescription="@string/profile_text"
             android:focusable="true"
             android:onClick="settings"
-            app:srcCompat="@android:drawable/ic_menu_manage" />
+            app:srcCompat="@drawable/setings_btn" />
 
     </LinearLayout>
 
