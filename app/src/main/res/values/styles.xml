@@ -17,7 +17,9 @@
         <item name="android:textColorHint">@color/hintC</item>
 
     </style>
+    <style name="Splashscreen" parent="Theme.AppCompat.Light.NoActionBar">
 
+    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

@@ -21,7 +21,7 @@
     <string name="km">km</string>
     <string name="inactivity">You were inactive:</string>
     <string name="h">h</string>
-
+    <string name="diet">Diet</string>
     <!-- Tracker Activity -->
     <string name="title">Tracker</string>
 
@@ -99,6 +99,8 @@
     <string name="app_name">HealthCared</string>
     <string name="profile_text">Settings</string>
     <string name="back_text">Back</string>
+    <string name="home">Home</string>
+    <string name="pauset">Pause 1h</string>
 
     <!-- Example strings -->
     <string name="plan_name_1">Plan 1</string>

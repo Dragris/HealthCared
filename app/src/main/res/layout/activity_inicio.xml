@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Inicio"
     android:background="@drawable/gradient">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/toolbar_workout"
@@ -13,18 +14,19 @@
         android:orientation="horizontal">
 
         <Space
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"/>
 
         <TextView
-            android:id="@+id/create_toolbar"
+            android:id="@+id/workout_home_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="2"
-            android:text="Home"
+            android:text="@string/home"
             android:textStyle="bold"
             android:textSize="@dimen/header_text"/>
 
@@ -50,27 +52,125 @@
             android:contentDescription="@string/profile_text"
             android:focusable="true"
             android:onClick="settings"
-            app:srcCompat="@drawable/setings_btn"/>
+            app:srcCompat="@drawable/setings_btn" />
 
     </LinearLayout>
-
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar_workout"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/margin2"
+        android:layout_above="@id/icons"
+        android:weightSum="9">
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/barChart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="12"
+            android:layout_marginBottom="@dimen/side_margin"/>
+        <TextView
+            android:id="@+id/day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/today"
+            android:textSize="@dimen/normal_text"
+            android:layout_marginBottom="@dimen/new_margin"
+            android:paddingHorizontal="@dimen/side_margin"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/new_margin"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/side_margin">
+            <TextView
+                android:id="@+id/km"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/walked"
+                android:textSize="@dimen/header_text"
+                android:layout_marginRight="@dimen/new_margin"/>
+            <TextView
+                android:id="@+id/num1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:text="15"
+                android:textSize="@dimen/header_text"/>
+            <TextView
+                android:id="@+id/kilometer"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/km"
+                android:textSize="@dimen/header_text"
+                android:layout_marginLeft="@dimen/new_margin"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/side_margin"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/side_margin">
+            <TextView
+                android:id="@+id/inactivity"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/inactivity"
+                android:textSize="@dimen/header_text"
+                android:layout_marginRight="@dimen/new_margin"/>
+            <TextView
+                android:id="@+id/num2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:text="1"
+                android:textSize="@dimen/header_text"/>
+            <TextView
+                android:id="@+id/hours"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/h"
+                android:textSize="@dimen/header_text"
+                android:layout_marginLeft="@dimen/new_margin"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:paddingHorizontal="@dimen/side_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/btn_pause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparency_white"
+                android:text="@string/pause"
+                android:clickable="true"
+                />
+            <Button
+                android:id="@+id/btn_pause1hr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@color/transparency_white"
+                android:text="@string/pauset"
+                android:clickable="true"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/icons"
         android:layout_width="match_parent"
         android:layout_height="@dimen/toolbar"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/new_margin"
         android:paddingVertical="@dimen/new_margin"
         android:orientation="horizontal"
-        android:weightSum="5">
+        android:weightSum="4">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/history_btn"
-            android:clickable="true"
-            android:focusable="true"
-            android:onClick="history"
-            android:layout_weight="1"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

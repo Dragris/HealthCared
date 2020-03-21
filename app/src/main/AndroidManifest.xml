@@ -18,7 +18,6 @@
         <activity android:name=".DietView"></activity>
         <activity android:name=".CreateDiet" />
         <activity android:name=".DietHome" />
-        <activity android:name=".History" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,12 +32,14 @@
 
         <activity android:name=".Tracker" />
         <activity android:name=".Inicio" />
-        <activity android:name=".Home" />
         <activity android:name=".Singup2" />
         <activity android:name=".Singup1" />
         <activity android:name=".Profile" />
         <activity android:name=".Settings" />
-        <activity android:name=".LogIn">
+        <activity android:name=".LogIn" />
+        <activity
+            android:name=".animescreen"
+            android:theme="@style/Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
