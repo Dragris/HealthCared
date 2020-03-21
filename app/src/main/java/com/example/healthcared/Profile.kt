@@ -15,6 +15,7 @@ class Profile : AppCompatActivity() {
 
     fun goBack(view: View){
         val intent = Intent(this, Inicio::class.java)
+        startActivity(intent)
     }
 
     fun settings (view: View){

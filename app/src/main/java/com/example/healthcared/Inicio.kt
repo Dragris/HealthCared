@@ -31,6 +31,10 @@ class Inicio : AppCompatActivity() {
         val intent = Intent(this, Profile::class.java)
         startActivity(intent)
     }
+    fun diets(view: View){
+        val intent = Intent(this, DietHome::class.java)
+        startActivity(intent)
+    }
 
     fun settings(view: View){
         val intent = Intent(this, Settings::class.java)

@@ -53,6 +53,32 @@
     <string name="option3_obj">Gain Strenght</string>
     <string name="option4_obj">Muslce volume</string>
 
+    <!-- Diet home activity -->
+    <string name="diet_title_home">Diets</string>
+    <string name="diet_example_1">Diet 1</string>
+    <string name="diet_example_2">Diet 2</string>
+
+    <!-- Create Diet activity -->
+    <string name="create_diet">Create Diet</string>
+    <string name="name">Diet name</string>
+    <string name="objective1">Hypertrophy Diet</string>
+    <string name="objective2">Ketogenic Diet</string>
+    <string name="vegan_veget">Are you Vegan or Vegetarian?</string>
+    <string name="negation">No</string>
+    <string name="vegan">Yes, I\'m vegan</string>
+    <string name="veget">Yes, I\'m vegetarian</string>
+
+    <!-- Diet view activity -->
+    <string name="breakfast">Breakfast</string>
+    <string name="lunch">Lunch</string>
+    <string name="dinner">Dinner</string>
+    <string name="meal1">Cereal</string>
+    <string name="meal2">Fruit</string>
+    <string name="meal3">Meat</string>
+    <string name="meal4">Pasta</string>
+    <string name="meal5">Fish</string>
+    <string name="meal6">Vegetable</string>
+
     <!-- Profile activity -->
     <string name="profile_title">Profile</string>
     <string name="personal_info_title">Personal information</string>
