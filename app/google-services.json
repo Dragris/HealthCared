@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "322455710508",
+    "firebase_url": "https://healthcared-9e7e7.firebaseio.com",
+    "project_id": "healthcared-9e7e7",
+    "storage_bucket": "healthcared-9e7e7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322455710508:android:749eb0385729e491c81a89",
+        "android_client_info": {
+          "package_name": "com.example.healthcared"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "322455710508-0rh8juqdprmgqqkhsk1u5taf991en59j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMZA2aPvSmV0m_8_ee97Vbkf_pvkPveH8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "322455710508-0rh8juqdprmgqqkhsk1u5taf991en59j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
