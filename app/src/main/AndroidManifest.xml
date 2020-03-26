@@ -15,9 +15,9 @@
         android:roundIcon="@mipmap/round_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DietView"></activity>
-        <activity android:name=".CreateDiet" />
-        <activity android:name=".DietHome" />
+        <activity android:name=".UI.DietView"></activity>
+        <activity android:name=".UI.CreateDiet" />
+        <activity android:name=".UI.DietHome" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -30,15 +30,15 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".Tracker" />
-        <activity android:name=".Inicio" />
-        <activity android:name=".Singup2" />
-        <activity android:name=".Singup1" />
-        <activity android:name=".Profile" />
-        <activity android:name=".Settings" />
-        <activity android:name=".LogIn" />
+        <activity android:name=".UI.Tracker" />
+        <activity android:name=".UI.Inicio" />
+        <activity android:name=".UI.Singup2" />
+        <activity android:name=".UI.Singup1" />
+        <activity android:name=".UI.Profile" />
+        <activity android:name=".UI.Settings" />
+        <activity android:name=".UI.LogIn" />
         <activity
-            android:name=".animescreen"
+            android:name=".UI.animescreen"
             android:theme="@style/Splashscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,10 +47,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".CreatePlan" />
-        <activity android:name=".StartExercise" />
-        <activity android:name=".PlanPreview" />
-        <activity android:name=".WorkoutHome" />
+        <activity android:name=".UI.CreatePlan" />
+        <activity android:name=".UI.StartExercise" />
+        <activity android:name=".UI.PlanPreview" />
+        <activity android:name=".UI.WorkoutHome" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.healthcared
+package com.example.healthcared.Modelo
 
 class Rutina(val rutinaName: String) {
     val lista: MutableCollection<Ejercicio>? = null

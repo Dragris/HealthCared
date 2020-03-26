@@ -1,9 +1,10 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.healthcared.*
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -16,14 +17,15 @@ class Inicio : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
         val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(1f,0f))
-        entries.add(BarEntry(5f,6f))
-        entries.add(BarEntry(7f,7f))
-        entries.add(BarEntry(9f,8f))
-        entries.add(BarEntry(11f,9f))
-        entries.add(BarEntry(13f,2f))
+        entries.add(BarEntry(0f,200f))
+        entries.add(BarEntry(2f,600f))
+        entries.add(BarEntry(4f,988f))
+        entries.add(BarEntry(6f,9084f))
+        entries.add(BarEntry(8f,15000f))
+        entries.add(BarEntry(10f,759f))
+        entries.add(BarEntry(12f, 100f))
 
-        val barDataSet = BarDataSet(entries, "Cells")
+        val barDataSet = BarDataSet(entries, "Pasos")
 
         val labels = ArrayList<String>()
         labels.add("Hace 1 semana")
@@ -41,9 +43,12 @@ class Inicio : AppCompatActivity() {
         barDataSet.color = resources.getColor(R.color.colorAccent)
 
         barChart.setScaleEnabled(false);
+        barChart.animateX(2500)
         barChart.animateY(5000)
     }
 
+
+    override fun onBackPressed() {}
 
     fun tracker (view: View){
         val intent = Intent(this, Tracker::class.java)

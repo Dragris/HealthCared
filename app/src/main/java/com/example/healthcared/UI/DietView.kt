@@ -1,10 +1,11 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.healthcared.R
 import kotlinx.android.synthetic.main.activity_diet_view.*
 
 class DietView : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import android.net.Uri
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import com.example.healthcared.R
 import kotlinx.android.synthetic.main.activity_plan_preview.*
 
 class PlanPreview : AppCompatActivity() {
@@ -18,8 +19,7 @@ class PlanPreview : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, WorkoutHome::class.java)
-        startActivity(intent)
+        finish()
     }
 
     fun settings(view: View){

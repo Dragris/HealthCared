@@ -1,4 +1,4 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.Toast
+import com.example.healthcared.R
 import kotlinx.android.synthetic.main.activity_signup1.*
 
 class Singup1 : AppCompatActivity() {
@@ -25,7 +26,7 @@ class Singup1 : AppCompatActivity() {
 
     fun signup2(view: View) {
         if(checkBox.isChecked){
-            val intent = Intent(this,Singup2::class.java)
+            val intent = Intent(this, Singup2::class.java)
             startActivity(intent)
         }
         else{

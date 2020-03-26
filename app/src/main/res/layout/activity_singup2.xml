@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".Singup2">
+    tools:context=".UI.Singup2">
 
     <LinearLayout
         android:layout_width="match_parent"

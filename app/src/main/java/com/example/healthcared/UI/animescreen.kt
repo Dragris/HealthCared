@@ -1,11 +1,10 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import kotlinx.coroutines.delay
-import java.lang.Exception
+import com.example.healthcared.R
 
 class animescreen : AppCompatActivity() {
 lateinit var handler : Handler
@@ -14,8 +13,9 @@ lateinit var handler : Handler
         setContentView(R.layout.activity_animescreen)
         handler = Handler()
         handler.postDelayed({
-            val intent = Intent(this,LogIn::class.java)
+            val intent = Intent(this, LogIn::class.java)
             startActivity(intent)
+            //TODO incluir las cargas de contenido incial
             finish()
         }, 3000)
 

@@ -1,13 +1,11 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
-import android.net.wifi.hotspot2.pps.HomeSp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.PopupMenu
-import kotlinx.android.synthetic.main.activity_workout_home.*
+import com.example.healthcared.R
 
 class WorkoutHome : AppCompatActivity() {
 
@@ -36,10 +34,14 @@ class WorkoutHome : AppCompatActivity() {
 
     fun initButtons(){
         findViewById<Button>(R.id.example_plan).setOnClickListener {
-            planPreview(findViewById(R.id.example_plan), findViewById<Button>(R.id.example_plan).text as String)
+            planPreview(findViewById(R.id.example_plan), findViewById<Button>(
+                R.id.example_plan
+            ).text as String)
         }
         findViewById<Button>(R.id.example_plan2).setOnClickListener {
-            planPreview(findViewById(R.id.example_plan), findViewById<Button>(R.id.example_plan2).text as String)
+            planPreview(findViewById(R.id.example_plan), findViewById<Button>(
+                R.id.example_plan2
+            ).text as String)
         }
     }
 

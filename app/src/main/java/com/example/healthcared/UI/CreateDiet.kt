@@ -1,9 +1,10 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.healthcared.R
 
 class CreateDiet : AppCompatActivity() {
 

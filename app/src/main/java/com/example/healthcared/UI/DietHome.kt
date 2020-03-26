@@ -1,10 +1,11 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import com.example.healthcared.R
 
 class DietHome : AppCompatActivity() {
 
@@ -15,8 +16,7 @@ class DietHome : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, Inicio::class.java)
-        startActivity(intent)
+        finish()
     }
 
     fun settings(view: View){
@@ -31,10 +31,14 @@ class DietHome : AppCompatActivity() {
 
     fun initButtons(){
         findViewById<Button>(R.id.example_plan).setOnClickListener {
-            dietView(findViewById(R.id.example_plan), findViewById<Button>(R.id.example_plan).text as String)
+            dietView(findViewById(R.id.example_plan), findViewById<Button>(
+                R.id.example_plan
+            ).text as String)
         }
         findViewById<Button>(R.id.example_plan2).setOnClickListener {
-            dietView(findViewById(R.id.example_plan), findViewById<Button>(R.id.example_plan2).text as String)
+            dietView(findViewById(R.id.example_plan), findViewById<Button>(
+                R.id.example_plan2
+            ).text as String)
         }
     }
 

@@ -1,33 +1,28 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.CheckBox
-import android.widget.Toast
-//import kotlinx.android.synthetic.main.activity_signup1.*
+import com.example.healthcared.R
 
-
-class LogIn : AppCompatActivity() {
+class Profile : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_log_in)
-
+        setContentView(R.layout.activity_profile)
     }
 
-    fun login(view: View) {
+    fun goBack(view: View){
         val intent = Intent(this, Inicio::class.java)
         startActivity(intent)
     }
 
-    fun signup1(view: View) {
-        val intent = Intent(this, Singup1::class.java)
+    fun settings (view: View){
+        val intent = Intent(this, Settings::class.java)
         startActivity(intent)
     }
-
-
-
-
+    fun changeProfileImage(view: View){
+        //Change profile picture.
+    }
 }

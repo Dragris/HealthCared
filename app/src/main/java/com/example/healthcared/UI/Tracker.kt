@@ -1,9 +1,10 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.healthcared.R
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -44,8 +45,7 @@ class Tracker : AppCompatActivity(), OnMapReadyCallback {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, Inicio::class.java)
-        startActivity(intent)
+        finish()
     }
 
     fun settings(view: View){

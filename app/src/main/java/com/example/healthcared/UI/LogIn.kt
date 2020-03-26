@@ -1,25 +1,33 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.healthcared.R
 
-class Diet : AppCompatActivity() {
+//import kotlinx.android.synthetic.main.activity_signup1.*
+
+
+class LogIn : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_diet)
+        setContentView(R.layout.activity_log_in)
 
     }
 
-    fun goBack(view: View) {
+    fun login(view: View) {
         val intent = Intent(this, Inicio::class.java)
         startActivity(intent)
     }
-    fun settings(view: View) {
-        val intent = Intent(this, Settings::class.java)
+
+    fun signup1(view: View) {
+        val intent = Intent(this, Singup1::class.java)
         startActivity(intent)
     }
-}
 
+
+
+
+}

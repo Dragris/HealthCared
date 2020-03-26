@@ -1,4 +1,4 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.example.healthcared.R
 import kotlinx.android.synthetic.main.activity_create_plan.*
 
 class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {

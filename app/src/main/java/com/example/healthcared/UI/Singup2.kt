@@ -1,24 +1,24 @@
-package com.example.healthcared
+package com.example.healthcared.UI
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import com.example.healthcared.R
 import kotlinx.android.synthetic.main.activity_singup2.*
 
 class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-    val gender = arrayOf("-- Slect Gender --", "Male", "Female")
+    val gender = arrayOf("-- Select Gender --", "Male", "Female")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_singup2)
 
         // Gender Spinner
         spinner_gender!!.setOnItemSelectedListener(this)
-        val arrayAdapter = ArrayAdapter<String>(this, R.layout.spinner_item, gender)
+        val arrayAdapter = ArrayAdapter<String>(this,
+            R.layout.spinner_item, gender)
         arrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinner_gender!!.setAdapter(arrayAdapter)
 
@@ -39,7 +39,6 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun goBack(view: View){
-        val intent = Intent(this, Singup1::class.java)
-        startActivity(intent)
+        finish()
     }
 }
