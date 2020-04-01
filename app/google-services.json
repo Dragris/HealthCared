@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "322455710508-fajimgfoe6rpdddsjj0rge0h4pep39v5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthcared",
+            "certificate_hash": "6f0b644681394582b720d5a28c1609c7b10f80da"
+          }
+        },
+        {
+          "client_id": "322455710508-6hrbrer8aj4ipucgn7dp3jof2u6ug7ps.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.healthcared",
+            "certificate_hash": "93234eac3f37b4e81af91fc92711c0ce4a1947d2"
+          }
+        },
+        {
           "client_id": "322455710508-0rh8juqdprmgqqkhsk1u5taf991en59j.apps.googleusercontent.com",
           "client_type": 3
         }
