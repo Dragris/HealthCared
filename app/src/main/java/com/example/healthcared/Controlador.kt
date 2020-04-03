@@ -1,11 +1,10 @@
 package com.example.healthcared
 
-import com.example.healthcared.Modelo.Comida
-import com.example.healthcared.Modelo.Dieta
-import com.example.healthcared.Modelo.Ejercicio
-import com.example.healthcared.Modelo.Rutina
+import com.example.healthcared.Modelo.*
+import com.example.healthcared.UI.LogIn
+import com.google.firebase.auth.FirebaseAuth
 
-class Controlador {
+open class Controlador{
     //Contnedores personales, cargar con log-in
     var listaDieta: MutableCollection<Dieta>? =null
     var listaRutina: MutableCollection<Rutina>? =null
@@ -34,4 +33,15 @@ class Controlador {
         //Mock up para probar datos y etc.
 
     }
+
+  //  fun SinginWuthEmailAndPassword(e:String,x:String,){
+    //    FirebaseAuth.getInstance().signInWithEmailAndPassword(e,x)
+   //         .addOnCompleteListener{
+    //            if(it.isSuccessful){
+
+   //             }
+  //          }
+  //  }
+
+
 }

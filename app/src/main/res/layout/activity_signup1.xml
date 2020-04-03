@@ -106,15 +106,16 @@
             android:layout_marginBottom="@dimen/margin2"
             android:text="@string/terms"
             android:textColor="@color/colorWhite"/>
+
         <Button
             android:id="@+id/login_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:background="@color/transparency_white"
-            android:paddingHorizontal="@dimen/side_margin"
             android:layout_gravity="center_horizontal"
-            android:onClick="signup2" />
+            android:background="@color/transparency_white"
+            android:onClick="signup2"
+            android:paddingHorizontal="@dimen/side_margin"
+            android:text="@string/next" />
     </LinearLayout>
 
 </RelativeLayout>

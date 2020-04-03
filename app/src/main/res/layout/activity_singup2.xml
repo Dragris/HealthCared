@@ -92,7 +92,7 @@
             android:background="@color/transparency_white"
             android:paddingHorizontal="@dimen/side_margin"
             android:layout_gravity="center_horizontal"
-            android:onClick="home" />
+            android:onClick="Singup" />
     </LinearLayout>
     <!--
 

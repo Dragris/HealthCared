@@ -40,7 +40,7 @@
         android:orientation="vertical"
         android:layout_centerInParent="true">
         <EditText
-            android:id="@+id/id"
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
             android:background="@color/transparency_white"
@@ -49,7 +49,7 @@
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/side_margin"/>
         <EditText
-            android:id="@+id/passw"
+            android:id="@+id/Upassword"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
             android:hint="@string/passw"

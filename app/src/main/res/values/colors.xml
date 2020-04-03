@@ -13,6 +13,8 @@
     <color name="hintC">#808080</color>
 
 
+    <color name="mapboxBlue">#4264fb</color>
+    <color name="mapboxGrayLight">#c6d2e1</color>
     <!-- Base Android Colors -->
     <color name="colorPrimary">#27FF00</color>
     <color name="colorPrimaryDark">#FF0000</color>

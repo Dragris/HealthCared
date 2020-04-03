@@ -68,6 +68,7 @@
         android:paddingBottom="@dimen/bot_margin"
         android:layout_marginTop="@dimen/side_margin"
         android:paddingHorizontal="@dimen/side_margin">
+
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"

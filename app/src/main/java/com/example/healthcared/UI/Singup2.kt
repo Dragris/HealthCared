@@ -33,7 +33,8 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         //THINGS
     }
 
-    fun home(view: View){
+    fun Singup (view: View){
+
         val intent = Intent(this, Inicio::class.java)
         startActivity(intent)
     }
