@@ -57,4 +57,7 @@ Tipo 3 (Hipertrofia)
 
 Tipo 4 (Cardio)
 - Jumping Jacks (1)
-- Sentad
+- Sentadilla (1)
+- Burpee (2)
+- Mountain Climbers (2)
+ */
