@@ -11,7 +11,6 @@ open class Controlador{
     //var usuario: Usuario  //En caso de ser necesario mantener qué usuario es el que está conectado
     var pasos: MutableCollection<Int>? =null
 
-
     //Contenedores de la app, cargar con inicio de la app
     var ejercicios: MutableCollection<Ejercicio>? =null
     var comidas: MutableCollection<Comida>? =null

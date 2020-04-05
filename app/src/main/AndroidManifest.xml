@@ -28,15 +28,23 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-        <activity
-            android:name=".UI.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+        <uses-library android:name="com.google.android.maps" />
+
         <activity android:name=".UI.DietView" />
         <activity android:name=".UI.CreateDiet" />
         <activity android:name=".UI.DietHome" />
         <activity android:name=".UI.Tracker" />
-        <activity android:name=".UI.Inicio" />
+        <activity android:name=".UI.Inicio" >
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".UI.Singup2" />
         <activity android:name=".UI.Singup1" />
         <activity android:name=".UI.Profile" />
@@ -45,11 +53,6 @@
         <activity
             android:name=".UI.animescreen"
             android:theme="@style/Splashscreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".UI.CreatePlan" />
         <activity android:name=".UI.StartExercise" />

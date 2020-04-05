@@ -70,8 +70,8 @@ class LogIn : AppCompatActivity() {
      */
     public override fun onStart(){
     super.onStart()
-    val currentUser:FirebaseUser? =auth.currentUser
-    updateUI(currentUser)
+    //val currentUser:FirebaseUser? =auth.currentUser
+    //updateUI(currentUser)
 }
 
     private fun updateUI(currentUser : FirebaseUser?){
