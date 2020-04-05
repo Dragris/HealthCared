@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.healthcared.*
+import com.example.healthcared.Modelo.Rutina
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -14,6 +15,7 @@ import java.util.ArrayList
 class Inicio : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val controlador: Controlador
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
         val entries = ArrayList<BarEntry>()
@@ -72,5 +74,9 @@ class Inicio : AppCompatActivity() {
     fun settings(view: View){
         val intent = Intent(this, Settings::class.java)
         startActivity(intent)
+    }
+
+    fun pause(view: View) {
+        // FUncion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
     }
 }
