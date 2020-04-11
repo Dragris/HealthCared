@@ -29,20 +29,31 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     private var locationUpdateState = false
 
     companion object {
+        private const val FIRST_LOCATION_PERMISSION_REQUEST_CODE = 1138
         private const val LOCATION_PERMISSION_REQUEST_CODE  = 1
         private const val REQUEST_CHECK_SETTINGS = 2
     }
 
-
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray){
+            when (requestCode){
+                FIRST_LOCATION_PERMISSION_REQUEST_CODE ->{
+                    if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                        finish();
+                        startActivity(intent);
+                    } else {
+                        finish()
+                    }
+                }
+            }
+    }
 
     private fun mapUpdate() {
         //Check location permissions
-        if (ActivityCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE )
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), FIRST_LOCATION_PERMISSION_REQUEST_CODE )
             return
         }
+
         //Habilita la localización
         mMap.isMyLocationEnabled = true
         //Nos da la localización más reciente disponible
