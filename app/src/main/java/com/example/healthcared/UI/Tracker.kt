@@ -11,25 +11,18 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.mapbox.mapboxsdk.Mapbox
-
-import com.mapbox.mapboxsdk.maps.MapView
 
 
 class Tracker : AppCompatActivity(), OnMapReadyCallback {
-    private lateinit var mapView: MapView
-
     private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tracker)
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-
 
     }
 
@@ -46,9 +39,10 @@ class Tracker : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val santa = LatLng(66.5503, 25.8870)
+        mMap.addMarker(MarkerOptions().position(santa).title("Happy Christmas motherfucker"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(santa))
+    }
 
         fun goBack(view: View) {
             val intent = Intent(this, Inicio::class.java)
@@ -60,4 +54,4 @@ class Tracker : AppCompatActivity(), OnMapReadyCallback {
             startActivity(intent)
         }
     }
-}
+

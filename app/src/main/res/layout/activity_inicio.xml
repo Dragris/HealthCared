@@ -146,6 +146,7 @@
                 android:background="@color/transparency_white"
                 android:text="@string/pause"
                 android:clickable="true"
+                android:onClick="pause"
                 />
             <Button
                 android:id="@+id/btn_pause1hr"

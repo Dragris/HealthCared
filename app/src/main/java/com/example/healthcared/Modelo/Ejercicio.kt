@@ -7,12 +7,24 @@ import kotlin.math.round
  * body indica la zona (superior, inferior, troncal) que ejercita el ejercicio.
  * repeatFactor es un factor añadido para calcular las repeticiones que harán falta por serie.
  */
-class Ejercicio(val type: Int, val body: String, val ExerciceName:String, val youtubeLink: String, val diff: Int) {
-
-
+class Ejercicio(val ExerciceName:String, val youtubeLink: String, val diff: Int) {
+    override fun toString(): String {
+        var nombre = ExerciceName + " " + diff.toString()
+        return nombre
+    }
 }
 
 /*
+Ganar Fuerza +1
+Bajar Peso +2
+Hipertrofia +4
+Cardio +8
+
+Ganar Fuerza: Flexiones, Sentadillas, Sentadillas + Salto, Bench Dip, Flexiones de Triceps, Plank, Elevaciones de piernas, Crunch
+Bajar de Peso: Jumping Jacks, Sentadillas, Flexiones, Elevaciones de cadera, Crunch, Plank
+Hipertrofia: Flexiones, Sentadillas, Plank, Elevaciones de piernas, Crunch, Bench Dip, Flexiones de Triceps
+Cardio: Jumping Jacks, Sentadilla, Burpee, Mountain Climbers
+
 Type
 Flexiones = 7
 Sentadillas = 15
@@ -26,38 +38,4 @@ Jumping Jacks = 10
 Elevaciones de cadera = 2
 Mountain Climbers = 8
 Burpee =  8
-
-
-
-- Ejercicio (Dificultad)
-Tipo 1 (Ganar Fuerza)
-- Flexiones (1)
-- Sentadillas (1)
-- Sentadillas + Salto (2)
-- Bench Dip (Triceps) (1)
-- Flexiones de Triceps (2)
-- Abdominales:
-    Plank (2), Elevaciones de piernas (2), Crunch (1)
-
-Tipo 2 (Bajar de Peso)
-- Jumping Jacks (1)
-- Sentadillas (1)
-- Flexiones (1)
-- Elevaciones de cadera (1)
-- Crunch (1)
-- Plank (2)
-
-Tipo 3 (Hipertrofia)
-- Flexiones (1)
-- Sentadillas (1) (Con peso si puede ser (2))
-- Abdominales:
-    Plank (2), Elevaciones de piernas (2), Crunch (1)
-- Bench Dip (Triceps) (1)
-- Flexiones de Triceps (2)
-
-Tipo 4 (Cardio)
-- Jumping Jacks (1)
-- Sentadilla (1)
-- Burpee (2)
-- Mountain Climbers (2)
  */

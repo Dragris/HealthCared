@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser
 
 class LogIn : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    private lateinit var username: EditText
+    private lateinit var username : EditText
     private lateinit var password: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,25 +26,24 @@ class LogIn : AppCompatActivity() {
         password = findViewById(R.id.Upassword)
 
     }
-
-    //btn Login
+//btn Login
     fun login(view: View) {
-        //controlar la entrada
-        if (username.text.toString().isEmpty()) {
+    //controlar la entrada
+        if(username.text.toString().isEmpty()){
             username.error = "Please enter a username"
             username.requestFocus()
             return
-        }   //controlar la entrada
-        if (password.text.toString().isEmpty()) {
+}   //controlar la entrada
+        if(password.text.toString().isEmpty()){
             password.error = "Please enter a password"
             password.requestFocus()
             return
         }
-        //SignIn to Firebase
-        auth.signInWithEmailAndPassword(username.text.toString(), password.text.toString())
+    //SignIn to Firebase
+        auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    //update user
+//update user
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
@@ -69,14 +68,14 @@ class LogIn : AppCompatActivity() {
      * este metodo mira si ya hay un usuario conectado, para saltar directamente al layot Inico
      * esta petando el aplicacion con este metodo
      */
-    public override fun onStart() {
-        super.onStart()
-        val currentUser: FirebaseUser? = auth.currentUser
-        updateUI(currentUser)
-    }
+    public override fun onStart(){
+    super.onStart()
+    /*val currentUser:FirebaseUser? =auth.currentUser
+    updateUI(currentUser)*/
+}
 
-    private fun updateUI(currentUser: FirebaseUser?) {
-        if (currentUser != null) {
+    private fun updateUI(currentUser : FirebaseUser?){
+        if(currentUser !=null) {
             //verificar el email registrado
             /**
              * if (currentUser.isEmailVerified) {
@@ -84,11 +83,11 @@ class LogIn : AppCompatActivity() {
             }
              */
 
-            Toast.makeText(baseContext, "Please verify your email address", Toast.LENGTH_SHORT)
-                .show()
+                Toast.makeText(baseContext,"Please verify your email address",Toast.LENGTH_SHORT).show()
 
-        } else {
-            Toast.makeText(baseContext, "logain failed", Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(baseContext,"logain failed",Toast.LENGTH_SHORT).show()
         }
     }
 }
