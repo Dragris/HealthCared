@@ -28,13 +28,13 @@ open class Controlador private constructor () {
     var ganarFuerza: MutableList<Ejercicio> = mutableListOf(pushup, squats, squatsandjump, benchdip, diamonpushup, plank, legraise, crunch)
     var bajarPeso: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, pushup, hipraise, crunch, plank)
     var hipertrofia: MutableList<Ejercicio> = mutableListOf(pushup, squats, plank, legraise, crunch, benchdip, diamonpushup)
-    var cardio: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, burpee, mountclimbers)
+    var cardio: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, burpee, mountclimbers, crunch)
 
 
     //Contnedores personales, cargar con log-in
     var listaDieta: MutableCollection<Dieta>? =null
     var listaRutina: MutableCollection<Rutina>? =null
-    //var usuario: Usuario  //En caso de ser necesario mantener qué usuario es el que está conectado
+    var usuario: Usuario = Usuario("Random", "Random", "Random", "Random", "Random")  //En caso de ser necesario mantener qué usuario es el que está conectado
     var pasos: MutableCollection<Int>? =null
 
     //Contenedores de la app, cargar con inicio de la app

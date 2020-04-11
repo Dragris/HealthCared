@@ -78,5 +78,6 @@ class Inicio : AppCompatActivity() {
 
     fun pause(view: View) {
         // FUncion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
+        var rutina = Rutina("GG", 1, "Toy Gordo", 4)
     }
 }
