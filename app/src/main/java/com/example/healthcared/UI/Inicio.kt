@@ -1,6 +1,7 @@
 package com.example.healthcared.UI
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -78,5 +79,6 @@ class Inicio : AppCompatActivity() {
 
     fun pause(view: View) {
         // FUncion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
+        var rutina = Rutina("GG", 1, "Toy Gordo", 4)
     }
 }

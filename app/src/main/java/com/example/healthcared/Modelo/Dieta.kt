@@ -14,3 +14,19 @@ class Dieta(val dietName: String) {
         //Va seleccionando según el día de la semana
     }
 }
+/*
+A la espera de si hacemos 1 dieta o varias
+
+if (B1 == False) {
+    //damos acceso a dietas vegetarianas
+}
+if (B2 == True) {
+    //damos acceso a dietas veganas
+} else {
+    //damos acceso a dietas normales
+}
+User Normal -> False, False
+User Vegetariano -> False True
+User Vegano -> True True
+User que no ha respondido -> null null o True False
+ */
