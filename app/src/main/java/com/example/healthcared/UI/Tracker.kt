@@ -131,28 +131,22 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     }
 
     private fun createLocationRequest() {
-        // 1
         locationRequest = LocationRequest()
-        // 2
-        locationRequest?.interval = 10000
-        // 3
-        locationRequest?.fastestInterval = 5000
+        locationRequest?.interval = 10000 //ms
+        locationRequest?.fastestInterval = 5000 //ms
         locationRequest?.priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 
         val builder = LocationSettingsRequest.Builder()
             .addLocationRequest(locationRequest!!)
 
-        // 4
+
         val client = LocationServices.getSettingsClient(this)
         val task = client.checkLocationSettings(builder.build())
-
-        // 5
         task.addOnSuccessListener {
             locationUpdateState = true
             startLocationUpdates()
         }
         task.addOnFailureListener { e ->
-            // 6
             if (e is ResolvableApiException) {
                 // Location settings are not satisfied, but this can be fixed
                 // by showing the user a dialog.
@@ -198,10 +192,6 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         startActivity(intent)
     }
 
-    fun back() {
-        val intent = Intent(this, Inicio::class.java)
-        startActivity(intent)
-    }
     fun settings(view: View) {
         val intent = Intent(this, Settings::class.java)
         startActivity(intent)

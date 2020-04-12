@@ -14,7 +14,7 @@ import com.google.firebase.auth.FirebaseUser
 
 
 class LogIn : AppCompatActivity() {
-    private lateinit var auth: FirebaseAuth
+    private var auth: FirebaseAuth? = null
     private lateinit var username : EditText
     private lateinit var password: EditText
 
@@ -40,20 +40,20 @@ class LogIn : AppCompatActivity() {
             return
         }
     //SignIn to Firebase
-        auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
+    auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
+        ?.addOnCompleteListener(this) { task ->
+            if (task.isSuccessful) {
 //update user
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
+                val user = auth?.currentUser
+                updateUI(user)
+            } else {
 
-                    updateUI(null)
-                    // ...
-                }
-
+                updateUI(null)
                 // ...
             }
+
+            // ...
+        }
         val intent = Intent(this, Inicio::class.java)
         startActivity(intent)
     }
