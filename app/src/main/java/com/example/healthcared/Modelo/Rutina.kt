@@ -7,6 +7,9 @@ import kotlin.random.*
 class Rutina(val rutinaName: String, val difficulty: Int, val obj: String, val daysxweek: Int){
     var lista: MutableList<MutableList<Ejercicio>> = mutableListOf()
     var sum: Int
+    var reps: Int
+    var sets: Int
+    var rest: Int //segundos
     var ejercicios: MutableList<Ejercicio> = mutableListOf()
     init {
         if (difficulty == 1) { sum = 3 }
@@ -14,12 +17,27 @@ class Rutina(val rutinaName: String, val difficulty: Int, val obj: String, val d
         else { sum = 9 }
         // Para printear por Logcat -> Log.v("SUM", sum.toString())
 
-        if (obj == "Toy Gordo") { ejercicios= Controlador.instance.bajarPeso}
-        else if (obj == "Cardio") { ejercicios = Controlador.instance.cardio }
-        else if (obj == "Fuelsa") { ejercicios = Controlador.instance.ganarFuerza }
-        else { ejercicios = Controlador.instance.hipertrofia }
-
-
+        if (obj == "Toy Gordo") {
+            ejercicios = Controlador.instance.bajarPeso
+            reps = 12
+            sets = 3
+            rest = 60
+        } else if (obj == "Cardio") {
+            ejercicios = Controlador.instance.cardio
+            reps = 15
+            sets = 30 //En cardio son minutos no sets realmente
+            rest = 0
+        } else if (obj == "Fuelsa") {
+            ejercicios = Controlador.instance.ganarFuerza
+            reps = 6
+            sets = 5
+            rest = 120
+        } else {
+            ejercicios = Controlador.instance.hipertrofia
+            reps = 10
+            sets = 4
+            rest = 90
+        }
 
         val dialibre: MutableList<Ejercicio> = mutableListOf(Ejercicio("Dia Libre", "https://i.makeagif.com/media/6-20-2015/KVTLDN.gif", 0))
         var diasLibres = mutableListOf<MutableList<Ejercicio>>()
@@ -36,9 +54,17 @@ class Rutina(val rutinaName: String, val difficulty: Int, val obj: String, val d
             while (sum > 0) {
                 var index = Random.nextInt(0, ejercicios.size)
                 if (index !in nums) {
-                    exercises.add(ejercicios[index])
-                    nums.add(index)
-                    sum -= ejercicios[index].diff
+                    if (difficulty != 1 ) {
+                        exercises.add(ejercicios[index])
+                        nums.add(index)
+                        sum -= ejercicios[index].diff
+                    } else {
+                        if (ejercicios[index].diff < 2){
+                            exercises.add(ejercicios[index])
+                            nums.add(index)
+                            sum -= ejercicios[index].diff
+                        }
+                    }
                 }
             }
             sum = tmpsum
@@ -68,13 +94,14 @@ class Rutina(val rutinaName: String, val difficulty: Int, val obj: String, val d
                 tmp.removeAt(0)
             }
         }
-        Log.v("Lista", lista.toString())
-        //TODO() Arreglar logica para que tenga en cuenta la dificultad
+        //Log.v("Lista", lista.toString())
+    }
+
+    fun getDayByDay(index: Int): MutableList<Ejercicio> {
+        return lista[index-1]
     }
 
 
-
-    fun display (){/*TODO() mostrar solo los ejercicios del dia correspondiente*/}
     /* Crear Rutina pautas:
     Bajar Peso:
         - 3 series
