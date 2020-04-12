@@ -40,22 +40,26 @@ class LogIn : AppCompatActivity() {
             return
         }
     //SignIn to Firebase
+
     auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         ?.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-//update user
-                val user = auth?.currentUser
-                updateUI(user)
-            } else {
 
-                updateUI(null)
-                // ...
+                // Sign in success, update UI with the signed-in user's informatio
+                val user = auth?.currentUser
+                //updateUI(user)
+                val intent = Intent(this, Inicio::class.java)
+                startActivity(intent)
+
+            } else {
+                // If sign in fails, display a message to the user.
+                Toast.makeText(baseContext, "Authentication failed.",
+                    Toast.LENGTH_SHORT).show()
+                //updateUI(null)
             }
 
             // ...
         }
-        val intent = Intent(this, Inicio::class.java)
-        startActivity(intent)
     }
 
     fun signup1(view: View) {
@@ -70,18 +74,16 @@ class LogIn : AppCompatActivity() {
      */
     public override fun onStart(){
     super.onStart()
-    /*val currentUser:FirebaseUser? =auth.currentUser
-    updateUI(currentUser)*/
+    val currentUser:FirebaseUser? =auth?.currentUser
+    updateUI(currentUser)
 }
 
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser !=null) {
             //verificar el email registrado
-            /**
-             * if (currentUser.isEmailVerified) {
-            startActivity(Intent(this, Inicio::class.java))
+            if (currentUser.isEmailVerified) {
+
             }
-             */
 
                 Toast.makeText(baseContext,"Please verify your email address",Toast.LENGTH_SHORT).show()
 
