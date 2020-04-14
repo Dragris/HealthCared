@@ -1,5 +1,6 @@
 package com.example.healthcared.UI
 
+import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.IntentSender
@@ -9,6 +10,7 @@ import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.healthcared.R
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -47,10 +49,13 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             }
     }
 
+
+
+
     private fun mapUpdate() {
         //Check location permissions
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), FIRST_LOCATION_PERMISSION_REQUEST_CODE )
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), FIRST_LOCATION_PERMISSION_REQUEST_CODE )
             return
         }
 
@@ -188,8 +193,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
      * Funciones de la interfaz
      */
     fun goBack(view: View) {
-        val intent = Intent(this, Inicio::class.java)
-        startActivity(intent)
+        finish()
     }
 
     fun settings(view: View) {

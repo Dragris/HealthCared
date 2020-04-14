@@ -3,6 +3,7 @@ package com.example.healthcared.UI
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.EditText
@@ -43,51 +44,51 @@ class LogIn : AppCompatActivity() {
     auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         ?.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-//update user
+                //update user
                 val user = auth?.currentUser
                 updateUI(user)
             } else {
-
+                Log.d("USER: ", username.toString())
+                Log.d("Password: ", password.toString())
                 updateUI(null)
                 // ...
             }
-
             // ...
         }
-        val intent = Intent(this, Inicio::class.java)
-        startActivity(intent)
+    Log.d("USER OUT: ", username.toString())
+    Log.d("Password OUT: ", password.toString())
+    val intent = Intent(this, Inicio::class.java)
+    startActivity(intent)
     }
 
     fun signup1(view: View) {
-
         val intent = Intent(this, Singup1::class.java)
         startActivity(intent)
     }
 
     /**
-     * este metodo mira si ya hay un usuario conectado, para saltar directamente al layot Inico
-     * esta petando el aplicacion con este metodo
+     * este metodo mira si ya hay un usuario conectado, para saltar directamente al layout Inico
      */
     public override fun onStart(){
     super.onStart()
-    /*val currentUser:FirebaseUser? =auth.currentUser
-    updateUI(currentUser)*/
+    val currentUser:FirebaseUser? =auth?.currentUser
+    updateUI(currentUser)
 }
 
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser !=null) {
             //verificar el email registrado
-            /**
-             * if (currentUser.isEmailVerified) {
+
+             if (currentUser.isEmailVerified) {
             startActivity(Intent(this, Inicio::class.java))
             }
-             */
+
 
                 Toast.makeText(baseContext,"Please verify your email address",Toast.LENGTH_SHORT).show()
 
         }
         else{
-            Toast.makeText(baseContext,"logain failed",Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext,"Log-in failed",Toast.LENGTH_SHORT).show()
         }
     }
 }

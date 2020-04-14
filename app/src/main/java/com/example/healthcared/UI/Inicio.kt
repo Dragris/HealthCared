@@ -50,7 +50,9 @@ class Inicio : AppCompatActivity() {
         barChart.animateY(5000)
     }
 
-
+    /**
+     *Función para que la flecha atrás no lleve al registro/log in
+     */
     override fun onBackPressed() {}
 
     fun tracker (view: View){
