@@ -14,13 +14,15 @@ import com.google.firebase.auth.FirebaseUser
 
 
 class LogIn : AppCompatActivity() {
-    private var auth: FirebaseAuth? = null
+    private lateinit var auth: FirebaseAuth
     private lateinit var username : EditText
     private lateinit var password: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         username = findViewById(R.id.username)
         password = findViewById(R.id.Upassword)
@@ -40,26 +42,22 @@ class LogIn : AppCompatActivity() {
             return
         }
     //SignIn to Firebase
-
     auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         ?.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-
-                // Sign in success, update UI with the signed-in user's informatio
+            ////update user
                 val user = auth?.currentUser
-                //updateUI(user)
                 val intent = Intent(this, Inicio::class.java)
                 startActivity(intent)
-
             } else {
-                // If sign in fails, display a message to the user.
-                Toast.makeText(baseContext, "Authentication failed.",
-                    Toast.LENGTH_SHORT).show()
-                //updateUI(null)
+
+                updateUI(null)
+                // ...
             }
 
             // ...
         }
+
     }
 
     fun signup1(view: View) {
@@ -74,22 +72,24 @@ class LogIn : AppCompatActivity() {
      */
     public override fun onStart(){
     super.onStart()
-    val currentUser:FirebaseUser? =auth?.currentUser
-    updateUI(currentUser)
+    /*val currentUser:FirebaseUser? =auth.currentUser
+    updateUI(currentUser)*/
 }
 
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser !=null) {
             //verificar el email registrado
-            if (currentUser.isEmailVerified) {
-
+            /**
+             * if (currentUser.isEmailVerified) {
+            startActivity(Intent(this, Inicio::class.java))
             }
+             */
 
                 Toast.makeText(baseContext,"Please verify your email address",Toast.LENGTH_SHORT).show()
 
         }
         else{
-            Toast.makeText(baseContext,"logain failed",Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext,"login failed",Toast.LENGTH_SHORT).show()
         }
     }
 }
