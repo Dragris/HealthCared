@@ -14,13 +14,15 @@ import com.google.firebase.auth.FirebaseUser
 
 
 class LogIn : AppCompatActivity() {
-    private var auth: FirebaseAuth? = null
+    private lateinit var auth: FirebaseAuth
     private lateinit var username : EditText
     private lateinit var password: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         username = findViewById(R.id.username)
         password = findViewById(R.id.Upassword)
@@ -43,9 +45,10 @@ class LogIn : AppCompatActivity() {
     auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         ?.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-//update user
+            ////update user
                 val user = auth?.currentUser
-                updateUI(user)
+                val intent = Intent(this, Inicio::class.java)
+                startActivity(intent)
             } else {
 
                 updateUI(null)
@@ -54,8 +57,7 @@ class LogIn : AppCompatActivity() {
 
             // ...
         }
-        val intent = Intent(this, Inicio::class.java)
-        startActivity(intent)
+
     }
 
     fun signup1(view: View) {
@@ -87,7 +89,7 @@ class LogIn : AppCompatActivity() {
 
         }
         else{
-            Toast.makeText(baseContext,"logain failed",Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext,"login failed",Toast.LENGTH_SHORT).show()
         }
     }
 }
