@@ -30,35 +30,11 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     private var locationRequest: LocationRequest? = null
     private var locationUpdateState = false
 
-    companion object {
-        private const val FIRST_LOCATION_PERMISSION_REQUEST_CODE = 1138
-        private const val LOCATION_PERMISSION_REQUEST_CODE  = 1
-        private const val REQUEST_CHECK_SETTINGS = 2
+    companion object{
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1138
     }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray){
-            when (requestCode){
-                FIRST_LOCATION_PERMISSION_REQUEST_CODE ->{
-                    if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                        finish();
-                        startActivity(intent);
-                    } else {
-                        finish()
-                    }
-                }
-            }
-    }
-
-
-
 
     private fun mapUpdate() {
-        //Check location permissions
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), FIRST_LOCATION_PERMISSION_REQUEST_CODE )
-            return
-        }
-
         //Habilita la localización
         mMap.isMyLocationEnabled = true
         //Nos da la localización más reciente disponible
@@ -159,7 +135,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
                     // Show the dialog by calling startResolutionForResult(),
                     // and check the result in onActivityResult().
                     e.startResolutionForResult(this,
-                        REQUEST_CHECK_SETTINGS)
+                        LOCATION_PERMISSION_REQUEST_CODE)
                 } catch (sendEx: IntentSender.SendIntentException) {
                     // Ignore the error.
                 }
@@ -169,7 +145,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CHECK_SETTINGS) {
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (resultCode == Activity.RESULT_OK) {
                 locationUpdateState = true
                 startLocationUpdates()
