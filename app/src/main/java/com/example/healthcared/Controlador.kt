@@ -168,7 +168,6 @@ open class Controlador private constructor () {
     }
 
     fun initDieta3(): Dieta {
-        //TODO acabar dieta 3 (vegana)
         val pancakes = Comida("Vegan Pancakes", 1, "http://fallback-origin.eatingwell.com/recipe/257348/vegan-pancakes/", 1)
         val blueberries = Comida("1/4 Cup of Blueberries", 1, "-", 1)
         val avocadoToast = Comida("West Coast Avocado Toast", 2, "http://fallback-origin.eatingwell.com/recipe/257117/west-coast-avocado-toast/", 1)
