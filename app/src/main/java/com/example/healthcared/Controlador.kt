@@ -161,7 +161,6 @@ open class Controlador private constructor () {
         val veggieWrap3 = Comida("Veggie Wrap", 2, "http://fallback-origin.eatingwell.com/recipe/249519/peanut-tofu-wrap/", 7)
         val chickpea = Comida("Chickpea Stew", 3, "http://fallback-origin.eatingwell.com/recipe/248777/fragrant-chickpea-stew/", 7)
 
-
         val dieta: MutableList<Comida> = mutableListOf(rolledOats, milk, raspberries, veggieWrap, quinoaBurger, bananaWalnut, roastedVegetable, butternut, bananaWalnut2, apple, roastedVegetable2,
             pastaSalad, bananaWalnut3, apple2, roastedVegetable4, eggStuffed, avocadoEggToast, clementine, roastedVegetable5, tikkaMasala, brownRice, rolledOats2, milk2, raspberries2, veggieWrap2,
             veggieTaco, rolledOats3, milk3, apple3, veggieWrap3, chickpea)
@@ -170,6 +169,34 @@ open class Controlador private constructor () {
 
     fun initDieta3(): Dieta {
         //TODO acabar dieta 3 (vegana)
+        val pancakes = Comida("Vegan Pancakes", 1, "http://fallback-origin.eatingwell.com/recipe/257348/vegan-pancakes/", 1)
+        val blueberries = Comida("1/4 Cup of Blueberries", 1, "-", 1)
+        val avocadoToast = Comida("West Coast Avocado Toast", 2, "http://fallback-origin.eatingwell.com/recipe/257117/west-coast-avocado-toast/", 1)
+        val faladelSalad = Comida("Falafel Salad", 3, "http://fallback-origin.eatingwell.com/recipe/253015/falafel-salad-with-lemon-tahini-dressing/", 1)
+        val englishMuffin = Comida("Chia Berry English Muffin", 1, "http://fallback-origin.eatingwell.com/recipe/255160/peanut-butter-chia-berry-jam-english-muffin/", 2)
+        val salad = Comida("White Bean Salad", 2, "http://fallback-origin.eatingwell.com/recipe/259819/white-bean-veggie-salad/", 2)
+        val buddha = Comida("Back Bean Buddha Bowl", 3, "http://fallback-origin.eatingwell.com/recipe/260726/black-bean-quinoa-buddha-bowl/", 2)
+        val englishMuffin2 = Comida("Cinnamon English Muffin", 1, "http://fallback-origin.eatingwell.com/recipe/249320/peanut-butter-cinnamon-english-muffin/", 3)
+        val edamameSalad = Comida("Edamame Salad", 2, "http://fallback-origin.eatingwell.com/recipe/252724/super-green-edamame-salad/", 3)
+        val currySoup = Comida("Cauliflower & Potato Curry Soup", 3, "http://fallback-origin.eatingwell.com/recipe/256519/roasted-cauliflower-potato-curry-soup/", 3)
+        val quinoaMix = Comida("Chia & Quinoa Mix", 1, "http://fallback-origin.eatingwell.com/recipe/255762/quinoa-chia-oatmeal-mix/", 4)
+        val currySoup2 = Comida("Cauliflower & Potato Curry Soup", 2, "http://fallback-origin.eatingwell.com/recipe/256519/roasted-cauliflower-potato-curry-soup/", 4)
+        val sweetPotatoes = Comida("Sweet Potato Bisque", 3, "http://fallback-origin.eatingwell.com/recipe/252458/sweet-potato-peanut-bisque/", 4)
+        val pancakes2 = Comida("Vegan Pancakes", 1, "http://fallback-origin.eatingwell.com/recipe/257348/vegan-pancakes/", 5)
+        val blueberries2 = Comida("1/4 Cup of Blueberries", 1, "-", 5)
+        val sandwich = Comida("Veggie & Hummus Sandwich", 2, "http://fallback-origin.eatingwell.com/recipe/259817/veggie-hummus-sandwich/", 5)
+        val chickpea = Comida("Chickpea Curry", 3, "http://fallback-origin.eatingwell.com/recipe/255186/chickpea-curry-chhole/", 5)
+        val englishMuffin3 = Comida("Chia Berry English Muffin", 1, "http://fallback-origin.eatingwell.com/recipe/255160/peanut-butter-chia-berry-jam-english-muffin/", 6)
+        val cauliflowerSalad = Comida("Cauliflower Egg Salad", 2, "http://fallback-origin.eatingwell.com/recipe/252738/vegan-cauliflower-egg-salad/", 6)
+        val thaiSpaghetti = Comida("Thai Spaghetti Squash", 3, "http://fallback-origin.eatingwell.com/recipe/266648/thai-spaghetti-squash-with-peanut-sauce/", 6)
+        val pancakes3 = Comida("Vegan Pancakes", 1, "http://fallback-origin.eatingwell.com/recipe/257348/vegan-pancakes/", 7)
+        val blackberries = Comida("1/4 Cup of Blackberries", 1, "-", 7)
+        val edamameSalad2 = Comida("Edamame Salad", 2, "http://fallback-origin.eatingwell.com/recipe/252724/super-green-edamame-salad/", 7)
+        val rainbow = Comida("Rainbow Veggie Bowl", 3, "http://fallback-origin.eatingwell.com/recipe/255570/rainbow-veggie-spring-roll-bowl/", 7)
+
+        val dieta: MutableList<Comida> = mutableListOf(pancakes, blueberries, avocadoToast, faladelSalad, englishMuffin, salad, buddha, englishMuffin2, edamameSalad, currySoup, quinoaMix, currySoup2,
+            sweetPotatoes, pancakes2, blueberries2, sandwich, chickpea, englishMuffin3, cauliflowerSalad, thaiSpaghetti, pancakes3, blackberries, edamameSalad2, rainbow)
+        return Dieta(dieta, true, true)
     }
 
 }
