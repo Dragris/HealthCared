@@ -12,8 +12,8 @@
         android:id="@+id/toolbar"
         android:layout_height="@dimen/toolbar"
         android:orientation="horizontal"
-        android:layout_marginBottom="@dimen/sidex2"
-        android:weightSum="5">
+        android:weightSum="5"
+        android:layout_marginBottom="@dimen/side_margin">
 
         <ImageView
             android:id="@+id/back_button"
@@ -38,116 +38,101 @@
             android:textSize="@dimen/header_text"/>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/sign_panel"
+    <ScrollView
+        android:layout_below="@id/toolbar"
+        android:layout_above="@id/login_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/side_margin2"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
-        <Spinner
-            android:id="@+id/spinner_gender"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/sign_panel"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/textbox_height"
-            android:background="@color/transparency_white"
-            android:layout_marginBottom="@dimen/margin2"/>
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/side_margin2"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+            <Spinner
+                android:id="@+id/spinner_gender"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textbox_height"
+                android:background="@color/transparency_white"
+                android:layout_marginBottom="@dimen/margin2"/>
 
-        <EditText
-            android:id="@+id/date"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/textbox_height"
-            android:background="@color/transparency_white"
-            android:hint="@string/birth"
-            android:paddingHorizontal="@dimen/new_margin"
-            android:textStyle="bold"
-            android:layout_marginBottom="@dimen/margin2"
-            android:inputType="datetime"/>
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/textbox_height"
-            android:background="@color/transparency_white"
-            android:hint="@string/height"
-            android:paddingHorizontal="@dimen/new_margin"
-            android:textStyle="bold"
-            android:layout_marginBottom="@dimen/margin2"
-            android:inputType="numberDecimal"/>
-        <EditText
-            android:id="@+id/fullname"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/textbox_height"
-            android:hint="@string/weight"
-            android:background="@color/transparency_white"
-            android:textStyle="bold"
-            android:paddingHorizontal="@dimen/new_margin"
-            android:layout_marginBottom="@dimen/margin2"
-            android:inputType="numberDecimal"/>
-
-        <Button
-            android:id="@+id/login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/signup_title"
-            android:background="@color/transparency_white"
-            android:paddingHorizontal="@dimen/side_margin"
-            android:layout_gravity="center_horizontal"
-            android:onClick="Singup" />
-    </LinearLayout>
-    <!--
-
-
-
-
-
-    <Spinner
-        android:id="@+id/spinnerx"
-        android:layout_width="match_parent"
+            <EditText
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textbox_height"
+                android:background="@color/transparency_white"
+                android:hint="@string/birth"
+                android:paddingHorizontal="@dimen/new_margin"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/margin2"
+                android:inputType="datetime"/>
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textbox_height"
+                android:background="@color/transparency_white"
+                android:hint="@string/height"
+                android:paddingHorizontal="@dimen/new_margin"
+                android:textStyle="bold"
+                android:layout_marginBottom="@dimen/margin2"
+                android:inputType="numberDecimal"/>
+            <EditText
+                android:id="@+id/fullname"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textbox_height"
+                android:hint="@string/weight"
+                android:background="@color/transparency_white"
+                android:textStyle="bold"
+                android:paddingHorizontal="@dimen/new_margin"
+                android:layout_marginBottom="@dimen/margin2"
+                android:inputType="numberDecimal"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vegan_veget"
+                android:textSize="@dimen/header_text"
+                android:layout_marginBottom="@dimen/new_margin"/>
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/margin2">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.DeviceDefault.Light.CompoundButton.RadioButton"
+                    android:text="@string/negation"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/small_text"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.DeviceDefault.Light.CompoundButton.RadioButton"
+                    android:text="@string/veget"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/small_text"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@android:style/Widget.DeviceDefault.Light.CompoundButton.RadioButton"
+                    android:text="@string/vegan"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/small_text"/>
+            </RadioGroup>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="@color/colorWhite"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="300dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="56dp"
-        android:text="Weight &amp; Height"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerx" />
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="64dp"
-        android:hint="Weight"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:hint="Height"
-        android:inputType="textPersonName"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
--->
-
+        android:text="@string/signup_title"
+        android:background="@color/transparency_white"
+        android:paddingHorizontal="@dimen/side_margin"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/side_margin"
+        android:layout_centerHorizontal="true"
+        android:onClick="Singup"/>
 </RelativeLayout>
 
 

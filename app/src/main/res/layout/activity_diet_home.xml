@@ -98,17 +98,4 @@
         </LinearLayout>
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/create_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="@dimen/side_margin"
-        android:layout_marginBottom="@dimen/toolbar"
-        android:clickable="true"
-        android:onClick="createDiet"
-        app:backgroundTint="@color/transparency_white"
-        app:srcCompat="@drawable/plus_btn" />
-
 </RelativeLayout>
