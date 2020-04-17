@@ -24,11 +24,12 @@ class LogIn : AppCompatActivity() {
         setContentView(R.layout.activity_log_in)
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
+        auth.signOut()
 
         username = findViewById(R.id.username)
         password = findViewById(R.id.Upassword)
-
     }
+
 //btn Login
     fun login(view: View) {
     //controlar la entrada
@@ -45,7 +46,19 @@ class LogIn : AppCompatActivity() {
     //SignIn to Firebase
     Log.d("username",username.text.toString())
     Log.d("password",password.text.toString())
-    auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
+    auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
+        .addOnSuccessListener {
+            //currentUser =
+            //if (currentUser.isEmailVerified) {
+            //    startActivity(Intent(this, Inicio::class.java))
+            //}
+
+        }
+        .addOnFailureListener {
+            Toast.makeText(baseContext,"Log-In failed",Toast.LENGTH_SHORT).show()
+        }
+
+            /*
         ?.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
             ////update user
@@ -54,12 +67,12 @@ class LogIn : AppCompatActivity() {
                 startActivity(intent)
             } else {
 
-                updateUI(null)
+                //updateUI(null)
                 // ...
             }
 
             // ...
-        }
+        }*/
 
     }
 
@@ -92,7 +105,7 @@ class LogIn : AppCompatActivity() {
 
         }
         else{
-            Toast.makeText(baseContext,"login failed",Toast.LENGTH_SHORT).show()
+
         }
     }
 }
