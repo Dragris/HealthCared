@@ -3,6 +3,7 @@ package com.example.healthcared.UI
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.EditText
@@ -42,6 +43,8 @@ class LogIn : AppCompatActivity() {
             return
         }
     //SignIn to Firebase
+    Log.d("username",username.text.toString())
+    Log.d("password",password.text.toString())
     auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         ?.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
