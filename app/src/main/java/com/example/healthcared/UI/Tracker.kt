@@ -10,7 +10,6 @@ import android.os.*
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import com.example.healthcared.R
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -32,6 +31,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
 
     companion object{
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1138
+        private const val BACKGROUND_LOCATION_CODE = 2950
     }
 
     private fun mapUpdate() {
@@ -94,7 +94,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         mMap.setOnMarkerClickListener(this)
         //CONTROLES DE ZOOM
 
-        mapUpdate() //Comprobamos permisos
+        mapUpdate() //Comprobamos permisos y actualizamos mapa
         createLocationRequest()
     }
     //Hacemos que no puedas clickar en marcadores
@@ -161,6 +161,29 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         super.onResume()
         if (!locationUpdateState) {
             startLocationUpdates()
+        }
+    }
+
+    /**
+     * Revisar que tiene permiso para localización en cualquier momento (dibujar ruta)
+     */
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray){
+        when (requestCode){
+            BACKGROUND_LOCATION_CODE ->{
+                if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    val intent = Intent(this, Tracker::class.java)
+                    startActivity(intent)
+                } else {
+                    //No se concede el permiso, no se hace nada
+                }
+            }
+        }
+    }
+
+    fun routeDrawerPermissionChecker(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), BACKGROUND_LOCATION_CODE )
+            return
         }
     }
 

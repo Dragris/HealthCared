@@ -15,13 +15,15 @@ import com.google.firebase.auth.FirebaseUser
 
 
 class LogIn : AppCompatActivity() {
-    private var auth: FirebaseAuth? = null
+    private lateinit var auth: FirebaseAuth
     private lateinit var username : EditText
     private lateinit var password: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
 
         username = findViewById(R.id.username)
         password = findViewById(R.id.Upassword)
@@ -41,54 +43,56 @@ class LogIn : AppCompatActivity() {
             return
         }
     //SignIn to Firebase
+    Log.d("username",username.text.toString())
+    Log.d("password",password.text.toString())
     auth?.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         ?.addOnCompleteListener(this) { task ->
             if (task.isSuccessful) {
-                //update user
+            ////update user
                 val user = auth?.currentUser
-                updateUI(user)
+                val intent = Intent(this, Inicio::class.java)
+                startActivity(intent)
             } else {
-                Log.d("USER: ", username.toString())
-                Log.d("Password: ", password.toString())
+
                 updateUI(null)
                 // ...
             }
+
             // ...
         }
-    Log.d("USER OUT: ", username.toString())
-    Log.d("Password OUT: ", password.toString())
-    val intent = Intent(this, Inicio::class.java)
-    startActivity(intent)
+
     }
 
     fun signup1(view: View) {
+
         val intent = Intent(this, Singup1::class.java)
         startActivity(intent)
     }
 
     /**
-     * este metodo mira si ya hay un usuario conectado, para saltar directamente al layout Inico
+     * este metodo mira si ya hay un usuario conectado, para saltar directamente al layot Inico
+     * esta petando el aplicacion con este metodo
      */
     public override fun onStart(){
     super.onStart()
-    val currentUser:FirebaseUser? =auth?.currentUser
-    updateUI(currentUser)
+    /*val currentUser:FirebaseUser? =auth.currentUser
+    updateUI(currentUser)*/
 }
 
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser !=null) {
             //verificar el email registrado
-
-             if (currentUser.isEmailVerified) {
+            /**
+             * if (currentUser.isEmailVerified) {
             startActivity(Intent(this, Inicio::class.java))
             }
-
+             */
 
                 Toast.makeText(baseContext,"Please verify your email address",Toast.LENGTH_SHORT).show()
 
         }
         else{
-            Toast.makeText(baseContext,"Log-in failed",Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext,"login failed",Toast.LENGTH_SHORT).show()
         }
     }
 }

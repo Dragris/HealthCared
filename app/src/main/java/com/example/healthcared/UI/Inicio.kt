@@ -91,18 +91,20 @@ class Inicio : AppCompatActivity() {
 
 
     companion object {
-        private const val FIRST_LOCATION_PERMISSION_REQUEST_CODE = 1138
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1138
     }
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray){
         when (requestCode){
-            FIRST_LOCATION_PERMISSION_REQUEST_CODE ->{
+            //Snippet for Location permission
+            LOCATION_PERMISSION_REQUEST_CODE ->{
                 if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    //If permission granted for first time
                     val intent = Intent(this, Tracker::class.java)
                     startActivity(intent)
                 } else {
-                    //No se concede el permiso, no se hace nada
+                    //If not given permission, do nothing
                 }
             }
         }
@@ -111,9 +113,10 @@ class Inicio : AppCompatActivity() {
     fun trackerPermissionCheck(){
         //Check location permissions
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), FIRST_LOCATION_PERMISSION_REQUEST_CODE )
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE )
             return
         }
+        //If already given
         val intent = Intent(this, Tracker::class.java)
         startActivity(intent)
     }
