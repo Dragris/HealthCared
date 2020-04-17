@@ -80,8 +80,7 @@ class Singup1 : AppCompatActivity() {
     }
 
     fun goBack(view: View){
-        val intent = Intent(this, LogIn::class.java)
-        startActivity(intent)
+        finish()
     }
 
 

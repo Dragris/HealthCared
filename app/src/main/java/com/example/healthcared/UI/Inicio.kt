@@ -1,10 +1,13 @@
 package com.example.healthcared.UI
 
+import android.Manifest
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.app.ActivityCompat
 import com.example.healthcared.*
 import com.example.healthcared.Modelo.Rutina
 import com.github.mikephil.charting.data.BarData
@@ -50,12 +53,13 @@ class Inicio : AppCompatActivity() {
         barChart.animateY(5000)
     }
 
-
+    /**
+     *Función para que la flecha atrás no lleve al registro/log in
+     */
     override fun onBackPressed() {}
 
     fun tracker (view: View){
-        val intent = Intent(this, Tracker::class.java)
-        startActivity(intent)
+        trackerPermissionCheck()
     }
 
     fun workouts (view: View){
@@ -80,5 +84,40 @@ class Inicio : AppCompatActivity() {
     fun pause(view: View) {
         // FUncion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
         var rutina = Rutina("GG", 1, "Toy Gordo", 4)
+    }
+
+
+
+
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1138
+    }
+
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray){
+        when (requestCode){
+            //Snippet for Location permission
+            LOCATION_PERMISSION_REQUEST_CODE ->{
+                if((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                    //If permission granted for first time
+                    val intent = Intent(this, Tracker::class.java)
+                    startActivity(intent)
+                } else {
+                    //If not given permission, do nothing
+                }
+            }
+        }
+    }
+
+    fun trackerPermissionCheck(){
+        //Check location permissions
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE )
+            return
+        }
+        //If already given
+        val intent = Intent(this, Tracker::class.java)
+        startActivity(intent)
     }
 }

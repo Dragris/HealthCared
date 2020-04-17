@@ -18,8 +18,7 @@ class DietView : AppCompatActivity() {
     }
 
     fun goBack(view: View) {
-        val intent = Intent(this, DietHome::class.java)
-        startActivity(intent)
+        finish()
     }
 
     fun settings(view: View){

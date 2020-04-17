@@ -24,11 +24,6 @@ class DietHome : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun createDiet(view: View){
-        val intent = Intent(this, CreateDiet::class.java)
-        startActivity(intent)
-    }
-
     fun initButtons(){
         findViewById<Button>(R.id.example_plan).setOnClickListener {
             dietView(findViewById(R.id.example_plan), findViewById<Button>(
