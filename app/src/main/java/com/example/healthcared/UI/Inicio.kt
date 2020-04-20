@@ -9,40 +9,43 @@ import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.healthcared.Modelo.MyXAxisFormatter
+import com.example.healthcared.Modelo.Utils.StepDetector
+import com.example.healthcared.Modelo.Utils.StepListener
 import com.example.healthcared.R
-import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.XAxis.XAxisPosition
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.formatter.ValueFormatter
 import com.ramijemli.percentagechartview.callback.ProgressTextFormatter
 import kotlinx.android.synthetic.main.activity_inicio.*
-import java.text.DecimalFormat
 import java.util.*
 import kotlin.math.roundToInt
 
-class Inicio : AppCompatActivity(), SensorEventListener {
-    var running = false
-    var sensorManager: SensorManager? = null
+class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
+    private var simpleStepDetector: StepDetector? = null
+    private var sensorManager: SensorManager? = null
+    private val TEXT_NUM_STEPS = "Number of Steps: "
+    private var numSteps: Int = 0
 
 
     //TODO() Actualizar con datos de usuario
-    var targetSteps = 1000
+    var targetSteps = 100
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-
         setContentView(R.layout.activity_inicio)
 
+        /**
+         * Chart block
+         */
         val barDataSet = getOtherDays()
         val data = BarData(barDataSet)
         barChart.data = data
@@ -64,9 +67,24 @@ class Inicio : AppCompatActivity(), SensorEventListener {
          * Ring graph inside text format to steps instead of percentage
          */
         graph.setTextFormatter(ProgressTextFormatter setTextFormatter@{ progress: Float ->
-            var steps = (targetSteps / progress).roundToInt()
-            "$steps steps"
+           "$numSteps steps"
+
+
         })
+
+
+        /**
+         * Pedometer block
+         */
+        // Get an instance of the SensorManager
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        simpleStepDetector = StepDetector()
+        simpleStepDetector!!.registerListener(this)
+
+
+        numSteps = 0
+        sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
+
     }
 
     fun getOtherDays(): BarDataSet{
@@ -78,7 +96,7 @@ class Inicio : AppCompatActivity(), SensorEventListener {
         entries.add(BarEntry(8f, 15000f))
         entries.add(BarEntry(10f, 759f))
 
-        barChart.getDescription().setEnabled(false)
+        barChart.description.isEnabled = false
 
         val barDataSet = BarDataSet(entries, "Steps")
         return barDataSet
@@ -86,21 +104,10 @@ class Inicio : AppCompatActivity(), SensorEventListener {
 
     override fun onResume() {
         super.onResume()
-        running = true
-        var stepsSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-
-        if (stepsSensor == null) {
-            Toast.makeText(this, "No step counter sensor found!", Toast.LENGTH_LONG)
-                .show()
-        } else {
-            sensorManager?.registerListener(this, stepsSensor, SensorManager.SENSOR_DELAY_UI)
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
-        running = false
-        sensorManager?.unregisterListener(this)
+        //Little resume animation
+        var percentage: Float = ((numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
+        graph.setProgress(percentage * 0.8f, false)
+        graph.setProgress(percentage, true)
     }
 
 
@@ -194,22 +201,24 @@ class Inicio : AppCompatActivity(), SensorEventListener {
 
     /**
      *
-     * Podometer functions
+     * Pedometer functions
      *
      */
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-        TODO("not implemented")
     }
 
     override fun onSensorChanged(event: SensorEvent?) {
-        if (running) {
-            if (event != null) {
-                graph.setProgress(event.values[0]/targetSteps, true)
-                testText.text = (event.values[0]/targetSteps).toString()
-            }
+        if (event!!.sensor.type == Sensor.TYPE_ACCELEROMETER) {
+            simpleStepDetector!!.updateAccelerometer(event.timestamp, event.values[0], event.values[1], event.values[2])
         }
     }
 
+    override fun step(timeNs: Long) {
+        numSteps++
+        var percentage: Float = ((numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
+        graph.setProgress(percentage, true)
+        graph.apply()
+    }
 
 }
 

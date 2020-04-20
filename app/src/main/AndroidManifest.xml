@@ -39,6 +39,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".UI.Inicio"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity">
+        </activity>
+
         <activity android:name=".UI.DietHome"
                   android:screenOrientation="sensorPortrait"
                   tools:ignore="LockedOrientationActivity"/>
@@ -46,15 +51,6 @@
         <activity android:name=".UI.Tracker"
                   android:screenOrientation="sensorPortrait"
                   tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.Inicio"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <activity android:name=".UI.Singup2"
                   android:screenOrientation="sensorPortrait"
