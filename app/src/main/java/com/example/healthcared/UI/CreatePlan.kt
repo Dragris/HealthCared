@@ -50,7 +50,13 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun addPlan(view: View){
-        var name: String = findViewById<EditText>(R.id.plan_name_creator).text.toString()
+        var name: String
+        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == null){
+            name = "Plan"
+        } else {
+            name = findViewById<EditText>(R.id.plan_name_creator).text.toString()
+        }
+        Log.v("ef", name)
         var daysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
         var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
         var rutina = Rutina(name, skill, objectiveTitle, daysxweek)

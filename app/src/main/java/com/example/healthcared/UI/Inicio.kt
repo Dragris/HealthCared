@@ -85,8 +85,10 @@ class Inicio : AppCompatActivity() {
 
     fun pause(view: View) {
         // FUncion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
-        var rutina = Rutina("GG", 1, "Toy Gordo", 4)
-        Log.v("sgfd", Controlador.usuario.dietas.toString())
+        //var rutina = Rutina("GG", 1, "Toy Gordo", 5)
+        for (i in 0..(Controlador.usuario.rutinas.size-1)) {
+            Log.v("sgfd", Controlador.usuario.rutinas[i].rutinaName)
+        }
     }
 
 

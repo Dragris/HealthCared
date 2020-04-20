@@ -74,9 +74,9 @@ object Controlador{
         val burpee = Ejercicio("Burpees", "https://www.youtube.com/watch?v=NCqbpkoiyXE", 2)
 
         var ganarFuerza: MutableList<Ejercicio> = mutableListOf(pushup, squats, squatsandjump, benchdip, diamonpushup, plank, legraise, crunch)
-        var bajarPeso: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, pushup, hipraise, crunch, plank)
+        var bajarPeso: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, pushup, hipraise, crunch, plank, burpee)
         var hipertrofia: MutableList<Ejercicio> = mutableListOf(pushup, squats, plank, legraise, crunch, benchdip, diamonpushup)
-        var cardio: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, burpee, mountclimbers, crunch)
+        var cardio: MutableList<Ejercicio> = mutableListOf(jumpjacks, benchdip, jumpjacks, squats, burpee, mountclimbers, crunch)
 
         return mutableListOf(ganarFuerza, bajarPeso, hipertrofia, cardio)
     }

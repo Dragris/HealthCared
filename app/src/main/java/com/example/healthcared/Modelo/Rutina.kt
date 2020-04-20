@@ -94,7 +94,7 @@ class Rutina(val rutinaName: String, val difficulty: Int, val obj: String, val d
                 tmp.removeAt(0)
             }
         }
-        Log.v("Lista", lista.toString())
+        //Log.v("Lista", lista.toString())
     }
 
     fun getDayByDay(index: Int): MutableList<Ejercicio> {
