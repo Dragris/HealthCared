@@ -54,7 +54,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         var daysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
         var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
         var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
-        Controlador.instance.usuario.rutinas.add(rutina)
+        Controlador.usuario.rutinas.add(rutina)
         finish()
         //TODO mostrar el plan y añadir botones
     }
