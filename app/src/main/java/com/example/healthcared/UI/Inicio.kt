@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.MyXAxisFormatter
 import com.example.healthcared.Modelo.Utils.StepDetector
 import com.example.healthcared.Modelo.Utils.StepListener
@@ -26,7 +27,6 @@ import com.github.mikephil.charting.data.BarEntry
 import com.ramijemli.percentagechartview.callback.ProgressTextFormatter
 import kotlinx.android.synthetic.main.activity_inicio.*
 import java.util.*
-import kotlin.math.roundToInt
 
 class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
@@ -42,6 +42,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
+        val controlador: Controlador
 
         /**
          * Chart block
@@ -147,6 +148,11 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     }
 
     fun pause(view: View) {
+        // Funcion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
+        //var rutina = Rutina("GG", 1, "Toy Gordo", 5)
+        for (i in 0..(Controlador.usuario.rutinas.size-1)) {
+            Log.v("sgfd", Controlador.usuario.rutinas[i].rutinaName)
+        }
     }
 
 
