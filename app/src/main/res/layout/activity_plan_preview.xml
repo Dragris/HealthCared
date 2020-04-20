@@ -293,18 +293,20 @@
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:paddingHorizontal="@dimen/side_margin"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/start"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/transparency_white"
-        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/side_margin"
         android:layout_marginBottom="@dimen/toolbar"
+        android:onClick="startExercise"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/side_margin"
+        android:src="@drawable/chorno_btn"
         android:text="@string/start_text"
         android:textSize="@dimen/header_text"
-        android:layout_centerHorizontal="true"
-        android:onClick="startExercise"/>
+        app:backgroundTint="@color/transparency_white" />
 
 </RelativeLayout>

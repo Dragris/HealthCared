@@ -1,6 +1,7 @@
 package com.example.healthcared.UI
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -12,7 +13,6 @@ class DietHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_diet_home)
-        initButtons()
     }
 
     fun goBack(view: View) {
@@ -24,22 +24,9 @@ class DietHome : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun initButtons(){
-        findViewById<Button>(R.id.example_plan).setOnClickListener {
-            dietView(findViewById(R.id.example_plan), findViewById<Button>(
-                R.id.example_plan
-            ).text as String)
-        }
-        findViewById<Button>(R.id.example_plan2).setOnClickListener {
-            dietView(findViewById(R.id.example_plan), findViewById<Button>(
-                R.id.example_plan2
-            ).text as String)
-        }
-    }
-
-    fun dietView(view: View, string: String){
-        val intent = Intent(this, DietView::class.java)
-        intent.putExtra("title", string)
+    fun showLink(view: View){
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=AARyGaYvVI8&t=4s"))
         startActivity(intent)
     }
 }
+
