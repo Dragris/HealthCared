@@ -18,6 +18,7 @@ class LogIn : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var username : EditText
     private lateinit var password: EditText
+    private  var currentUser: FirebaseUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,32 +49,21 @@ class LogIn : AppCompatActivity() {
     Log.d("password",password.text.toString())
     auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         .addOnSuccessListener {
-            //currentUser =
-            //if (currentUser.isEmailVerified) {
-            //    startActivity(Intent(this, Inicio::class.java))
-            //}
+
+            currentUser = auth.currentUser
+
+            if (currentUser?.isEmailVerified!!) {
+
+                val intent = Intent(this, Inicio::class.java)
+                startActivity(intent)
+            }
+
 
         }
         .addOnFailureListener {
             Toast.makeText(baseContext,"Log-In failed",Toast.LENGTH_SHORT).show()
+            updateUI(null)
         }
-
-            /*
-        ?.addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-            ////update user
-                val user = auth?.currentUser
-                val intent = Intent(this, Inicio::class.java)
-                startActivity(intent)
-            } else {
-
-                //updateUI(null)
-                // ...
-            }
-
-            // ...
-        }*/
-
     }
 
     fun signup1(view: View) {
@@ -82,15 +72,11 @@ class LogIn : AppCompatActivity() {
         startActivity(intent)
     }
 
-    /**
-     * este metodo mira si ya hay un usuario conectado, para saltar directamente al layot Inico
-     * esta petando el aplicacion con este metodo
-     */
+
     public override fun onStart(){
     super.onStart()
-    /*val currentUser:FirebaseUser? =auth.currentUser
-    updateUI(currentUser)*/
-}
+    val currentUser:FirebaseUser? =auth.currentUser
+    }
 
     private fun updateUI(currentUser : FirebaseUser?){
         if(currentUser !=null) {

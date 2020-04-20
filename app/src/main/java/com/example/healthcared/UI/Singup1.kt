@@ -50,9 +50,8 @@ class Singup1 : AppCompatActivity() {
     }
 
 
-
-
     fun signup2(view: View) {
+
         if(checkBox.isChecked){
             auth.createUserWithEmailAndPassword(txtEmail.text.toString().trim(), txtPassword.text.toString().trim())
                 .addOnCompleteListener(this) { task ->
@@ -76,6 +75,15 @@ class Singup1 : AppCompatActivity() {
         }
         else{
             Toast.makeText(applicationContext, "You have to accept the terms first!", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    fun authPassword(pass1: String, pass2: String): Boolean{
+
+        if(pass1.equals(pass2)){
+            return true
+        }else{
+            return false
         }
     }
 
