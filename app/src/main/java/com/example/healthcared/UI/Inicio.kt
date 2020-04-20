@@ -6,15 +6,17 @@ import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.app.ActivityCompat
 import com.example.healthcared.*
 import com.example.healthcared.Modelo.Rutina
+import com.example.healthcared.Modelo.Usuario
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import kotlinx.android.synthetic.main.activity_inicio.barChart
-import java.util.ArrayList
+import java.util.*
 
 class Inicio : AppCompatActivity() {
 
@@ -84,6 +86,7 @@ class Inicio : AppCompatActivity() {
     fun pause(view: View) {
         // FUncion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
         var rutina = Rutina("GG", 1, "Toy Gordo", 4)
+        Log.v("sgfd", Controlador.usuario.dietas.toString())
     }
 
 

@@ -21,6 +21,9 @@ class Settings : AppCompatActivity() {
     fun changePassword(view: View){
         //Change Password.
     }
+    fun changeDiet(view: View){
+        //Change diet
+    }
 
     fun goSupport(view: View){
         //Support.

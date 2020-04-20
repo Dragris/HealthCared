@@ -18,22 +18,22 @@ class Rutina(val rutinaName: String, val difficulty: Int, val obj: String, val d
         // Para printear por Logcat -> Log.v("SUM", sum.toString())
 
         if (obj == "Toy Gordo") {
-            ejercicios = Controlador.instance.bajarPeso
+            ejercicios = Controlador.bajarPeso
             reps = 12
             sets = 3
             rest = 60
         } else if (obj == "Cardio") {
-            ejercicios = Controlador.instance.cardio
+            ejercicios = Controlador.cardio
             reps = 15
             sets = 30 //En cardio son minutos no sets realmente
             rest = 0
         } else if (obj == "Fuelsa") {
-            ejercicios = Controlador.instance.ganarFuerza
+            ejercicios = Controlador.ganarFuerza
             reps = 6
             sets = 5
             rest = 120
         } else {
-            ejercicios = Controlador.instance.hipertrofia
+            ejercicios = Controlador.hipertrofia
             reps = 10
             sets = 4
             rest = 90
@@ -94,7 +94,7 @@ class Rutina(val rutinaName: String, val difficulty: Int, val obj: String, val d
                 tmp.removeAt(0)
             }
         }
-        //Log.v("Lista", lista.toString())
+        Log.v("Lista", lista.toString())
     }
 
     fun getDayByDay(index: Int): MutableList<Ejercicio> {

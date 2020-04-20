@@ -1,9 +1,22 @@
 package com.example.healthcared.Modelo
 
-class Usuario(Fullname:String,_Email:String,_Username:String,_Weight:String,_Height:String) {
-    var rutinas: MutableList<Rutina> = mutableListOf()
-    init {
+import android.util.Log
+import com.example.healthcared.Controlador
 
+class Usuario(Fullname: String, _Email: String, _Username: String, _Weight: String, _Height: String, vegan: Boolean, veget: Boolean) {
+    var dietas: MutableList<Dieta> = mutableListOf()
+    var rutinas: MutableList<Rutina> = mutableListOf()
+
+
+    init {
+        if (!vegan && !veget) {
+            dietas.add(Controlador.normal)
+            dietas.add(Controlador.veget)
+        } else if (!vegan && veget) {
+            dietas.add(Controlador.veget)
+            dietas.add(Controlador.vegan)
+        } else {
+            dietas.add(Controlador.vegan)
+        }
     }
-    
 }

@@ -39,14 +39,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".UI.DietView"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.CreateDiet"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
         <activity android:name=".UI.DietHome"
                   android:screenOrientation="sensorPortrait"
                   tools:ignore="LockedOrientationActivity"/>
