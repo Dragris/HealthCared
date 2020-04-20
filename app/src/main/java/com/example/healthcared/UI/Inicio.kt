@@ -69,8 +69,6 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
          */
         graph.setTextFormatter(ProgressTextFormatter setTextFormatter@{ progress: Float ->
            "$numSteps steps"
-
-
         })
 
 
@@ -107,8 +105,12 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         super.onResume()
         //Little resume animation
         var percentage: Float = ((numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
-        graph.setProgress(percentage * 0.8f, false)
-        graph.setProgress(percentage, true)
+        graph.setProgress(percentage * 0.3f, false)
+        if (percentage >= 100f){
+            graph.setProgress(100f, true)
+        }else {
+            graph.setProgress(percentage, true)
+        }
     }
 
 
@@ -222,8 +224,11 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     override fun step(timeNs: Long) {
         numSteps++
         var percentage: Float = ((numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
-        graph.setProgress(percentage, true)
-        graph.apply()
+        if (percentage >= 100f){
+            graph.setProgress(100f, false)
+        } else {
+            graph.setProgress(percentage, false)
+        }
     }
 
 }
