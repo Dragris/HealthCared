@@ -40,10 +40,6 @@
                   android:screenOrientation="sensorPortrait"
                   tools:ignore="LockedOrientationActivity"/>
 
-        <activity android:name=".UI.CreateDiet"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
         <activity android:name=".UI.DietHome"
                   android:screenOrientation="sensorPortrait"
                   tools:ignore="LockedOrientationActivity"/>
@@ -59,7 +55,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <activity android:name=".UI.Singup2"
@@ -80,8 +75,7 @@
 
         <activity android:name=".UI.LogIn"
                   android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity">
-        </activity>
+                  tools:ignore="LockedOrientationActivity"/>
 
         <activity android:name=".UI.CreatePlan"
                   android:screenOrientation="sensorPortrait"

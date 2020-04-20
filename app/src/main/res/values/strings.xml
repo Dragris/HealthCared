@@ -20,8 +20,8 @@
     <string name="today">Today</string>
     <string name="walked">You walked:</string>
     <string name="km">km</string>
-    <string name="inactivity">You were inactive:</string>
-    <string name="h">h</string>
+    <string name="steps">You made:</string>
+    <string name="step">steps</string>
     <string name="diet">Diet</string>
     <!-- Tracker Activity -->
     <string name="title">Tracker</string>
@@ -36,7 +36,7 @@
     <string name="current_ex">Current Exercise</string>
     <string name="next_ex">Next Exercise</string>
     <string name="timer">Timer</string>
-    <string name="pause">Pause</string>
+    <string name="pause">TEST</string>
     <string name="resume">Resume</string>
     <string name="finish">Finish</string>
     <string name="next">Next</string>

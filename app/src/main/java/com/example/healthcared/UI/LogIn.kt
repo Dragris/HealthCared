@@ -48,11 +48,6 @@ class LogIn : AppCompatActivity() {
     Log.d("password",password.text.toString())
     auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         .addOnSuccessListener {
-            //currentUser =
-            //if (currentUser.isEmailVerified) {
-            //    startActivity(Intent(this, Inicio::class.java))
-            //}
-
         }
         .addOnFailureListener {
             Toast.makeText(baseContext,"Log-In failed",Toast.LENGTH_SHORT).show()
