@@ -23,7 +23,7 @@ class PlanPreview : AppCompatActivity() {
         workout_title.setText(title)
 
         val dia = getDayofWeek()
-        var rutina = Controlador.usuario.findRutinaByName(title).getDayByDay(1)
+        var rutina = Controlador.usuario.findRutinaByName(title).getDayByDay(dia)
         val layout = findViewById<LinearLayout>(R.id.layout)
 
         if (Controlador.usuario.findRutinaByName(title).obj == "Cardio"){
@@ -52,16 +52,20 @@ class PlanPreview : AppCompatActivity() {
             val name = TextView(this)
             name.text = i.ExerciceName
             texts.addView(name)
-            val reps = TextView(this)
-            reps.text = "Reps: " + Controlador.usuario.findRutinaByName(title).reps.toString()
-            texts.addView(reps)
-            if (Controlador.usuario.findRutinaByName(title).obj != "Cardio"){
-                val sets = TextView(this)
-                sets.text = "Sets: " + Controlador.usuario.findRutinaByName(title).sets.toString()
-                texts.addView(sets)
-                val rest = TextView(this)
-                rest.text = "Rest (Secs): " + Controlador.usuario.findRutinaByName(title).rest.toString()
-                texts.addView(rest)
+            if (i.ExerciceName != "Dia Libre") {
+                val reps = TextView(this)
+                reps.text = "Reps: " + Controlador.usuario.findRutinaByName(title).reps.toString()
+                texts.addView(reps)
+                if (Controlador.usuario.findRutinaByName(title).obj != "Cardio") {
+                    val sets = TextView(this)
+                    sets.text =
+                        "Sets: " + Controlador.usuario.findRutinaByName(title).sets.toString()
+                    texts.addView(sets)
+                    val rest = TextView(this)
+                    rest.text =
+                        "Rest (Secs): " + Controlador.usuario.findRutinaByName(title).rest.toString()
+                    texts.addView(rest)
+                }
             }
 
 
