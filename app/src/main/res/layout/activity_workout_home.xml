@@ -74,28 +74,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/example_plan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparency_white"
-                android:text="@string/plan_name_1"
-                android:textSize="@dimen/normal_text"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/top_margin"/>
-
-            <Button
-                android:id="@+id/example_plan2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparency_white"
-                android:text="@string/plan_name_2"
-                android:textSize="@dimen/normal_text"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/top_margin"/>
         </LinearLayout>
     </ScrollView>
 
