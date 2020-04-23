@@ -41,22 +41,10 @@ class WorkoutHome : AppCompatActivity() {
         val intent = Intent(this, Settings::class.java)
         startActivity(intent)
     }
-/*
-    fun initButtons(){
-        findViewById<Button>(R.id.example_plan).setOnClickListener {
-            planPreview(findViewById(R.id.example_plan), findViewById<Button>(
-                R.id.example_plan
-            ).text as String)
-        }
-        findViewById<Button>(R.id.example_plan2).setOnClickListener {
-            planPreview(findViewById(R.id.example_plan), findViewById<Button>(
-                R.id.example_plan2
-            ).text as String)
-        }
-    }*/
 
     fun createPlan(view: View){
         val intent = Intent(this, CreatePlan::class.java)
         startActivity(intent)
+        finish()
     }
 }

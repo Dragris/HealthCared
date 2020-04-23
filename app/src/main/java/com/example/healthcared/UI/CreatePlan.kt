@@ -52,6 +52,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     fun addPlan(view: View){
         var name: String
+
         if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == "Plan name"){
             name = "Plan " + Controlador.usuario.cont.toString()
             Controlador.usuario.cont += 1
@@ -67,9 +68,10 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
             var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
             Controlador.usuario.rutinas.add(rutina)
+            val intent = Intent(this, WorkoutHome::class.java)
+            startActivity(intent)
             finish()
         }
-        //TODO mostrar el plan y añadir botones
     }
 
     fun planNameExists(name: String): Boolean { //True -> Si existe, False -> No existe
