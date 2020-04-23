@@ -40,13 +40,10 @@ class PlanPreview : AppCompatActivity() {
             var parent = LinearLayout(this)
             parent.orientation = LinearLayout.HORIZONTAL
             parent.gravity = android.view.Gravity.NO_GRAVITY
-
             var texts = LinearLayout(this)
             texts.orientation = LinearLayout.VERTICAL
             texts.gravity = android.view.Gravity.NO_GRAVITY
-
             var image = ImageView(this) //Exercise IMG
-            image.id = View.generateViewId()
             image.setOnClickListener { showLink(i.youtubeLink) }
             image.setImageResource(R.drawable.common_google_signin_btn_icon_light)
             val name = TextView(this)
@@ -62,8 +59,7 @@ class PlanPreview : AppCompatActivity() {
                         "Sets: " + Controlador.usuario.findRutinaByName(title).sets.toString()
                     texts.addView(sets)
                     val rest = TextView(this)
-                    rest.text =
-                        "Rest (Secs): " + Controlador.usuario.findRutinaByName(title).rest.toString()
+                    rest.text = "Rest (Secs): " + Controlador.usuario.findRutinaByName(title).rest.toString()
                     texts.addView(rest)
                 }
             }
@@ -72,7 +68,6 @@ class PlanPreview : AppCompatActivity() {
             parent.addView(image)
             parent.addView(texts)
             layout.addView(parent)
-            Log.v("Rutina", rutina.toString())
         }
     }
 

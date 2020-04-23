@@ -5,7 +5,6 @@ import com.example.healthcared.Modelo.Comida
 
 class Dieta(val name: String, val comidas: MutableList<Comida>) {
     init{
-        Log.v("Dietas", name)
     }
     fun createDieta(type: Int, vegan: Boolean, dietName: String){
         //TODO() Crear lógica de selección de comidas
