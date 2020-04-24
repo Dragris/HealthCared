@@ -1,9 +1,11 @@
 package com.example.healthcared.UI
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.healthcared.R
+import com.google.firebase.auth.FirebaseAuth
 
 class Settings : AppCompatActivity() {
 
@@ -29,6 +31,7 @@ class Settings : AppCompatActivity() {
         //Faq.
     }
     fun signOut(view: View){
-        //Sign Out
+        FirebaseAuth.getInstance().signOut()
+        startActivity(Intent(this,LogIn::class.java))
     }
 }

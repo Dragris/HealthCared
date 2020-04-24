@@ -39,6 +39,7 @@ class Singup1 : AppCompatActivity() {
         txtPassword = findViewById(R.id.password)
         txtRepeatPassword= findViewById(R.id.password_repeat)
         database = FirebaseDatabase.getInstance()
+        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         dbReference=database.reference.child("User")
         var checkbox = findViewById<CheckBox>(R.id.checkBox)
@@ -49,7 +50,12 @@ class Singup1 : AppCompatActivity() {
         })
 
     }
-
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+    }
 
     fun signup2(view: View) {
 
@@ -98,7 +104,12 @@ class Singup1 : AppCompatActivity() {
         finish()
     }
 
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null){
 
+        }
+
+    }
 
 }
 
