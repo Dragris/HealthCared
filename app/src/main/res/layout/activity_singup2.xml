@@ -68,7 +68,7 @@
                 android:layout_marginBottom="@dimen/margin2"
                 android:inputType="datetime"/>
             <EditText
-                android:id="@+id/email"
+                android:id="@+id/height"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/textbox_height"
                 android:background="@color/transparency_white"
@@ -78,7 +78,7 @@
                 android:layout_marginBottom="@dimen/margin2"
                 android:inputType="numberDecimal"/>
             <EditText
-                android:id="@+id/fullname"
+                android:id="@+id/weight"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/textbox_height"
                 android:hint="@string/weight"

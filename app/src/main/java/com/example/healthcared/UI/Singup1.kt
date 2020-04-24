@@ -9,6 +9,7 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.Toast
+import com.example.healthcared.Modelo.Usuario
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -57,8 +58,14 @@ class Singup1 : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user:FirebaseUser? =auth.currentUser
+                        
+                        intent.putExtra("fullname",txtFullname.text.toString())
+                        intent.putExtra("email",txtEmail.text.toString())
+                        intent.putExtra("username",txtUsername.text.toString())
+                        intent.putExtra("password",txtPassword.text.toString())
 
                         startActivity(Intent(this,Inicio::class.java))
+
                     } else {
                         // If sign in fails, display a message to the user.
 

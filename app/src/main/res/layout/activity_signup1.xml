@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@color/transparency_white"
-            android:onClick="signup2"
+            android:onClick="signup1"
             android:paddingHorizontal="@dimen/side_margin"
             android:text="@string/next" />
     </LinearLayout>
