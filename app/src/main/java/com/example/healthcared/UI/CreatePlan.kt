@@ -47,21 +47,39 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         else if (name == "Cardio/Tonify") { objectiveTitle = "Cardio" }
         else if (name == "Gain Strenght") { objectiveTitle = "Fuelsa" }
         else { objectiveTitle = "Toy Mamadisimo" }
+        Log.v("Objective", objectiveTitle)
     }
 
     fun addPlan(view: View){
         var name: String
-        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == null){
-            name = "Plan"
+
+        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == "Plan name"){
+            name = "Plan " + Controlador.usuario.cont.toString()
+            Controlador.usuario.cont += 1
         } else {
             name = findViewById<EditText>(R.id.plan_name_creator).text.toString()
         }
-        Log.v("ef", name)
-        var daysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
-        var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
-        var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
-        Controlador.usuario.rutinas.add(rutina)
-        finish()
-        //TODO mostrar el plan y añadir botones
+
+        if (planNameExists(name)) {
+            val toast = Toast.makeText(applicationContext, "You already have a routine with that name", Toast.LENGTH_LONG)
+            toast.show()
+        } else {
+            var daysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
+            var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
+            var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
+            Controlador.usuario.rutinas.add(rutina)
+            val intent = Intent(this, WorkoutHome::class.java)
+            startActivity(intent)
+            finish()
+        }
+    }
+
+    fun planNameExists(name: String): Boolean { //True -> Si existe, False -> No existe
+        for (i in Controlador.usuario.rutinas){
+            if (i.rutinaName == name && i.difficulty != 0){
+                return true
+            }
+        }
+        return false
     }
 }
