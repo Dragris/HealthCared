@@ -9,6 +9,7 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.EditText
 import android.widget.Toast
+import com.example.healthcared.Modelo.Usuario
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -38,6 +39,7 @@ class Singup1 : AppCompatActivity() {
         txtPassword = findViewById(R.id.password)
         txtRepeatPassword= findViewById(R.id.password_repeat)
         database = FirebaseDatabase.getInstance()
+        // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         dbReference=database.reference.child("User")
         var checkbox = findViewById<CheckBox>(R.id.checkBox)
@@ -48,7 +50,12 @@ class Singup1 : AppCompatActivity() {
         })
 
     }
-
+    public override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = auth.currentUser
+        updateUI(currentUser)
+    }
 
     fun signup2(view: View) {
 
@@ -57,8 +64,14 @@ class Singup1 : AppCompatActivity() {
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user:FirebaseUser? =auth.currentUser
+                        
+                        intent.putExtra("fullname",txtFullname.text.toString())
+                        intent.putExtra("email",txtEmail.text.toString())
+                        intent.putExtra("username",txtUsername.text.toString())
+                        intent.putExtra("password",txtPassword.text.toString())
 
                         startActivity(Intent(this,Inicio::class.java))
+
                     } else {
                         // If sign in fails, display a message to the user.
 
@@ -91,7 +104,12 @@ class Singup1 : AppCompatActivity() {
         finish()
     }
 
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null){
 
+        }
+
+    }
 
 }
 

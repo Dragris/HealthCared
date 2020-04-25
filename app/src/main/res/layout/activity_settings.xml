@@ -89,6 +89,7 @@
             android:backgroundTint="@color/transparency_white"
             android:textSize="@dimen/header_text"
             android:text="@string/setting5"
+            android:onClick="signOut"
             android:layout_marginBottom="@dimen/margin2"/>
     </LinearLayout>
 </RelativeLayout>
