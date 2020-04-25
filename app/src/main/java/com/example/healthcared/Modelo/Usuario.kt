@@ -6,6 +6,10 @@ import com.example.healthcared.Controlador
 class Usuario(Fullname: String, _Email: String, _Username: String, _Weight: String, _Height: String, vegan: Boolean, veget: Boolean) {
     var dietas: MutableList<Dieta> = mutableListOf()
     var rutinas: MutableList<Rutina> = mutableListOf()
+    var lastDay: Int = 0
+    var registroPasos: MutableList<Int> = mutableListOf(0,0,0,0,0,0)
+    var numSteps: Int = 0
+
 
 
     init {

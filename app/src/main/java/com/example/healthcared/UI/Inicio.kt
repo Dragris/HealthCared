@@ -32,8 +32,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
-    private val TEXT_NUM_STEPS = "Number of Steps: "
-    private var numSteps: Int = 0
+
 
 
     //TODO() Actualizar con datos de usuario
@@ -43,6 +42,22 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
         val controlador: Controlador
+        Log.v("TAG TEST", "GXDCTYFUYGIHOIJHUGIYUFTYDRTESDRFYGUH")
+
+        var today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
+        var lastDay: Int = Controlador.usuario.lastDay
+        var registroPasos: MutableList<Int> = Controlador.usuario.registroPasos
+        var yesterdaySteps: Int = Controlador.usuario.numSteps
+        var daysToShift = today - lastDay
+
+        if (lastDay == 0){
+            lastDay = today
+            daysToShift = 0
+        }
+        shift(daysToShift)
+        Controlador.usuario.lastDay = today
+
+
 
         /**
          * Chart block
@@ -68,7 +83,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
          * Ring graph inside text format to steps instead of percentage
          */
         graph.setTextFormatter(ProgressTextFormatter setTextFormatter@{ progress: Float ->
-           "$numSteps steps"
+           "${Controlador.usuario.numSteps} steps"
         })
 
 
@@ -81,19 +96,42 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         simpleStepDetector!!.registerListener(this)
 
 
-        numSteps = 0
         sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
+
+    }
+
+    fun shift(int: Int){
+        if (int >= 6){//Si hay que desplazar más de 6 días la lista queda vacía
+            Controlador.usuario.registroPasos = mutableListOf(0,0,0,0,0,0)
+            Controlador.usuario.numSteps = 0
+            return
+        } else if(int == 0){//Si hay que desplazar 0 días salimos de la función
+            return
+        }
+
+        Controlador.usuario.registroPasos.add(0, Controlador.usuario.numSteps)
+        //Adding to list
+        for (i in 0..(int-1)){
+            Controlador.usuario.registroPasos.add(0, 0)
+        }
+        var temp: MutableList<Int> = mutableListOf()
+
+        for (i in 0..5){
+            temp.add(Controlador.usuario.registroPasos[i])
+        }
+        Controlador.usuario.registroPasos = temp
+        Controlador.usuario.numSteps = 0
 
     }
 
     fun getOtherDays(): BarDataSet{
         val entries = ArrayList<BarEntry>()
-        entries.add(BarEntry(0f, 200f))
-        entries.add(BarEntry(2f, 600f))
-        entries.add(BarEntry(4f, 988f))
-        entries.add(BarEntry(6f, 9084f))
-        entries.add(BarEntry(8f, 15000f))
-        entries.add(BarEntry(10f, 759f))
+        entries.add(BarEntry(0f, Controlador.usuario.registroPasos[0].toFloat()))
+        entries.add(BarEntry(2f, Controlador.usuario.registroPasos[1].toFloat()))
+        entries.add(BarEntry(4f, Controlador.usuario.registroPasos[2].toFloat()))
+        entries.add(BarEntry(6f, Controlador.usuario.registroPasos[3].toFloat()))
+        entries.add(BarEntry(8f, Controlador.usuario.registroPasos[4].toFloat()))
+        entries.add(BarEntry(10f, Controlador.usuario.registroPasos[5].toFloat()))
 
         barChart.description.isEnabled = false
 
@@ -104,7 +142,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     override fun onResume() {
         super.onResume()
         //Little resume animation
-        var percentage: Float = ((numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
+        var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
         graph.setProgress(percentage * 0.3f, false)
         if (percentage >= 100f){
             graph.setProgress(100f, true)
@@ -222,8 +260,9 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     }
 
     override fun step(timeNs: Long) {
-        numSteps++
-        var percentage: Float = ((numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
+        Controlador.usuario.numSteps++
+        Log.v("STEPS", Controlador.usuario.numSteps.toString())
+        var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
         if (percentage >= 100f){
             graph.setProgress(100f, false)
         } else {

@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.util.Patterns
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
@@ -48,27 +47,13 @@ class LogIn : AppCompatActivity() {
     Log.d("password",password.text.toString())
     auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         .addOnSuccessListener {
+            val intent = Intent(this, Inicio::class.java)
+            startActivity(intent)
+            finish()
         }
         .addOnFailureListener {
             Toast.makeText(baseContext,"Log-In failed",Toast.LENGTH_SHORT).show()
         }
-
-            /*
-        ?.addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-            ////update user
-                val user = auth?.currentUser
-                val intent = Intent(this, Inicio::class.java)
-                startActivity(intent)
-            } else {
-
-                //updateUI(null)
-                // ...
-            }
-
-            // ...
-        }*/
-
     }
 
     fun signup1(view: View) {
