@@ -23,7 +23,7 @@ class PlanPreview : AppCompatActivity() {
         workout_title.setText(title)
 
         val dia = getDayofWeek()
-        var rutina = Controlador.usuario.findRutinaByName(title).getDayByDay(dia)
+        var rutina = Controlador.usuario.findRutinaByName(title).getDayByDay(dia-1)
         val layout = findViewById<LinearLayout>(R.id.layout)
 
         if (Controlador.usuario.findRutinaByName(title).obj == "Cardio"){

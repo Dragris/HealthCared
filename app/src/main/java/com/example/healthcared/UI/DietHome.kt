@@ -52,7 +52,7 @@ class DietHome : AppCompatActivity() {
             }
             for (j in dietas){
                 for (z in j){
-                    if (z.time == i && z.dia == dia) {
+                    if (z.time == i && z.dia == dia-1) {
                         val food = TextView(this)
                         food.text = z.foodName
                         food.setOnClickListener {
