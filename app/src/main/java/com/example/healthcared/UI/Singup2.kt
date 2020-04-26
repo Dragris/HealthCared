@@ -65,7 +65,7 @@ lateinit var usersList:MutableList<Usuario>
     fun Singup (view: View){
 
         //crear el nuevo usuiaro
-        val new_user = Usuario(fullname,email,username,password)
+        val new_user = Usuario(fullname,email,username,password,false,false) //TODO arreglar vegan/veggie
         new_user.height = Integer.parseInt(txtheight.text.toString().trim())
         new_user.wieght = Integer.parseInt(txtweight.text.toString().trim())
         new_user.age = Integer.parseInt(txtdate.text.toString().trim())
