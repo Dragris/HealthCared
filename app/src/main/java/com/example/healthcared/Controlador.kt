@@ -4,13 +4,8 @@ import com.example.healthcared.Modelo.*
 import com.example.healthcared.UI.LogIn
 import com.google.firebase.auth.FirebaseAuth
 
-open class Controlador private constructor () {
-    private object HOLDER {
-        val INSTANCE = Controlador()
-    }
-    companion object {
-        val instance: Controlador by lazy { HOLDER.INSTANCE }
-    }
+object Controlador{
+
 
     /* Ejercicios */
     val listasEjericios = initEjercicios()
@@ -20,14 +15,14 @@ open class Controlador private constructor () {
     val cardio = listasEjericios[3]
 
     /* Dietas */
-    val normal = initDieta1()
-    val veget = initDieta2()
-    val vegan = initDieta3()
+    val normal: Dieta = initDieta1()
+    val veget: Dieta = initDieta2()
+    val vegan: Dieta = initDieta3()
 
 
     //Contnedores personales, cargar con log-in
 
-    var usuario: Usuario = Usuario("Random", "Random", "Random", "Random")  //En caso de ser necesario mantener qué usuario es el que está conectado
+    var usuario: Usuario = Usuario("Random", "Random", "Random", "Random", "Random", false, false)  //En caso de ser necesario mantener qué usuario es el que está conectado
     var pasos: MutableCollection<Int>? =null
 
     //Contenedores de la app, cargar con inicio de la app
@@ -79,9 +74,9 @@ open class Controlador private constructor () {
         val burpee = Ejercicio("Burpees", "https://www.youtube.com/watch?v=NCqbpkoiyXE", 2)
 
         var ganarFuerza: MutableList<Ejercicio> = mutableListOf(pushup, squats, squatsandjump, benchdip, diamonpushup, plank, legraise, crunch)
-        var bajarPeso: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, pushup, hipraise, crunch, plank)
+        var bajarPeso: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, pushup, hipraise, crunch, plank, burpee)
         var hipertrofia: MutableList<Ejercicio> = mutableListOf(pushup, squats, plank, legraise, crunch, benchdip, diamonpushup)
-        var cardio: MutableList<Ejercicio> = mutableListOf(jumpjacks, squats, burpee, mountclimbers, crunch)
+        var cardio: MutableList<Ejercicio> = mutableListOf(jumpjacks, benchdip, jumpjacks, squats, burpee, mountclimbers, crunch)
 
         return mutableListOf(ganarFuerza, bajarPeso, hipertrofia, cardio)
     }
@@ -125,7 +120,7 @@ open class Controlador private constructor () {
         val dieta: MutableList<Comida> = mutableListOf(avocadoEggToast, blackBeanNachoSoup, searedSalmon1, greenBeans, greekYogurt, branCereal, milk, blueBerries, strawBerrySalad,
             shrimpBuddhaBowl, greekYogurtB, blueBerries2, strawBerrySalad2, curriedPotato, branCereal2, milk2, blueBerries3, strawBerrySalad3, codTomatoSoup, brownRice, rolledOats,
             milk3, raspberries, strawBerrySalad4, cauliflowerRice, branCereal3, milk4, blueBerries4, tunaSalad, ovenTostadas, avocadoEggToast2, blueBerries5, tunaSalad2, skilletLemonChiken)
-        return Dieta(dieta, false, false)
+        return Dieta("Normal", dieta)
     }
 
     fun initDieta2(): Dieta {
@@ -164,7 +159,7 @@ open class Controlador private constructor () {
         val dieta: MutableList<Comida> = mutableListOf(rolledOats, milk, raspberries, veggieWrap, quinoaBurger, bananaWalnut, roastedVegetable, butternut, bananaWalnut2, apple, roastedVegetable2,
             pastaSalad, bananaWalnut3, apple2, roastedVegetable4, eggStuffed, avocadoEggToast, clementine, roastedVegetable5, tikkaMasala, brownRice, rolledOats2, milk2, raspberries2, veggieWrap2,
             veggieTaco, rolledOats3, milk3, apple3, veggieWrap3, chickpea)
-        return Dieta(dieta, false, true)
+        return Dieta("Vegetariana", dieta)
     }
 
     fun initDieta3(): Dieta {
@@ -195,7 +190,7 @@ open class Controlador private constructor () {
 
         val dieta: MutableList<Comida> = mutableListOf(pancakes, blueberries, avocadoToast, faladelSalad, englishMuffin, salad, buddha, englishMuffin2, edamameSalad, currySoup, quinoaMix, currySoup2,
             sweetPotatoes, pancakes2, blueberries2, sandwich, chickpea, englishMuffin3, cauliflowerSalad, thaiSpaghetti, pancakes3, blackberries, edamameSalad2, rainbow)
-        return Dieta(dieta, true, true)
+        return Dieta("Vegana", dieta)
     }
 
 }

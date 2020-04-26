@@ -1,9 +1,11 @@
 package com.example.healthcared.Modelo
 
+import android.util.Log
 import com.example.healthcared.Modelo.Comida
 
-class Dieta(val comidas: MutableList<Comida>, val veget: Boolean, val vegan: Boolean) {
-
+class Dieta(val name: String, val comidas: MutableList<Comida>) {
+    init{
+    }
     fun createDieta(type: Int, vegan: Boolean, dietName: String){
         //TODO() Crear lógica de selección de comidas
     }

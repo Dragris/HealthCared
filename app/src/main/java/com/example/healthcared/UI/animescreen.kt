@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.healthcared.Controlador
 import com.example.healthcared.R
 
 class animescreen : AppCompatActivity() {
@@ -16,6 +17,8 @@ lateinit var handler : Handler
             val intent = Intent(this, LogIn::class.java)
             startActivity(intent)
             //TODO incluir las cargas de contenido incial
+            //Uncomment controller in case of non initialization error
+            //Controlador
             finish()
         }, 3000)
 

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.LinearLayout
+import androidx.core.view.marginBottom
+import com.example.healthcared.Controlador
 import com.example.healthcared.R
 
 class WorkoutHome : AppCompatActivity() {
@@ -12,15 +15,23 @@ class WorkoutHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_home)
-        initButtons()
-
+        //initButtons()
+        val layout = findViewById<LinearLayout>(R.id.layout)
+        for (i in Controlador.usuario.rutinas){
+            val button = Button(this)
+            button.width = LinearLayout.LayoutParams.MATCH_PARENT
+            button.height = LinearLayout.LayoutParams.WRAP_CONTENT
+            button.text = i.rutinaName
+            button.setOnClickListener { planPreview(i.rutinaName) }
+            layout.addView(button)
+        }
     }
 
     fun goBack(view: View) {
         finish()
     }
 
-    fun planPreview(view: View, string: String){
+    fun planPreview(string: String){
         val intent = Intent(this, PlanPreview::class.java)
         intent.putExtra("title", string)
         startActivity(intent)
@@ -31,21 +42,9 @@ class WorkoutHome : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun initButtons(){
-        findViewById<Button>(R.id.example_plan).setOnClickListener {
-            planPreview(findViewById(R.id.example_plan), findViewById<Button>(
-                R.id.example_plan
-            ).text as String)
-        }
-        findViewById<Button>(R.id.example_plan2).setOnClickListener {
-            planPreview(findViewById(R.id.example_plan), findViewById<Button>(
-                R.id.example_plan2
-            ).text as String)
-        }
-    }
-
     fun createPlan(view: View){
         val intent = Intent(this, CreatePlan::class.java)
         startActivity(intent)
+        finish()
     }
 }

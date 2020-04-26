@@ -69,242 +69,28 @@
         android:paddingBottom="@dimen/top_margin">
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Exercise 1 -->
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/top_margin">
-
-                <ImageView
-                    android:id="@+id/exercise1"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:contentDescription="Image"
-                    android:onClick="showLink"
-                    app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
-
-                <TextView
-                    android:id="@+id/exercise1title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise1"
-                    android:text="@string/exercise_name_1"
-                    android:textSize="@dimen/normal_text" />
-
-                <TextView
-                    android:id="@+id/reps1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/exercise1title"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise1"
-                    android:text="@string/repetitions"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/sets1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/reps1"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise1"
-                    android:text="@string/sets"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/rest1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sets1"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise1"
-                    android:text="@string/rest"
-                    android:textSize="@dimen/header_text" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/top_margin">
-
-                <ImageView
-                    android:id="@+id/exercise2"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:contentDescription="Image"
-                    android:onClick="showLink"
-                    app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
-
-                <TextView
-                    android:id="@+id/exercise2title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise2"
-                    android:text="@string/exercise_name_2"
-                    android:textSize="@dimen/normal_text" />
-
-                <TextView
-                    android:id="@+id/reps2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/exercise2title"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise2"
-                    android:text="@string/repetitions"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/sets2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/reps2"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise2"
-                    android:text="@string/sets"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/rest2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sets2"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise2"
-                    android:text="@string/rest"
-                    android:textSize="@dimen/header_text" />
-            </RelativeLayout> <!-- Exercise 2 -->
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/top_margin">
-
-                <ImageView
-                    android:id="@+id/exercise3"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:contentDescription="Image"
-                    android:onClick="showLink"
-                    app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
-
-                <TextView
-                    android:id="@+id/exercise3title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise3"
-                    android:text="@string/exercise_name_3"
-                    android:textSize="@dimen/normal_text" />
-
-                <TextView
-                    android:id="@+id/reps3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/exercise3title"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise3"
-                    android:text="@string/repetitions"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/sets3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/reps3"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise3"
-                    android:text="@string/sets"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/rest3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sets3"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise3"
-                    android:text="@string/rest"
-                    android:textSize="@dimen/header_text" />
-            </RelativeLayout> <!-- Exercise 3 -->
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/top_margin">
-
-                <ImageView
-                    android:id="@+id/exercise4"
-                    android:layout_width="125dp"
-                    android:layout_height="125dp"
-                    android:contentDescription="Image"
-                    android:onClick="showLink"
-                    app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
-
-                <TextView
-                    android:id="@+id/exercise4title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise4"
-                    android:text="@string/exercise_name_2"
-                    android:textSize="@dimen/normal_text" />
-
-                <TextView
-                    android:id="@+id/reps4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/exercise4title"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise4"
-                    android:text="@string/repetitions"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/sets4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/reps4"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise4"
-                    android:text="@string/sets"
-                    android:textSize="@dimen/header_text" />
-
-                <TextView
-                    android:id="@+id/rest4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/sets4"
-                    android:layout_marginLeft="@dimen/header_text"
-                    android:layout_toRightOf="@id/exercise4"
-                    android:text="@string/rest"
-                    android:textSize="@dimen/header_text" />
-            </RelativeLayout> <!-- Exercise 4 -->
         </LinearLayout>
     </ScrollView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:paddingHorizontal="@dimen/side_margin"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/start"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/transparency_white"
-        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/side_margin"
         android:layout_marginBottom="@dimen/toolbar"
+        android:onClick="startExercise"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/side_margin"
+        android:src="@drawable/chorno_btn"
         android:text="@string/start_text"
         android:textSize="@dimen/header_text"
-        android:layout_centerHorizontal="true"
-        android:onClick="startExercise"/>
+        app:backgroundTint="@color/transparency_white" />
 
 </RelativeLayout>

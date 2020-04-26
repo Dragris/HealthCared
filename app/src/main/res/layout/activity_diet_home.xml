@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
-    tools:context=".UI.DietHome">
+    tools:context=".UI.PlanPreview">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,12 +25,12 @@
             android:contentDescription="@string/back_text"/>
 
         <TextView
-            android:id="@+id/workout_home_title"
+            android:id="@+id/diet_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="2"
-            android:text="@string/diet_title_home"
+            android:layout_weight="3"
+            android:text="@string/diet"
             android:textStyle="bold"
             android:textSize="@dimen/header_text"/>
 
@@ -64,38 +64,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar_workout"
-        android:layout_marginTop="7dp"
         android:paddingHorizontal="@dimen/side_margin"
         android:paddingTop="@dimen/top_margin"
         android:paddingBottom="@dimen/top_margin">
 
         <LinearLayout
+            android:id="@+id/layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/example_plan"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparency_white"
-                android:text="@string/diet_example_1"
-                android:textSize="@dimen/normal_text"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/top_margin"/>
-
-            <Button
-                android:id="@+id/example_plan2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/transparency_white"
-                android:text="@string/diet_example_2"
-                android:textSize="@dimen/normal_text"
-                android:textStyle="bold"
-                android:layout_marginBottom="@dimen/top_margin"/>
         </LinearLayout>
     </ScrollView>
-
 </RelativeLayout>
