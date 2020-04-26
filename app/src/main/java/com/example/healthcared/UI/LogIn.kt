@@ -50,12 +50,14 @@ class LogIn : AppCompatActivity() {
     auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
         .addOnSuccessListener {
 
-            //TODO crear controlador
-            //TODO agafar les dades d'usuari del firebase i crear l'usuari al controlador
+
 
             currentUser = auth.currentUser
 
             if (currentUser?.isEmailVerified!!) {
+                //TODO crear controlador
+
+                //TODO agafar les dades d'usuari del firebase i crear l'usuari al controlador
 
                 val intent = Intent(this, Inicio::class.java)
                 startActivity(intent)

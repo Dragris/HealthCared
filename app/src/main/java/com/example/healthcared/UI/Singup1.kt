@@ -33,12 +33,14 @@ class Singup1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup1)
+
         txtEmail = findViewById(R.id.email)
         txtFullname = findViewById(R.id.fullname)
         txtUsername = findViewById(R.id.user)
         txtPassword = findViewById(R.id.password)
         txtRepeatPassword= findViewById(R.id.password_repeat)
         database = FirebaseDatabase.getInstance()
+
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         dbReference=database.reference.child("User")
@@ -55,22 +57,27 @@ class Singup1 : AppCompatActivity() {
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
         updateUI(currentUser)
+        //TODO crear controlador
     }
 
     fun signup2(view: View) {
 
-        if(checkBox.isChecked){
+        if(checkSignUp()){
+
             auth.createUserWithEmailAndPassword(txtEmail.text.toString().trim(), txtPassword.text.toString().trim())
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         val user:FirebaseUser? =auth.currentUser
+
+                        //TODO crear el nuevo user en controlador
                         
-                        intent.putExtra("fullname",txtFullname.text.toString())
+                        /*intent.putExtra("fullname",txtFullname.text.toString())
                         intent.putExtra("email",txtEmail.text.toString())
                         intent.putExtra("username",txtUsername.text.toString())
-                        intent.putExtra("password",txtPassword.text.toString())
+                        intent.putExtra("password",txtPassword.text.toString())*/
 
-                        startActivity(Intent(this,Inicio::class.java))
+                        val intent = Intent(this, Singup2::class.java)
+                        startActivity(intent)
 
                     } else {
                         // If sign in fails, display a message to the user.
@@ -91,14 +98,34 @@ class Singup1 : AppCompatActivity() {
         }
     }
 
+
+    fun checkSignUp():Boolean{
+
+        if(checkBox.isChecked){
+            if (authPassword(txtPassword.toString(),  txtRepeatPassword.toString())){
+                return true
+            }else {
+                Toast.makeText(applicationContext, "Both Passwords Must Match!", Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            Toast.makeText(applicationContext, "You have to accept the terms first!", Toast.LENGTH_LONG).show()
+        }
+
+       return false
+    }
+
     fun authPassword(pass1: String, pass2: String): Boolean{
 
         if(pass1.equals(pass2)){
             return true
         }else{
             return false
+            //TODO mensaje para correjir la contraseña
         }
     }
+
+
+
 
     fun goBack(view: View){
         finish()
