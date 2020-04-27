@@ -94,6 +94,7 @@
                 android:textSize="@dimen/header_text"
                 android:layout_marginBottom="@dimen/new_margin"/>
             <RadioGroup
+                android:id="@+id/dietas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

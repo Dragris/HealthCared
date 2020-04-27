@@ -15,7 +15,6 @@ class WorkoutHome : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_workout_home)
-        //initButtons()
         val layout = findViewById<LinearLayout>(R.id.layout)
         for (i in Controlador.usuario.rutinas){
             val button = Button(this)

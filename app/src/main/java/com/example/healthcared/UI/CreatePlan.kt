@@ -47,7 +47,6 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         else if (name == "Cardio/Tonify") { objectiveTitle = "Cardio" }
         else if (name == "Gain Strenght") { objectiveTitle = "Fuelsa" }
         else { objectiveTitle = "Toy Mamadisimo" }
-        Log.v("Objective", objectiveTitle)
     }
 
     fun addPlan(view: View){
