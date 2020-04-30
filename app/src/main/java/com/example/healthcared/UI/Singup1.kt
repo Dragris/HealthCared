@@ -17,29 +17,21 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_signup1.*
 
 class Singup1: AppCompatActivity() {
-    private lateinit var dbReference: DatabaseReference
-    private lateinit var database: FirebaseDatabase
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup1)
-        database = FirebaseDatabase.getInstance()
-        auth = FirebaseAuth.getInstance()
-        dbReference = database.reference.child("User")
     }
 
     public override fun onStart() {
         super.onStart()
-        val currentUser = auth.currentUser
-        //updateUI(currentUser)
     }
 
-    fun signup1(view: View) {
+    fun signup2(view: View) {
         val checkBox: CheckBox = findViewById(R.id.checkBox)
         if (!checkBox.isChecked) {
             Toast.makeText(
-                baseContext, "Authentication failed.",
+                baseContext, "You must agree to terms & conditions of usage.",
                 Toast.LENGTH_SHORT
             ).show()
         } else {
@@ -51,22 +43,14 @@ class Singup1: AppCompatActivity() {
             if (email == ("") || name == ("") || username == ("") || password == ("") || repeat == ("")) {
                 Toast.makeText(baseContext, "There are some fields empty", Toast.LENGTH_SHORT)
                     .show()
+            } else if(password.length < 6){
+                Toast.makeText(baseContext, "Password must have 6 or more characters", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 if (password != repeat) {
                     Toast.makeText(baseContext, "The passwords don't match", Toast.LENGTH_SHORT)
                         .show()
                 } else {
-                    auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(this) { task ->
-                            if (task.isSuccessful) {
-                                val user: FirebaseUser? = auth.currentUser
-                            } else {
-                                Toast.makeText(
-                                    baseContext, "Authentication failed.",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
                     val intent = Intent(this, Singup2::class.java)
                     intent.putExtra("email", email)
                     intent.putExtra("name", name)

@@ -3,13 +3,16 @@ package com.example.healthcared.UI
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.Usuario
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_log_in.*
 import kotlinx.android.synthetic.main.activity_profile.view.*
 import kotlinx.android.synthetic.main.activity_signup1.*
@@ -19,7 +22,7 @@ import java.util.*
 class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var controlador: Controlador = Controlador
     private lateinit var auth: FirebaseAuth
-    lateinit var db : DatabaseReference
+    lateinit var db : FirebaseFirestore
     lateinit var usersList:MutableList<Usuario>
     val gender = arrayOf("-- Select Gender --", "Male", "Female")
     val userData = mutableListOf<String>("", "", "", "")
@@ -28,6 +31,8 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_singup2)
         usersList = mutableListOf()
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
         //crear un variable intenet para guardar los dados que vienen del singup_1
         val intent = intent
         userData[0] = intent.getStringExtra("name")
@@ -89,25 +94,32 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             newUser.bDate = date
             newUser.gender = spinner
 
-            db = FirebaseDatabase.getInstance().getReference("Users")
-            db.addValueEventListener(object : ValueEventListener {
-                //onCancelled la dejamos vacia
-                override fun onCancelled(p0: DatabaseError) {
-                    //TODO
-                }
+            Log.v("SIGNUP MAIL", email)
+            Log.v("SIGNUP PASS", password)
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        var userID = user?.uid
+                        var documentReference = db.collection("Users").document(userID!!)
+                        var userData = mapOf("userObject" to newUser)
+                        documentReference.set(userData)
 
-                override fun onDataChange(p0: DataSnapshot) {
-                    if (p0!!.exists())
-                        usersList.clear()
-                    for (e in p0.children) {
-                        val user = e.getValue(Usuario::class.java)
-                        usersList.add(newUser!!)
+                        val intent = Intent(this, Inicio::class.java)
+                        Controlador.usuario = newUser
+                        startActivity(intent)
+                    } else {
+                        Log.w("createUserWithEmail", task.exception)
+                        Toast.makeText(
+                            baseContext, "Authentication failed.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+
+                        //TODO() HAY QUE PONER UNA PANTALLA DE CARGA PARA NO PODER VOLVER A PULSAR AL BOTON
+                        //TODO() COMPROBAR QUE EL CORREO NO ESTÉ EN USO PARA QUE NO SE REPITA
                     }
                 }
-            })
-            val intent = Intent(this, Inicio::class.java)
-            Controlador.usuario = newUser
-            startActivity(intent)
+
         }
     }
 
