@@ -1,8 +1,14 @@
 package com.example.healthcared
 
+import android.util.Log
 import com.example.healthcared.Modelo.*
 import com.example.healthcared.UI.LogIn
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firestore.v1.FirestoreGrpc
 
 object Controlador{
 
@@ -19,6 +25,9 @@ object Controlador{
     val veget: Dieta = initDieta2()
     val vegan: Dieta = initDieta3()
 
+    val auth: FirebaseAuth? = null
+    var fStore: FirebaseFirestore? = null
+
 
     //Contnedores personales, cargar con log-in
 
@@ -30,16 +39,47 @@ object Controlador{
     var comidas: MutableCollection<Comida>? =null
 
 
-    fun cargarDatos(){
-
+    fun cargarDatos() {
         TODO()
         //Implementación de una carga de datos a las listas cuando se haga login
         //Puede ser init de la clase
+
+        val auth = FirebaseAuth.getInstance()
+        var fStore = FirebaseFirestore.getInstance()
+
+        var userId: String = auth.currentUser?.uid!!
+
+        var documentReference: DocumentReference? = fStore.collection("Users").document(userId)
+
+        if (documentReference != null) {
+            documentReference.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        var tmp_user : Usuario = document.data?.get("userObject") as Usuario
+
+                        Log.d("user", "DocumentSnapshot data: ${document.data}")
+                    } else {
+                        Log.d("Error", "No such document")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Error", "get failed with ", exception)
+                }
+
+        }
     }
 
     fun guardarDatos(){
         TODO()
         //Guardar datos en firebase para el usuario, borrarlos del dispositivo.
+         var auth: FirebaseAuth
+         var db : FirebaseFirestore
+
+        val user = auth.currentUser
+        var userID = user?.uid
+        var documentReference = db.collection("Users").document(userID!!)
+        var userData = mapOf("userObject" to this.usuario)
+        documentReference.set(userData)
     }
 
     fun mockUp(){

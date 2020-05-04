@@ -1,7 +1,7 @@
 package com.example.healthcared.Modelo
 import android.util.Log
 import com.example.healthcared.Controlador
-class Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,vegan: Boolean, veget: Boolean) {
+class  Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,vegan: Boolean, veget: Boolean) {
 
     var cont = 1
     var dietas: MutableList<Dieta> = mutableListOf()
@@ -36,6 +36,8 @@ class Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,ve
     set(value) {
         field = value
     }
+
+
 
 
 
