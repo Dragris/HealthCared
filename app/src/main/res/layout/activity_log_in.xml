@@ -81,4 +81,13 @@
         android:textStyle="bold"
         android:textSize="@dimen/header_text"
         android:layout_marginTop="@dimen/side_margin2"/>
+    <ProgressBar
+        android:id="@+id/misTetas"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/log_panel"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        />
 </RelativeLayout>

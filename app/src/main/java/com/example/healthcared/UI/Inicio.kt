@@ -11,6 +11,7 @@ import android.hardware.SensorManager
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -26,6 +27,7 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.ramijemli.percentagechartview.callback.ProgressTextFormatter
 import kotlinx.android.synthetic.main.activity_inicio.*
+import org.w3c.dom.Text
 import java.util.*
 
 class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
@@ -36,13 +38,11 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
 
     //TODO() Actualizar con datos de usuario
-    var targetSteps = 100
+    var targetSteps = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
-        val controlador: Controlador
-        Log.v("TAG TEST", "GXDCTYFUYGIHOIJHUGIYUFTYDRTESDRFYGUH")
 
         var today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
         var lastDay: Int = Controlador.usuario.lastDay
@@ -83,9 +83,15 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
          * Ring graph inside text format to steps instead of percentage
          */
         graph.setTextFormatter(ProgressTextFormatter setTextFormatter@{ progress: Float ->
-           "${Controlador.usuario.numSteps} steps"
+            ""
         })
-
+        var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
+        if (percentage >= 100f){
+            graph.setProgress(100f, true)
+        } else {
+            graph.setProgress(percentage, true)
+        }
+        findViewById<TextView>(R.id.stepText).text = "${Controlador.usuario.numSteps} steps"
 
         /**
          * Pedometer block
@@ -145,9 +151,9 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
         graph.setProgress(percentage * 0.3f, false)
         if (percentage >= 100f){
-            graph.setProgress(100f, true)
+            graph.setProgress(100f, false)
         }else {
-            graph.setProgress(percentage, true)
+            graph.setProgress(percentage, false)
         }
     }
 
@@ -263,11 +269,13 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         Controlador.usuario.numSteps++
         Log.v("STEPS", Controlador.usuario.numSteps.toString())
         var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
+
         if (percentage >= 100f){
             graph.setProgress(100f, false)
         } else {
             graph.setProgress(percentage, false)
         }
+        findViewById<TextView>(R.id.stepText).text = "${Controlador.usuario.numSteps} steps"
     }
 
 }

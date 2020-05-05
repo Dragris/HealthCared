@@ -57,6 +57,8 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun Singup (view: View) {
+        findViewById<Button>(R.id.login_btn).visibility = View.INVISIBLE
+        findViewById<ProgressBar>(R.id.misTetas).visibility = View.VISIBLE
         val name = userData[0]
         val email = userData[1]
         val username = userData[2]
@@ -114,9 +116,9 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             baseContext, "Authentication failed.",
                             Toast.LENGTH_SHORT
                         ).show()
+                        findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
+                        findViewById<ProgressBar>(R.id.misTetas).visibility = View.INVISIBLE
 
-                        //TODO() HAY QUE PONER UNA PANTALLA DE CARGA PARA NO PODER VOLVER A PULSAR AL BOTON
-                        //TODO() COMPROBAR QUE EL CORREO NO ESTÉ EN USO PARA QUE NO SE REPITA
                     }
                 }
 

@@ -1,10 +1,11 @@
 package com.example.healthcared
 
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcared.Modelo.*
 import com.example.healthcared.UI.LogIn
 import com.google.firebase.auth.FirebaseAuth
 
-object Controlador{
+object Controlador {
 
 
     /* Ejercicios */
