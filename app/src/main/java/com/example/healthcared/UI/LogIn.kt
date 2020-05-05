@@ -51,9 +51,8 @@ class LogIn : AppCompatActivity() {
         .addOnSuccessListener {
 
 
-
             currentUser = auth.currentUser
-
+/*
             if (currentUser?.isEmailVerified!!) {
                 //TODO crear controlador
 
@@ -62,7 +61,9 @@ class LogIn : AppCompatActivity() {
                 val intent = Intent(this, Inicio::class.java)
                 startActivity(intent)
             }
-
+*/
+            val intent = Intent(this, Inicio::class.java)
+            startActivity(intent)
 
         }
         .addOnFailureListener {

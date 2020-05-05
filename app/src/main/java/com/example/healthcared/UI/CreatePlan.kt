@@ -12,7 +12,9 @@ import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.Rutina
 import com.example.healthcared.R
 import kotlinx.android.synthetic.main.activity_create_plan.*
+import com.example.healthcared.ProgressBar
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var days = arrayOf(1, 2, 3, 4, 5)
@@ -50,6 +52,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun addPlan(view: View){
+
         var name: String
 
         if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == "Plan name"){
@@ -67,7 +70,8 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
             var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
             Controlador.usuario.rutinas.add(rutina)
-            val intent = Intent(this, WorkoutHome::class.java)
+            val intent = Intent(this, ProgressBar::class.java)
+            intent.putExtra("title", "Creating Workout Routine")
             startActivity(intent)
             finish()
         }
