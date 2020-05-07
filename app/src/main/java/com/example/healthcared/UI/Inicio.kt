@@ -22,6 +22,7 @@ import com.example.healthcared.Modelo.Utils.StepListener
 import com.example.healthcared.R
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.XAxis.XAxisPosition
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -71,12 +72,14 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         barChart.setDrawBarShadow(false)
         barChart.setDrawGridBackground(false)
 
-        val xAxis: XAxis = barChart.getXAxis()
+        val xAxis: XAxis = barChart.xAxis
         xAxis.position = XAxisPosition.BOTTOM
         xAxis.setDrawGridLines(false)
         xAxis.valueFormatter = MyXAxisFormatter()
 
-        barChart.getAxisRight().setEnabled(false)
+        val yAxis: YAxis = barChart.axisLeft
+        yAxis.axisMinimum = 0f
+        barChart.axisRight.isEnabled = false
         barChart.animateY(2500)
 
         /**
@@ -100,8 +103,6 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
         simpleStepDetector = StepDetector()
         simpleStepDetector!!.registerListener(this)
-
-
         sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
 
     }
