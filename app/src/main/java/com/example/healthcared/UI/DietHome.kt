@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import android.widget.*
 import com.example.healthcared.Controlador
@@ -30,6 +31,10 @@ class DietHome : AppCompatActivity() {
         text2.gravity = android.view.Gravity.CENTER
         layout.addView(textView)
         layout.addView(text2)
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT)
+        params.setMargins(100,0,0,30)
         for (i in 1..3){
             var parent = LinearLayout(this)
             parent.orientation = LinearLayout.HORIZONTAL
@@ -42,12 +47,15 @@ class DietHome : AppCompatActivity() {
             val name = TextView(this)
             if (i == 1){
                 name.text = "Breakfast"
+                name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 texts.addView(name)
             } else if (i == 2) {
                 name.text = "Lucnh"
+                name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 texts.addView(name)
             } else {
                 name.text = "Dinner"
+                name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 texts.addView(name)
             }
             for (j in dietas){
@@ -55,6 +63,7 @@ class DietHome : AppCompatActivity() {
                     if (z.time == i && z.dia == dia+1) {
                         val food = TextView(this)
                         food.text = z.foodName
+                        food.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
                         food.setOnClickListener {
                             if (z.recipeLink == "-") {
                                 val toast = Toast.makeText(
@@ -73,7 +82,7 @@ class DietHome : AppCompatActivity() {
             }
             parent.addView(image)
             parent.addView(texts)
-            layout.addView(parent)
+            layout.addView(parent, params)
         }
 
 

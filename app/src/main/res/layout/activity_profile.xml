@@ -116,7 +116,6 @@
             android:layout_height="wrap_content"
             style="?android:attr/borderlessButtonStyle"
             android:background="@drawable/button_shape"
-            android:backgroundTint="@color/transparency_white"
             android:textSize="@dimen/header_text"
             android:text="@string/personal_settings1" />
     </LinearLayout>
