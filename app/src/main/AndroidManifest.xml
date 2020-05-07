@@ -39,6 +39,7 @@
             android:name=".UI.Inicio"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity">
+
         </activity>
         <activity
             android:name=".ProgressBar"

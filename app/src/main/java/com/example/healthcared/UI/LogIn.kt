@@ -39,11 +39,17 @@ class LogIn : AppCompatActivity() {
             if(username.text.toString().isEmpty()){
                 username.error = "Please enter a username"
                 username.requestFocus()
+                findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
+                findViewById<TextView>(R.id.sign_up).visibility = View.VISIBLE
+                findViewById<ProgressBar>(R.id.misTetas).visibility = View.INVISIBLE
                 return
     }   //controlar la entrada
             if(password.text.toString().isEmpty()){
                 password.error = "Please enter a password"
                 password.requestFocus()
+                findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
+                findViewById<TextView>(R.id.sign_up).visibility = View.VISIBLE
+                findViewById<ProgressBar>(R.id.misTetas).visibility = View.INVISIBLE
                 return
             }
         //SignIn to Firebase
