@@ -62,6 +62,7 @@
                 android:id="@+id/plan_name_creator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/header_text"
                 android:hint="@string/plan_name_form"
                 android:layout_marginTop="@dimen/new_margin"

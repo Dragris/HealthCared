@@ -57,6 +57,7 @@
                 android:layout_marginBottom="@dimen/margin2"/>
 
             <EditText
+                android:textColor="@color/colorWhite"
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/textbox_height"
@@ -67,6 +68,7 @@
                 android:layout_marginBottom="@dimen/margin2"
                 android:inputType="numberDecimal"/>
             <EditText
+                android:textColor="@color/colorWhite"
                 android:id="@+id/height"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/textbox_height"
@@ -77,6 +79,7 @@
                 android:layout_marginBottom="@dimen/margin2"
                 android:inputType="numberDecimal"/>
             <EditText
+                android:textColor="@color/colorWhite"
                 android:id="@+id/weight"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/textbox_height"
