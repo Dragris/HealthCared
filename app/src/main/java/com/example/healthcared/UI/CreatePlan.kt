@@ -30,8 +30,12 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun goBack(view: View){
+        val intent = Intent(this, WorkoutHome::class.java)
+        startActivity(intent)
         finish()
     }
+
+    override fun onBackPressed() { startActivity(Intent(this, WorkoutHome::class.java)); finish() }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         //THINGS
