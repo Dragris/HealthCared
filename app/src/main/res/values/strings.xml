@@ -11,7 +11,7 @@
     <string name="full_name">Full Name</string>
     <string name="repeat_psw">Repeat Password</string>
     <string name="terms"><u>Terms of Use &amp; Privacy Policy</u></string>
-    <string name="birth">Date of Birth (YYYY/MM/DD)</string>
+    <string name="birth">Your Daily Step Objective</string>
     <string name="weight">Weight (kg)</string>
     <string name="height">Height (cm)</string>
 
@@ -36,7 +36,7 @@
     <string name="current_ex">Current Exercise</string>
     <string name="next_ex">Next Exercise</string>
     <string name="timer">Timer</string>
-    <string name="pause">TEST</string>
+    <string name="pause">Pause</string>
     <string name="resume">Resume</string>
     <string name="finish">Finish</string>
     <string name="next">Next</string>
@@ -73,12 +73,6 @@
     <string name="breakfast">Breakfast</string>
     <string name="lunch">Lunch</string>
     <string name="dinner">Dinner</string>
-    <string name="meal1">Cereal</string>
-    <string name="meal2">Fruit</string>
-    <string name="meal3">Meat</string>
-    <string name="meal4">Pasta</string>
-    <string name="meal5">Fish</string>
-    <string name="meal6">Vegetable</string>
 
     <!-- Profile activity -->
     <string name="profile_title">Profile</string>

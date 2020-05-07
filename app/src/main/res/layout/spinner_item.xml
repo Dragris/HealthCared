@@ -4,7 +4,7 @@
     android:paddingHorizontal="@dimen/new_margin"
     android:id="@android:id/text1"
     android:layout_width="match_parent"
-    android:textColor="@color/hintC"
+    android:textColor="@color/colorWhite"
     android:layout_height="wrap_content"
     android:textStyle="bold"
     android:textSize="17sp"/>

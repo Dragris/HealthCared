@@ -44,6 +44,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     fun changeOb(view: View){
         //TODO que cambien de color los botones
         var button = view as Button
+        button.isFocused
         var name: String = button.text.toString()
         if (name == "Lose Weight")  { objectiveTitle = "Toy Gordo" }
         else if (name == "Cardio/Tonify") { objectiveTitle = "Cardio" }
@@ -55,7 +56,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
         var name: String
 
-        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == "Plan name"){
+        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == ""){
             name = "Plan " + Controlador.usuario.cont.toString()
             Controlador.usuario.cont += 1
         } else {

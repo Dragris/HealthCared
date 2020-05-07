@@ -103,33 +103,8 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:layout_marginBottom="@dimen/side_margin"/>
-
-        <RelativeLayout
-            android:paddingHorizontal="@dimen/side_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/btn_pause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/transparency_white"
-                android:text="@string/pause"
-                android:clickable="true"
-                android:onClick="pause"
-                />
-            <TextView
-                android:id="@+id/testText"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="100dp"
-                android:layout_alignLeft="@id/btn_pause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Test text"
-                />
-        </RelativeLayout>
-
-
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/icons"
         android:layout_width="match_parent"
