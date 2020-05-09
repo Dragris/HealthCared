@@ -39,7 +39,6 @@ object Controlador {
     }
 
     fun guardarDatos(){
-        TODO()
         //Guardar datos en firebase para el usuario, borrarlos del dispositivo.
     }
 

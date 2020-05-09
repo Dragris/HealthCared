@@ -1,6 +1,8 @@
 package com.example.healthcared.Modelo
-import android.util.Log
+
 import com.example.healthcared.Controlador
+
+
 class Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,vegan: Boolean, veget: Boolean) {
 
     var cont = 1
