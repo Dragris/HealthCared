@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.healthcared.Controlador
@@ -28,23 +27,22 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.ramijemli.percentagechartview.callback.ProgressTextFormatter
 import kotlinx.android.synthetic.main.activity_inicio.*
-import org.w3c.dom.Text
 import java.util.*
 
 class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
-
+    private var targetSteps: Int = 0
 
 
     //TODO() Actualizar con datos de usuario
-    var targetSteps = 10
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicio)
-
+        targetSteps = Controlador.usuario.targetSteps!!
         var today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
         var lastDay: Int = Controlador.usuario.lastDay
         var registroPasos: MutableList<Int> = Controlador.usuario.registroPasos
@@ -156,6 +154,11 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         }else {
             graph.setProgress(percentage, false)
         }
+    }
+
+    override fun finish(){
+        sensorManager?.unregisterListener(this)
+        super.finish()
     }
 
 

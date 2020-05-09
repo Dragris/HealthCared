@@ -20,22 +20,10 @@ class  Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,v
     set(value) {
         field = value
     }
-    var bDate : String ? = null
-    get() = field
-    set(value) {
-        field = value
-    }
-
+    var targetSteps : Int ? = null
     var height : Int ? = null
-    get() = field
-    set(value) {
-        field = value
-    }
-    var wieght : Int? = null
-    get() = field
-    set(value) {
-        field = value
-    }
+    var weight : Int? = null
+
 
 
 
