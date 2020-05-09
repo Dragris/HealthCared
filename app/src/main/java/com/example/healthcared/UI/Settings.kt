@@ -17,6 +17,10 @@ class Settings : AppCompatActivity() {
         setContentView(R.layout.activity_settings)
     }
 
+    override fun onBackPressed() {
+        startActivity(Intent(this,Inicio::class.java))
+        finish()
+    }
     fun goBack(view: View){
         startActivity(Intent(this,Inicio::class.java))
         finish()
