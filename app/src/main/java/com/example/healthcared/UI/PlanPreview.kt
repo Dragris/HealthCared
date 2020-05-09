@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -36,6 +37,15 @@ class PlanPreview : AppCompatActivity() {
             layout.addView(textView)
             layout.addView(text2)
         }
+        if (rutina.size == 1) {
+            findViewById<ImageButton>(R.id.start).visibility = View.INVISIBLE
+        } else {
+            findViewById<ImageButton>(R.id.start).visibility = View.VISIBLE
+        }
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT)
+        params.setMargins(100,0,0,30)
         for (i in rutina){
             var parent = LinearLayout(this)
             parent.orientation = LinearLayout.HORIZONTAL
@@ -48,18 +58,22 @@ class PlanPreview : AppCompatActivity() {
             image.setImageResource(R.drawable.common_google_signin_btn_icon_light)
             val name = TextView(this)
             name.text = i.ExerciceName
+            name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
             texts.addView(name)
             if (i.ExerciceName != "Dia Libre") {
                 val reps = TextView(this)
                 reps.text = "Reps: " + Controlador.usuario.findRutinaByName(title).reps.toString()
+                reps.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
                 texts.addView(reps)
                 if (Controlador.usuario.findRutinaByName(title).obj != "Cardio") {
                     val sets = TextView(this)
                     sets.text =
                         "Sets: " + Controlador.usuario.findRutinaByName(title).sets.toString()
+                    sets.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
                     texts.addView(sets)
                     val rest = TextView(this)
                     rest.text = "Rest (Secs): " + Controlador.usuario.findRutinaByName(title).rest.toString()
+                    rest.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
                     texts.addView(rest)
                 }
             }
@@ -67,7 +81,7 @@ class PlanPreview : AppCompatActivity() {
 
             parent.addView(image)
             parent.addView(texts)
-            layout.addView(parent)
+            layout.addView(parent, params)
         }
     }
 

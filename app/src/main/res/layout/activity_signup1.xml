@@ -55,9 +55,11 @@
             android:paddingHorizontal="@dimen/new_margin"
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/margin2"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorWhite"/>
 
         <EditText
+            android:textColor="@color/colorWhite"
             android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
@@ -69,6 +71,7 @@
             android:textStyle="bold" />
 
         <EditText
+            android:textColor="@color/colorWhite"
             android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
@@ -79,6 +82,7 @@
             android:paddingHorizontal="@dimen/new_margin"
             android:textStyle="bold" />
         <EditText
+            android:textColor="@color/colorWhite"
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
