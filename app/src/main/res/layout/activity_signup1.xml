@@ -72,17 +72,6 @@
 
         <EditText
             android:textColor="@color/colorWhite"
-            android:id="@+id/user"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/textbox_height"
-            android:layout_marginBottom="@dimen/margin2"
-            android:textColorHint="@color/colorWhite"
-            android:hint="@string/user"
-            android:inputType="textPersonName"
-            android:paddingHorizontal="@dimen/new_margin"
-            android:textStyle="bold" />
-        <EditText
-            android:textColor="@color/colorWhite"
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
@@ -93,6 +82,7 @@
             android:layout_marginBottom="@dimen/margin2"
             android:inputType="textPassword"/>
         <EditText
+            android:textColor="@color/transparency_white"
             android:id="@+id/password_repeat"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"

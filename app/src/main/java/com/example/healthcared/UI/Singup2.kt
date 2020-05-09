@@ -25,7 +25,7 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var db : FirebaseFirestore
     lateinit var usersList:MutableList<Usuario>
     val gender = arrayOf("-- Select Gender --", "Male", "Female")
-    val userData = mutableListOf<String>("", "", "", "")
+    val userData = mutableListOf<String>("", "", "")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,8 +37,7 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val intent = intent
         userData[0] = intent.getStringExtra("name")
         userData[1] = intent.getStringExtra("email")
-        userData[2] = intent.getStringExtra("username")
-        userData[3] = intent.getStringExtra("password")
+        userData[2] = intent.getStringExtra("password")
 
 
         spinner_gender!!.setOnItemSelectedListener(this)
@@ -61,8 +60,7 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         findViewById<ProgressBar>(R.id.misTetas).visibility = View.VISIBLE
         val name = userData[0]
         val email = userData[1]
-        val username = userData[2]
-        val password = userData[3]
+        val password = userData[2]
 
         val spinner: String = findViewById<Spinner>(R.id.spinner_gender).selectedItem.toString()
         val date: String = findViewById<EditText>(R.id.date).text.toString()
@@ -90,7 +88,7 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 vegan = true
                 veget = true
             }
-            val newUser = Usuario(name, email, username, password, vegan, veget)
+            val newUser = Usuario(name, email, password, vegan, veget)
             newUser.height = height.toInt()
             newUser.weight = weight.toInt()
             newUser.targetSteps = date.toInt()

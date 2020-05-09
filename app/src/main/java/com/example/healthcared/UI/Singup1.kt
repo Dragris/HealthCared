@@ -37,10 +37,9 @@ class Singup1: AppCompatActivity() {
         } else {
             val email: String = findViewById<EditText>(R.id.email).text.toString()
             val name: String = findViewById<EditText>(R.id.fullname).text.toString()
-            val username: String = findViewById<EditText>(R.id.user).text.toString()
             val password: String = findViewById<EditText>(R.id.password).text.toString()
             val repeat: String = findViewById<EditText>(R.id.password_repeat).text.toString()
-            if (email == ("") || name == ("") || username == ("") || password == ("") || repeat == ("")) {
+            if (email == ("") || name == ("") || password == ("") || repeat == ("")) {
                 Toast.makeText(baseContext, "There are some fields empty", Toast.LENGTH_SHORT)
                     .show()
             } else if(password.length < 6){
@@ -54,7 +53,6 @@ class Singup1: AppCompatActivity() {
                     val intent = Intent(this, Singup2::class.java)
                     intent.putExtra("email", email)
                     intent.putExtra("name", name)
-                    intent.putExtra("username", username)
                     intent.putExtra("password", password)
                     startActivity(intent)
                 }

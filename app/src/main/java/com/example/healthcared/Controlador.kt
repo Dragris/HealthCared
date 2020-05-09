@@ -23,7 +23,7 @@ object Controlador {
 
     //Contnedores personales, cargar con log-in
 
-    var usuario: Usuario = Usuario("Random", "Random", "Random", "Random", false, false)  //En caso de ser necesario mantener qué usuario es el que está conectado
+    var usuario: Usuario = Usuario("Random", "Random", "Random", false, false)  //En caso de ser necesario mantener qué usuario es el que está conectado
     var pasos: MutableCollection<Int>? =null
 
     //Contenedores de la app, cargar con inicio de la app
