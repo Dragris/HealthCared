@@ -54,18 +54,25 @@ object Controlador: AppCompatActivity(){
             documentReference.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        var tmp_user : Map<String, Usuario> = document.data?.get("userObject") as Map<String, Usuario>
+                        var usuario_Map : Map<String, Usuario> = document.data?.get("userObject") as Map<String, Usuario>
+
+                        /*var tmp_usuario: Usuario =
 
 
-                        Log.d("Username", tmp_user.toString())
+                        var usrFullName :String = usuario_Map[]
+                        var usrMail :String = usuario_Map[]
+                        var usrName :String = usuario_Map[]
 
+                        var usrHeight :String = usuario_Map[]
+                        var usrName :String = usuario_Map[]
+                        var usrName :String = usuario_Map[]
+                        var usrGender :String = usuario_Map[]*/
 
-
-
+                       Log.d("Username", usuario_Map.toString())
 
                         //this.usuario = tmp_user
 
-                        Log.d("user", "DocumentSnapshot data: ${document.data}")
+
                     } else {
                         Log.d("Error", "No such document")
                     }
