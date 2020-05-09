@@ -1,7 +1,9 @@
 package com.example.healthcared.Modelo
-import android.util.Log
+
 import com.example.healthcared.Controlador
-class  Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,vegan: Boolean, veget: Boolean) {
+
+
+class Usuario(Fullname:String,_Email:String,_Password:String,vegan: Boolean, veget: Boolean) {
 
     var cont = 1
     var dietas: MutableList<Dieta> = mutableListOf()
@@ -14,17 +16,10 @@ class  Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,v
     var password : String? = null
     var fullname :String? = null
     var email :String? =null
-    var username:String? = null
     var gender : String? = null
-    get() = field
-    set(value) {
-        field = value
-    }
     var targetSteps : Int ? = null
     var height : Int ? = null
     var weight : Int? = null
-
-
 
 
 
@@ -41,7 +36,6 @@ class  Usuario(Fullname:String,_Email:String,_Username:String,_Password:String,v
         }
         this.fullname = Fullname
         this.email = _Email
-        this.username = _Username
         this.password = _Password
     }
     fun findRutinaByName(name: String): Rutina{

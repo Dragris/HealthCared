@@ -46,38 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar_workout"
         android:gravity="center_horizontal"
+        android:layout_centerInParent="true"
         android:orientation="vertical"
         android:layout_marginTop="@dimen/margin2"
         android:paddingHorizontal="@dimen/side_margin">
 
-        <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/button_shape"
-            android:id="@+id/button1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin2"
-            android:text="@string/setting1"
-            android:textSize="@dimen/header_text" />
-
-        <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/button_shape"
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/header_text"
-            android:text="@string/setting2"
-            android:layout_marginBottom="@dimen/margin2"/>
-        <Button
-            style="?android:attr/borderlessButtonStyle"
-            android:background="@drawable/button_shape"
-            android:id="@+id/button6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/header_text"
-            android:text="@string/setting6"
-            android:layout_marginBottom="@dimen/margin2"/>
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"

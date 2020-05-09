@@ -1,6 +1,7 @@
 package com.example.healthcared.UI
 
 import android.Manifest
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -33,16 +34,14 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
-    private var targetSteps: Int = 0
-
-
-    //TODO() Actualizar con datos de usuario
-
+    private var targetSteps: Int = 10
+    lateinit var activityLabel: Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activityLabel = this
         setContentView(R.layout.activity_inicio)
-        targetSteps = Controlador.usuario.targetSteps!!
+        if (Controlador.usuario.targetSteps != null) targetSteps = Controlador.usuario.targetSteps!!
         var today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
         var lastDay: Int = Controlador.usuario.lastDay
         var registroPasos: MutableList<Int> = Controlador.usuario.registroPasos
@@ -55,8 +54,6 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         }
         shift(daysToShift)
         Controlador.usuario.lastDay = today
-
-
 
         /**
          * Chart block
@@ -282,6 +279,8 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         }
         findViewById<TextView>(R.id.stepText).text = "${Controlador.usuario.numSteps} steps"
     }
+
+
 
 }
 
