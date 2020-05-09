@@ -40,6 +40,7 @@ object Controlador: AppCompatActivity(){
     fun cargarDatos() {
         //Implementación de una carga de datos a las listas cuando se haga login
         //Puede ser init de la clase
+        Log.d("Algo", mapOf("Hola" to 0, "quetal" to "mubien").toString())
 
         var auth: FirebaseAuth = FirebaseAuth.getInstance()
         var fStore: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -47,14 +48,22 @@ object Controlador: AppCompatActivity(){
         var userId: String = auth.currentUser?.uid!!
 
         var documentReference: DocumentReference? = fStore.collection("Users").document(userId)
+        Log.d("User ID", userId)
 
         if (documentReference != null) {
             documentReference.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        var tmp_user : Usuario = document.data?.get("userObject") as Usuario
+                        var tmp_user : Map<String, Usuario> = document.data?.get("userObject") as Map<String, Usuario>
 
-                        this.usuario = tmp_user
+
+                        Log.d("Username", tmp_user.toString())
+
+
+
+
+
+                        //this.usuario = tmp_user
 
                         Log.d("user", "DocumentSnapshot data: ${document.data}")
                     } else {

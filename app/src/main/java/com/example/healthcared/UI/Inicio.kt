@@ -91,7 +91,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
         if (percentage >= 100f){
             graph.setProgress(100f, true)
-        } else {
+        } else{
             graph.setProgress(percentage, true)
         }
         findViewById<TextView>(R.id.stepText).text = "${Controlador.usuario.numSteps} steps"
@@ -192,6 +192,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     fun settings(view: View) {
         val intent = Intent(this, Settings::class.java)
         startActivity(intent)
+        finish()
     }
 
     fun pause(view: View) {

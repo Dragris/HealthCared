@@ -16,6 +16,7 @@ class Settings : AppCompatActivity() {
     }
 
     fun goBack(view: View){
+        startActivity(Intent(this,Inicio::class.java))
         finish()
     }
     fun changeUsername(view: View){
@@ -35,7 +36,7 @@ class Settings : AppCompatActivity() {
         //Faq.
     }
     fun signOut(view: View){
-        Controlador.cargarDatos()
+        Controlador.guardarDatos()
         FirebaseAuth.getInstance().signOut()
         startActivity(Intent(this,LogIn::class.java))
     }

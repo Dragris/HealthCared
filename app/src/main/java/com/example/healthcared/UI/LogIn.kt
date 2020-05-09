@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.core.view.isInvisible
+import com.example.healthcared.Controlador
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -58,6 +59,7 @@ class LogIn : AppCompatActivity() {
         auth.signInWithEmailAndPassword(username.text.toString() , password.text.toString())
             .addOnSuccessListener {
                 currentUser = auth.currentUser
+                Controlador.cargarDatos()
                 val intent = Intent(this, Inicio::class.java)
                 startActivity(intent)
             }
