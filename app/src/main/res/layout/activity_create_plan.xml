@@ -62,13 +62,13 @@
                 android:id="@+id/plan_name_creator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/colorWhite"
                 android:textSize="@dimen/header_text"
-                android:text="@string/plan_name_form"
-                android:background="@color/transparency_white"
+                android:hint="@string/plan_name_form"
                 android:layout_marginTop="@dimen/new_margin"
                 android:layout_marginBottom="@dimen/top_margin"
                 android:inputType="text"
-                android:textColor="@color/colorWhite"/>
+                android:textColorHint="@color/colorWhite"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -154,15 +154,17 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+
     <Button
+        android:background="@drawable/button_shape"
         android:layout_width="wrap_content"
         android:paddingHorizontal="@dimen/side_margin"
         android:id="@+id/start"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/transparency_white"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/side_margin"
         android:text="@string/create_plan_title"
+        style="?android:attr/borderlessButtonStyle"
         android:textSize="@dimen/header_text"
         android:layout_centerHorizontal="true"
         android:onClick="addPlan"/>

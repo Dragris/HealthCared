@@ -11,15 +11,15 @@
         <item name="colorPrimary">@color/aux2</item>
         <item name="colorPrimaryDark">@color/aux2</item>
         <item name="colorAccent">@android:color/holo_green_light</item>
-        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/transparency_white</item>
         <item name="android:button">@color/transparency_white</item>
         <item name="android:textColor">@color/colorWhite</item>
         <item name="android:textColorHint">@color/hintC</item>
 
     </style>
-    <style name="Splashscreen" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Splashscreen" parent="Theme.AppCompat.Light.NoActionBar"/>
 
-    </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

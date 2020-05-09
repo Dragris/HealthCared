@@ -64,11 +64,17 @@
         android:paddingHorizontal="@dimen/margin2"
         android:layout_above="@id/icons"
         android:weightSum="9">
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="5"
+    android:layout_marginBottom="@dimen/default_gap"
+    >
         <com.ramijemli.percentagechartview.PercentageChartView
             android:id="@+id/graph"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_centerInParent="true"
             app:pcv_mode="ring"
             app:pcv_orientation="clockwise"
             app:pcv_animDuration="800"
@@ -82,8 +88,13 @@
             app:pcv_gradientColors="#EFFD5F, #FCE205, #FEE12B"
 
             app:pcv_gradientType="linear"
-            android:layout_weight="5"
-            android:layout_marginBottom="@dimen/default_gap"/>
+            />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/stepText"/>
+</RelativeLayout>
 
         <com.github.mikephil.charting.charts.BarChart
             android:layout_marginTop="@dimen/default_gap"
@@ -92,33 +103,8 @@
             android:layout_height="match_parent"
             android:layout_weight="5"
             android:layout_marginBottom="@dimen/side_margin"/>
-
-        <RelativeLayout
-            android:paddingHorizontal="@dimen/side_margin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/btn_pause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/transparency_white"
-                android:text="@string/pause"
-                android:clickable="true"
-                android:onClick="pause"
-                />
-            <TextView
-                android:id="@+id/testText"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="100dp"
-                android:layout_alignLeft="@id/btn_pause"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Test text"
-                />
-        </RelativeLayout>
-
-
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/icons"
         android:layout_width="match_parent"

@@ -50,40 +50,44 @@
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
-            android:background="@color/transparency_white"
+            android:textColorHint="@color/colorWhite"
             android:hint="@string/e_mail"
             android:paddingHorizontal="@dimen/new_margin"
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/margin2"
-            android:inputType="textEmailAddress"/>
+            android:inputType="textEmailAddress"
+            android:textColor="@color/colorWhite"/>
 
         <EditText
+            android:textColor="@color/colorWhite"
             android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
             android:layout_marginBottom="@dimen/margin2"
-            android:background="@color/transparency_white"
+            android:textColorHint="@color/colorWhite"
             android:hint="@string/full_name"
             android:inputType="textPersonName"
             android:paddingHorizontal="@dimen/new_margin"
             android:textStyle="bold" />
 
         <EditText
+            android:textColor="@color/colorWhite"
             android:id="@+id/user"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
             android:layout_marginBottom="@dimen/margin2"
-            android:background="@color/transparency_white"
+            android:textColorHint="@color/colorWhite"
             android:hint="@string/user"
             android:inputType="textPersonName"
             android:paddingHorizontal="@dimen/new_margin"
             android:textStyle="bold" />
         <EditText
+            android:textColor="@color/colorWhite"
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
             android:hint="@string/passw"
-            android:background="@color/transparency_white"
+            android:textColorHint="@color/colorWhite"
             android:textStyle="bold"
             android:paddingHorizontal="@dimen/new_margin"
             android:layout_marginBottom="@dimen/margin2"
@@ -93,7 +97,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"
             android:hint="@string/repeat_psw"
-            android:background="@color/transparency_white"
+            android:textColorHint="@color/colorWhite"
             android:textStyle="bold"
             android:paddingHorizontal="@dimen/new_margin"
             android:layout_marginBottom="@dimen/margin2"
@@ -108,11 +112,12 @@
             android:textColor="@color/colorWhite"/>
 
         <Button
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/button_shape"
             android:id="@+id/login_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@color/transparency_white"
             android:onClick="signup2"
             android:paddingHorizontal="@dimen/side_margin"
             android:text="@string/next" />

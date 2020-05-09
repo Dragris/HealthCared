@@ -12,7 +12,9 @@ import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.Rutina
 import com.example.healthcared.R
 import kotlinx.android.synthetic.main.activity_create_plan.*
+import com.example.healthcared.ProgressBar
 import java.util.*
+import java.util.concurrent.TimeUnit
 
 class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     var days = arrayOf(1, 2, 3, 4, 5)
@@ -28,8 +30,12 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun goBack(view: View){
+        val intent = Intent(this, WorkoutHome::class.java)
+        startActivity(intent)
         finish()
     }
+
+    override fun onBackPressed() { startActivity(Intent(this, WorkoutHome::class.java)); finish() }
 
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         //THINGS
@@ -42,6 +48,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     fun changeOb(view: View){
         //TODO que cambien de color los botones
         var button = view as Button
+        button.isFocused
         var name: String = button.text.toString()
         if (name == "Lose Weight")  { objectiveTitle = "Toy Gordo" }
         else if (name == "Cardio/Tonify") { objectiveTitle = "Cardio" }
@@ -50,9 +57,10 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun addPlan(view: View){
+
         var name: String
 
-        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == "Plan name"){
+        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == ""){
             name = "Plan " + Controlador.usuario.cont.toString()
             Controlador.usuario.cont += 1
         } else {
@@ -67,7 +75,8 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
             var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
             Controlador.usuario.rutinas.add(rutina)
-            val intent = Intent(this, WorkoutHome::class.java)
+            val intent = Intent(this, ProgressBar::class.java)
+            intent.putExtra("title", "Creating Workout Routine")
             startActivity(intent)
             finish()
         }

@@ -2,13 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.healthcared">
-
     <!-- GOOGLE MAPS -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
-    <!-- GOOGLE MAPS -->
 
     <application
         android:allowBackup="true"
@@ -17,20 +15,24 @@
         android:roundIcon="@mipmap/round_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <!-- GOOGLE MAPS -->
         <uses-library android:name="com.google.android.maps" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <!-- GOOGLE MAPS -->
-
+            android:value="@integer/google_play_services_version" /> <!-- GOOGLE MAPS -->
         <activity
             android:name=".UI.animescreen"
+            android:screenOrientation="sensorPortrait"
             android:theme="@style/Splashscreen"
+            tools:ignore="LockedOrientationActivity">
+
+        </activity>
+        <activity
+            android:name=".UI.Inicio"
             android:screenOrientation="sensorPortrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -38,56 +40,55 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".UI.Inicio"
+        <activity
+            android:name=".ProgressBar"
             android:screenOrientation="sensorPortrait"
-            tools:ignore="LockedOrientationActivity">
-        </activity>
+            tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".UI.DietHome"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.Tracker"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.Singup2"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.Singup1"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.Profile"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.Settings"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.LogIn"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.CreatePlan"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.StartExercise"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.PlanPreview"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
-        <activity android:name=".UI.WorkoutHome"
-                  android:screenOrientation="sensorPortrait"
-                  tools:ignore="LockedOrientationActivity"/>
-
+        <activity
+            android:name=".UI.DietHome"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.Tracker"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.Singup2"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.Singup1"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.Profile"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.Settings"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.LogIn"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.CreatePlan"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.StartExercise"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.PlanPreview"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".UI.WorkoutHome"
+            android:screenOrientation="sensorPortrait"
+            tools:ignore="LockedOrientationActivity" />
     </application>
 
 </manifest>
