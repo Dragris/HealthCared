@@ -34,7 +34,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
-    private var targetSteps: Int = 10
+    private var targetSteps = 10L
     lateinit var activityLabel: Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,13 +42,14 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         activityLabel = this
         setContentView(R.layout.activity_inicio)
         if (Controlador.usuario.targetSteps != null) targetSteps = Controlador.usuario.targetSteps!!
-        var today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
-        var lastDay: Int = Controlador.usuario.lastDay
-        var registroPasos: MutableList<Int> = Controlador.usuario.registroPasos
-        var yesterdaySteps: Int = Controlador.usuario.numSteps
+        var tmp_today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
+        var today : Long = tmp_today.toLong()
+        var lastDay: Long = Controlador.usuario.lastDay
+        var registroPasos: MutableList<Long> = Controlador.usuario.registroPasos
+        var yesterdaySteps: Long = Controlador.usuario.numSteps
         var daysToShift = today - lastDay
 
-        if (lastDay == 0){
+        if (lastDay == 0L){
             lastDay = today
             daysToShift = 0
         }
@@ -80,13 +81,14 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         /**
          * Ring graph inside text format to steps instead of percentage
          */
+
         graph.setTextFormatter(ProgressTextFormatter setTextFormatter@{ progress: Float ->
             ""
         })
         var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
         if (percentage >= 100f){
             graph.setProgress(100f, true)
-        } else {
+        } else{
             graph.setProgress(percentage, true)
         }
         findViewById<TextView>(R.id.stepText).text = "${Controlador.usuario.numSteps} steps"
@@ -102,12 +104,12 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     }
 
-    fun shift(int: Int){
+    fun shift(int: Long){
         if (int >= 6){//Si hay que desplazar más de 6 días la lista queda vacía
             Controlador.usuario.registroPasos = mutableListOf(0,0,0,0,0,0)
             Controlador.usuario.numSteps = 0
             return
-        } else if(int == 0){//Si hay que desplazar 0 días salimos de la función
+        } else if(int == 0L){//Si hay que desplazar 0 días salimos de la función
             return
         }
 
@@ -116,7 +118,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         for (i in 0..(int-1)){
             Controlador.usuario.registroPasos.add(0, 0)
         }
-        var temp: MutableList<Int> = mutableListOf()
+        var temp: MutableList<Long> = mutableListOf()
 
         for (i in 0..5){
             temp.add(Controlador.usuario.registroPasos[i])

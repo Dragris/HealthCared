@@ -18,7 +18,7 @@ class Settings : AppCompatActivity() {
     }
 
     fun goBack(view: View){
-        startActivity(Intent(this, Inicio::class.java))
+        startActivity(Intent(this,Inicio::class.java))
         finish()
     }
     fun changeUsername(view: View){

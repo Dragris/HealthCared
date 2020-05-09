@@ -89,9 +89,9 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                 veget = true
             }
             val newUser = Usuario(name, email, password, vegan, veget)
-            newUser.height = height.toInt()
-            newUser.weight = weight.toInt()
-            newUser.targetSteps = date.toInt()
+            newUser.height = height.toLong()
+            newUser.weight = weight.toLong()
+            newUser.targetSteps = date.toLong()
             newUser.gender = spinner
 
             Log.v("SIGNUP MAIL", email)

@@ -1,11 +1,18 @@
 package com.example.healthcared
 
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcared.Modelo.*
 import com.example.healthcared.UI.LogIn
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firestore.v1.FirestoreGrpc
+import java.util.*
 
-object Controlador {
+object Controlador: AppCompatActivity(){
 
 
     /* Ejercicios */
@@ -31,33 +38,84 @@ object Controlador {
     var comidas: MutableCollection<Comida>? =null
 
 
-    fun cargarDatos(){
-
-        TODO()
+    fun cargarDatos() {
         //Implementación de una carga de datos a las listas cuando se haga login
         //Puede ser init de la clase
+        Log.d("Algo", mapOf("Hola" to 0, "quetal" to "mubien").toString())
+
+        var auth: FirebaseAuth = FirebaseAuth.getInstance()
+        var fStore: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+        var userId: String = auth.currentUser?.uid!!
+
+        var documentReference: DocumentReference? = fStore.collection("Users").document(userId)
+        Log.d("User ID", userId)
+
+        if (documentReference != null) {
+            documentReference.get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        var usuario_Map : Map<String, Object> = document.data?.get("userObject") as Map<String, Object>
+
+                        //var tmp_usuario: Usuario? = usuario_Map.get("userObject")
+
+
+                        usuario.fullname = usuario_Map["fullname"] as String
+                        usuario.email = usuario_Map["email"] as String
+                        usuario.gender = usuario_Map["gender"] as String
+                        usuario.password = usuario_Map["password"] as String
+
+                        usuario.targetSteps = usuario_Map["targetSteps"] as Long
+                        usuario.height = usuario_Map["height"] as Long
+                        usuario.weight = usuario_Map["weight"] as Long
+                        usuario.lastDay = usuario_Map["lastDay"] as Long
+                        usuario.cont = usuario_Map["cont"] as Long
+                        usuario.numSteps = usuario_Map["numSteps"] as Long
+                        usuario.rutinas = usuario_Map["rutinas"] as  MutableList<Rutina>
+                        usuario.dietas = usuario_Map["dietas"] as  MutableList<Dieta>
+
+                       Log.d("Username", usuario_Map.toString())
+
+                        //this.usuario = tmp_user
+
+
+                    } else {
+                        Log.d("Error", "No such document")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Error", "get failed with ", exception)
+                }
+
+        }
     }
 
     fun guardarDatos(){
-        //Guardar datos en firebase para el usuario, borrarlos del dispositivo.
+        //Guardar datos en firebase para el usuario.
+         var auth: FirebaseAuth
+         var db : FirebaseFirestore
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        val user = auth.currentUser
+        var userID = user?.uid
+        var documentReference = db.collection("Users").document(userID!!)
+        var userData = mapOf("userObject" to this.usuario)
+        documentReference.set(userData)
     }
 
-    fun mockUp(){
-        TODO()
-        //Mock up para probar datos y etc.
 
+    override fun onPause(){
+        Log.d("On Pause", "Datos guardados")
+        guardarDatos()
+        super.onPause()
     }
 
+    override fun onResume() {
+        super.onResume()
+        guardarDatos()
+    }
 
-
-  //  fun SinginWuthEmailAndPassword(e:String,x:String,){
-    //    FirebaseAuth.getInstance().signInWithEmailAndPassword(e,x)
-   //         .addOnCompleteListener{
-    //            if(it.isSuccessful){
-
-   //             }
-  //          }
-  //  }
 
     fun initEjercicios(): MutableList<MutableList<Ejercicio>> {
         val pushup = Ejercicio("Push-Ups", "https://www.youtube.com/watch?v=yXuYJtRkmlM", 1)
