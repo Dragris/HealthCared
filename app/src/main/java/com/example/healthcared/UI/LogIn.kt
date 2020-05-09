@@ -53,15 +53,9 @@ class LogIn : AppCompatActivity() {
 
 
             currentUser = auth.currentUser
-
-            if (currentUser?.isEmailVerified!!) {
-                //TODO crear controlador
-
-                //TODO agafar les dades d'usuari del firebase i crear l'usuari al controlador
-
-                val intent = Intent(this, Inicio::class.java)
-                startActivity(intent)
-            }
+            Controlador.cargarDatos()
+            val intent = Intent(this, Inicio::class.java)
+            startActivity(intent)
 
 
         }

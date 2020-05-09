@@ -1,6 +1,7 @@
 package com.example.healthcared
 
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcared.Modelo.*
 import com.example.healthcared.UI.LogIn
 import com.google.firebase.auth.FirebaseAuth
@@ -10,7 +11,7 @@ import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firestore.v1.FirestoreGrpc
 
-object Controlador{
+object Controlador: AppCompatActivity(){
 
 
     /* Ejercicios */
@@ -25,9 +26,6 @@ object Controlador{
     val veget: Dieta = initDieta2()
     val vegan: Dieta = initDieta3()
 
-    val auth: FirebaseAuth? = null
-    var fStore: FirebaseFirestore? = null
-
 
     //Contnedores personales, cargar con log-in
 
@@ -40,12 +38,11 @@ object Controlador{
 
 
     fun cargarDatos() {
-        TODO()
         //Implementación de una carga de datos a las listas cuando se haga login
         //Puede ser init de la clase
 
-        val auth = FirebaseAuth.getInstance()
-        var fStore = FirebaseFirestore.getInstance()
+        var auth: FirebaseAuth = FirebaseAuth.getInstance()
+        var fStore: FirebaseFirestore = FirebaseFirestore.getInstance()
 
         var userId: String = auth.currentUser?.uid!!
 
@@ -56,6 +53,8 @@ object Controlador{
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         var tmp_user : Usuario = document.data?.get("userObject") as Usuario
+
+                        this.usuario = tmp_user
 
                         Log.d("user", "DocumentSnapshot data: ${document.data}")
                     } else {
@@ -70,10 +69,11 @@ object Controlador{
     }
 
     fun guardarDatos(){
-        TODO()
-        //Guardar datos en firebase para el usuario, borrarlos del dispositivo.
+        //Guardar datos en firebase para el usuario.
          var auth: FirebaseAuth
          var db : FirebaseFirestore
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
         val user = auth.currentUser
         var userID = user?.uid
@@ -82,22 +82,18 @@ object Controlador{
         documentReference.set(userData)
     }
 
-    fun mockUp(){
-        TODO()
-        //Mock up para probar datos y etc.
 
+    override fun onPause(){
+        Log.d("On Pause", "Datos guardados")
+        guardarDatos()
+        super.onPause()
     }
 
+    override fun onResume() {
+        super.onResume()
+        guardarDatos()
+    }
 
-
-  //  fun SinginWuthEmailAndPassword(e:String,x:String,){
-    //    FirebaseAuth.getInstance().signInWithEmailAndPassword(e,x)
-   //         .addOnCompleteListener{
-    //            if(it.isSuccessful){
-
-   //             }
-  //          }
-  //  }
 
     fun initEjercicios(): MutableList<MutableList<Ejercicio>> {
         val pushup = Ejercicio("Push-Ups", "https://www.youtube.com/watch?v=yXuYJtRkmlM", 1)
