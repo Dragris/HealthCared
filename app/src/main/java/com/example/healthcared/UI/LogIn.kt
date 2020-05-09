@@ -11,6 +11,7 @@ import com.example.healthcared.Controlador
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import kotlin.concurrent.thread
 
 
 class LogIn : AppCompatActivity() {
@@ -60,6 +61,7 @@ class LogIn : AppCompatActivity() {
             .addOnSuccessListener {
                 currentUser = auth.currentUser
                 Controlador.cargarDatos()
+                Thread.sleep(5000)
                 val intent = Intent(this, Inicio::class.java)
                 startActivity(intent)
             }

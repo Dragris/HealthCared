@@ -10,6 +10,7 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firestore.v1.FirestoreGrpc
+import java.util.*
 
 object Controlador: AppCompatActivity(){
 
@@ -54,19 +55,24 @@ object Controlador: AppCompatActivity(){
             documentReference.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
-                        var usuario_Map : Map<String, Usuario> = document.data?.get("userObject") as Map<String, Usuario>
+                        var usuario_Map : Map<String, Object> = document.data?.get("userObject") as Map<String, Object>
 
-                        /*var tmp_usuario: Usuario =
+                        //var tmp_usuario: Usuario? = usuario_Map.get("userObject")
 
 
-                        var usrFullName :String = usuario_Map[]
-                        var usrMail :String = usuario_Map[]
-                        var usrName :String = usuario_Map[]
+                        usuario.fullname = usuario_Map["fullname"] as String
+                        usuario.email = usuario_Map["email"] as String
+                        usuario.gender = usuario_Map["gender"] as String
+                        usuario.password = usuario_Map["password"] as String
 
-                        var usrHeight :String = usuario_Map[]
-                        var usrName :String = usuario_Map[]
-                        var usrName :String = usuario_Map[]
-                        var usrGender :String = usuario_Map[]*/
+                        usuario.targetSteps = usuario_Map["targetSteps"] as Long
+                        usuario.height = usuario_Map["height"] as Long
+                        usuario.weight = usuario_Map["weight"] as Long
+                        usuario.lastDay = usuario_Map["lastDay"] as Long
+                        usuario.cont = usuario_Map["cont"] as Long
+                        usuario.numSteps = usuario_Map["numSteps"] as Long
+                        usuario.rutinas = usuario_Map["rutinas"] as  MutableList<Rutina>
+                        usuario.dietas = usuario_Map["dietas"] as  MutableList<Dieta>
 
                        Log.d("Username", usuario_Map.toString())
 

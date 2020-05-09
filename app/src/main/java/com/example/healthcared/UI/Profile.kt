@@ -29,13 +29,13 @@ class Profile : AppCompatActivity() {
     fun updateH(view: View){
         var height = findViewById<EditText>(R.id.email).text.toString()
         if (height != ""){
-            Controlador.usuario.height = height as Int
+            Controlador.usuario.height = height as Long
         }
     }
     fun updateW(view: View){
         var weight = findViewById<EditText>(R.id.fullname).text.toString()
         if (weight != ""){
-            Controlador.usuario.height = weight as Int
+            Controlador.usuario.height = weight as Long
         }
     }
 

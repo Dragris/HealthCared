@@ -5,21 +5,21 @@ import com.example.healthcared.Controlador
 
 class Usuario(Fullname:String,_Email:String,_Password:String,vegan: Boolean, veget: Boolean) {
 
-    var cont = 1
+    var cont : Long = 1
     var dietas: MutableList<Dieta> = mutableListOf()
     var rutinas: MutableList<Rutina> = mutableListOf()
-    var lastDay: Int = 0
-    var registroPasos: MutableList<Int> = mutableListOf(0,0,0,0,0,0)
-    var numSteps: Int = 0
+    var lastDay: Long = 0
+    var registroPasos: MutableList<Long> = mutableListOf(0,0,0,0,0,0)
+    var numSteps: Long = 0
 
     //variables del Usuiaro
     var password : String? = null
     var fullname :String? = null
     var email :String? =null
     var gender : String? = null
-    var targetSteps : Int ? = null
-    var height : Int ? = null
-    var weight : Int? = null
+    var targetSteps : Long? = null
+    var height : Long ? = null
+    var weight : Long? = null
 
 
 
