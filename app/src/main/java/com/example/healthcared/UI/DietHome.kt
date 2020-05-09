@@ -28,9 +28,15 @@ class DietHome : AppCompatActivity() {
         textView.text = "REMEMBER!"
         text2.text = "This diets are just recomendations"
         textView.gravity = android.view.Gravity.CENTER
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
         text2.gravity = android.view.Gravity.CENTER
-        layout.addView(textView)
-        layout.addView(text2)
+        text2.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+        val parametros = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT)
+        parametros.setMargins(0,0,0,50)
+        layout.addView(textView, parametros)
+        layout.addView(text2, parametros)
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT)
