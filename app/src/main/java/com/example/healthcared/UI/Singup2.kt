@@ -112,15 +112,19 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         startActivity(intent)
                     } else {
                         Log.w("createUserWithEmail", task.exception)
+                        val string = task.exception.toString()
+                        val index = string.indexOf(':')
+                        val domain: String? = if (index == -1) null else string.substring(index + 1)
                         Toast.makeText(
-                            baseContext, "Authentication failed.",
-                            Toast.LENGTH_SHORT
+                            baseContext, domain,
+                            Toast.LENGTH_LONG
                         ).show()
                         findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
                         findViewById<ProgressBar>(R.id.misTetas).visibility = View.INVISIBLE
 
                     }
                 }
+                .addOnFailureListener { e -> Toast.makeText(baseContext, e.toString(), Toast.LENGTH_LONG) }
 
         }
     }

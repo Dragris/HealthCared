@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.healthcared.Controlador
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 
@@ -34,6 +35,9 @@ class Settings : AppCompatActivity() {
         //Faq.
     }
     fun signOut(view: View){
+
+
+        Controlador.guardarDatos()
         FirebaseAuth.getInstance().signOut()
         startActivity(Intent(this,LogIn::class.java))
     }
