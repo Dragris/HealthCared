@@ -56,7 +56,7 @@ class DietHome : AppCompatActivity() {
                 name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 texts.addView(name)
             } else if (i == 2) {
-                name.text = "Lucnh"
+                name.text = "Lunch"
                 name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 texts.addView(name)
             } else {
@@ -66,7 +66,9 @@ class DietHome : AppCompatActivity() {
             }
             for (j in dietas){
                 for (z in j){
-                    if (z.time == i && z.dia == dia+1) {
+                    var auxi: Long = i.toLong()
+                    var auxDia: Long = (dia + 1).toLong()
+                    if (z.time == auxi && z.dia == auxDia) {
                         val food = TextView(this)
                         food.text = z.foodName
                         food.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)

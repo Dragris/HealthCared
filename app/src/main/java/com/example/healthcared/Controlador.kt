@@ -56,10 +56,6 @@ object Controlador: AppCompatActivity(){
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         var usuario_Map : Map<String, Object> = document.data?.get("userObject") as Map<String, Object>
-
-                        //var tmp_usuario: Usuario? = usuario_Map.get("userObject")
-
-
                         usuario.fullname = usuario_Map["fullname"] as String
                         usuario.email = usuario_Map["email"] as String
                         usuario.gender = usuario_Map["gender"] as String
@@ -71,12 +67,33 @@ object Controlador: AppCompatActivity(){
                         usuario.lastDay = usuario_Map["lastDay"] as Long
                         usuario.cont = usuario_Map["cont"] as Long
                         usuario.numSteps = usuario_Map["numSteps"] as Long
-                        usuario.rutinas = usuario_Map["rutinas"] as  MutableList<Rutina>
-                        usuario.dietas = usuario_Map["dietas"] as  MutableList<Dieta>
+                        usuario.registroPasos = usuario_Map["registroPasos"] as MutableList<Long>
+                        var dietas = usuario_Map["dietas"] as List<*>
+                        Log.d("DEBUGTHINGY", usuario.dietas.toString())
+                        Log.d("DEBUGTHINGY 2", usuario.registroPasos.toString())
+                        Log.d("Username", usuario_Map.toString())
 
-                       Log.d("Username", usuario_Map.toString())
+                        usuario.dietas = mutableListOf()
+                        for (dieta in 0 until dietas.size){
+                            var tmpcomidas = dietas[dieta] as Map<*, *>
+                            var comidas = tmpcomidas["comidas"] as List<*>
+                            var auxComidas = mutableListOf<Comida>()
+                            Log.d("Comidas", comidas.toString())
+                            for (comida in 0 until comidas.size){
+                                var aux = comidas[comida] as Map<*, *>
+                                Log.d("Comida", aux.toString())
+                                auxComidas.add(
+                                    Comida(aux["foodName"] as String,
+                                    aux["time"] as Long,
+                                    aux["recipeLink"] as String,
+                                    aux["dia"] as Long))
+                            }
+                            var aux = dietas[dieta] as Map<*, *>
+                            usuario.dietas.add(Dieta(aux["name"] as String, auxComidas))
+                        }
 
-                        //this.usuario = tmp_user
+                        var rutinas = usuario_Map["rutinas"]
+
 
 
                     } else {

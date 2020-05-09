@@ -1,17 +1,16 @@
 package com.example.healthcared.UI
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.core.view.isInvisible
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcared.Controlador
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlin.concurrent.thread
 
 
 class LogIn : AppCompatActivity() {
@@ -61,9 +60,11 @@ class LogIn : AppCompatActivity() {
             .addOnSuccessListener {
                 currentUser = auth.currentUser
                 Controlador.cargarDatos()
-                Thread.sleep(5000)
-                val intent = Intent(this, Inicio::class.java)
-                startActivity(intent)
+                val handler = Handler()
+                handler.postDelayed(Runnable {
+                    val intent = Intent(this, Inicio::class.java)
+                    startActivity(intent)
+                }, 1000)
             }
             .addOnFailureListener {
                 Toast.makeText(baseContext,"Log-In failed",Toast.LENGTH_SHORT).show()
