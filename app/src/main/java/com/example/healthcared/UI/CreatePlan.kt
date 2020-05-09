@@ -71,8 +71,10 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val toast = Toast.makeText(applicationContext, "You already have a routine with that name", Toast.LENGTH_LONG)
             toast.show()
         } else {
-            var daysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
-            var skill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1
+            var auxdaysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
+            var daysxweek: Long = auxdaysxweek.toLong()
+            var auxskill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1 as Int
+            var skill: Long = auxskill.toLong()
             var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
             Controlador.usuario.rutinas.add(rutina)
             val intent = Intent(this, ProgressBar::class.java)
@@ -84,7 +86,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     fun planNameExists(name: String): Boolean { //True -> Si existe, False -> No existe
         for (i in Controlador.usuario.rutinas){
-            if (i.rutinaName == name && i.difficulty != 0){
+            if (i.rutinaName == name && i.difficulty != 0L){
                 return true
             }
         }
