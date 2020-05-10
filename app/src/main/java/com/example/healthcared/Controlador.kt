@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcared.Modelo.*
 import com.example.healthcared.UI.LogIn
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.*
 import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firestore.v1.FirestoreGrpc
 import java.util.*
 
@@ -220,6 +218,7 @@ object Controlador: AppCompatActivity(){
         var documentReference = db.collection("Users").document(userID!!)
         var userData = mapOf("userObject" to usuario)
         documentReference.set(userData)
+        documentReference.update("numSteps", usuario.numSteps)
     }
 
     fun updateUserSteps(steps:Long){
@@ -228,7 +227,7 @@ object Controlador: AppCompatActivity(){
         val user = auth.currentUser
         var userID = user?.uid
         var ref = db.collection("Users").document(userID!!)
-        ref.update("numSteps", steps)
+        ref.update("userObject.numSteps", steps)
     }
 
     fun updateUser(){
@@ -246,10 +245,11 @@ object Controlador: AppCompatActivity(){
         super.onPause()
     }
 
+    /*
     override fun onResume() {
         super.onResume()
         guardarDatos()
-    }
+    }*/
 
 
     fun initEjercicios(): MutableList<MutableList<Ejercicio>> {

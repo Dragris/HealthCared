@@ -11,6 +11,7 @@ import com.example.healthcared.Controlador
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import java.lang.Exception
 
 
 class LogIn : AppCompatActivity() {
@@ -67,7 +68,10 @@ class LogIn : AppCompatActivity() {
                 }, 1000)
             }
             .addOnFailureListener {
-                Toast.makeText(baseContext,"Log-In failed",Toast.LENGTH_SHORT).show()
+                val string = it.toString()
+                var index = string.indexOf(':')
+                val domain: String? = if (index == -1) null else string.substring(index + 1)
+                Toast.makeText(baseContext, domain,Toast.LENGTH_SHORT).show()
                 updateUI(null)
                 findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
                 findViewById<TextView>(R.id.sign_up).visibility = View.VISIBLE
