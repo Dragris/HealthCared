@@ -30,12 +30,14 @@ class Profile : AppCompatActivity() {
         var height = findViewById<EditText>(R.id.email).text.toString()
         if (height != ""){
             Controlador.usuario.height = height as Long
+            Controlador.updateUser()
         }
     }
     fun updateW(view: View){
         var weight = findViewById<EditText>(R.id.fullname).text.toString()
         if (weight != ""){
             Controlador.usuario.height = weight as Long
+            Controlador.updateUser()
         }
     }
 
@@ -55,6 +57,7 @@ class Profile : AppCompatActivity() {
             } else {
                 Controlador.usuario.dietas.add(Controlador.vegan)
             }
+            Controlador.updateUser()
         }
     }
 

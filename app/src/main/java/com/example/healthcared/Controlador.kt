@@ -222,6 +222,23 @@ object Controlador: AppCompatActivity(){
         documentReference.set(userData)
     }
 
+    fun updateUserSteps(steps:Long){
+        var auth: FirebaseAuth = FirebaseAuth.getInstance()
+        var db : FirebaseFirestore = FirebaseFirestore.getInstance()
+        val user = auth.currentUser
+        var userID = user?.uid
+        var ref = db.collection("Users").document(userID!!)
+        ref.update("numSteps", steps)
+    }
+
+    fun updateUser(){
+        var auth: FirebaseAuth = FirebaseAuth.getInstance()
+        var db : FirebaseFirestore = FirebaseFirestore.getInstance()
+        val user = auth.currentUser
+        var userID = user?.uid
+        var ref = db.collection("Users").document(userID!!)
+        ref.update("userObject", usuario)
+    }
 
     override fun onPause(){
         Log.d("On Pause", "Datos guardados")

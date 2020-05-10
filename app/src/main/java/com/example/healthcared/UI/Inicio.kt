@@ -271,6 +271,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     override fun step(timeNs: Long) {
         Controlador.usuario.numSteps++
+        Controlador.updateUserSteps(Controlador.usuario.numSteps)
         Log.v("STEPS", Controlador.usuario.numSteps.toString())
         var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
 

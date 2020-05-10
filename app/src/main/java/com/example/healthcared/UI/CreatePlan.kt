@@ -80,6 +80,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             val intent = Intent(this, ProgressBar::class.java)
             intent.putExtra("title", "Creating Workout Routine")
             startActivity(intent)
+            Controlador.updateUser()
             finish()
         }
     }
