@@ -115,7 +115,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
         Controlador.usuario.registroPasos.add(0, Controlador.usuario.numSteps)
         //Adding to list
-        for (i in 0..(int-1)){
+        for (i in 1..(int-1)){
             Controlador.usuario.registroPasos.add(0, 0)
         }
         var temp: MutableList<Long> = mutableListOf()

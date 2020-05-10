@@ -13,7 +13,7 @@ android {
         multiDexEnabled true
         targetSdkVersion 29
         versionCode 1
-        versionName "0.1"
+        versionName "0.1.2"
         setProperty("archivesBaseName", "HealthCared-$versionName")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
