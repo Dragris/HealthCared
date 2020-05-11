@@ -139,7 +139,7 @@ object Controlador: AppCompatActivity(){
                                 var lista4 = mutableListOf<Ejercicio>()
                                 var lista4DB = thisRutina["lista4"] as List<*>
                                 for(ejercicio in 0 until lista4DB.size){
-                                    var eje = lista1DB[ejercicio] as Map<*, *>
+                                    var eje = lista4DB[ejercicio] as Map<*, *>
                                     lista4.add(Ejercicio(
                                         eje["exerciceName"] as String,
                                         eje["youtubeLink"] as String,
@@ -161,7 +161,7 @@ object Controlador: AppCompatActivity(){
                                 var lista6 = mutableListOf<Ejercicio>()
                                 var lista6DB = thisRutina["lista6"] as List<*>
                                 for(ejercicio in 0 until lista6DB.size){
-                                    var eje = lista1DB[ejercicio] as Map<*, *>
+                                    var eje = lista6DB[ejercicio] as Map<*, *>
                                     lista6.add(Ejercicio(
                                         eje["exerciceName"] as String,
                                         eje["youtubeLink"] as String,
@@ -218,7 +218,6 @@ object Controlador: AppCompatActivity(){
         var documentReference = db.collection("Users").document(userID!!)
         var userData = mapOf("userObject" to usuario)
         documentReference.set(userData)
-        documentReference.update("numSteps", usuario.numSteps)
     }
 
     fun updateUserSteps(steps:Long){
@@ -245,11 +244,11 @@ object Controlador: AppCompatActivity(){
         super.onPause()
     }
 
-    /*
+
     override fun onResume() {
         super.onResume()
-        guardarDatos()
-    }*/
+        updateUser()
+    }
 
 
     fun initEjercicios(): MutableList<MutableList<Ejercicio>> {

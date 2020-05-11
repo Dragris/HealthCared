@@ -16,9 +16,6 @@ lateinit var handler : Handler
         handler.postDelayed({
             val intent = Intent(this, LogIn::class.java)
             startActivity(intent)
-            //TODO incluir las cargas de contenido incial
-            //Uncomment controller in case of non initialization error
-            //Controlador
             finish()
         }, 3000)
 
