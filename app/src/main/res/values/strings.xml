@@ -11,9 +11,10 @@
     <string name="full_name">Full Name</string>
     <string name="repeat_psw">Repeat Password</string>
     <string name="terms"><u>Terms of Use &amp; Privacy Policy</u></string>
-    <string name="birth">Your Daily Step Objective</string>
+    <string name="birth">Your Daily Step Goal</string>
     <string name="weight">Weight (kg)</string>
     <string name="height">Height (cm)</string>
+
 
     <!-- History activity -->
     <string name="history_title">History</string>
@@ -79,6 +80,7 @@
     <string name="personal_info_title">Personal information</string>
     <string name="personal_settings1">Update Weight</string>
     <string name="personal_settings2">Update Height</string>
+    <string name="personal_settings_maxSteps">Update Step goal</string>
     <string name="dieta">Update Diet</string>
     <string name="dieta_normal">Normal Diet</string>
     <string name="dieta_veggie">Vegetarian Diet</string>

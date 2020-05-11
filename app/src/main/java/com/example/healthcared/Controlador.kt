@@ -29,7 +29,7 @@ object Controlador: AppCompatActivity(){
     //Contnedores personales, cargar con log-in
 
     var usuario: Usuario = Usuario("Random", "Random", "Random", false, false)  //En caso de ser necesario mantener qué usuario es el que está conectado
-    var pasos: MutableCollection<Int>? =null
+    private var tmpMaxSteps: Long = 0
 
     //Contenedores de la app, cargar con inicio de la app
     var ejercicios: MutableCollection<Ejercicio>? =null
@@ -60,6 +60,8 @@ object Controlador: AppCompatActivity(){
                         usuario.password = usuario_Map["password"] as String
 
                         usuario.targetSteps = usuario_Map["targetSteps"] as Long
+                        tmpMaxSteps = usuario_Map["targetSteps"] as Long
+
                         usuario.height = usuario_Map["height"] as Long
                         usuario.weight = usuario_Map["weight"] as Long
                         usuario.lastDay = usuario_Map["lastDay"] as Long
@@ -191,8 +193,6 @@ object Controlador: AppCompatActivity(){
                             usuario.rutinas = auxRutina
                         }
 
-                        Log.d("Rutinas", rutinas.toString())
-
 
                     } else {
                         Log.d("Error", "No such document")
@@ -216,7 +216,16 @@ object Controlador: AppCompatActivity(){
         val user = auth.currentUser
         var userID = user?.uid
         var documentReference = db.collection("Users").document(userID!!)
-        var userData = mapOf("userObject" to usuario)
+        var tmpUsuario = usuario
+
+        /**
+         * Update maxSteps in next restart
+         */
+        if(usuario.targetSteps != tmpMaxSteps){
+            tmpUsuario.targetSteps = tmpMaxSteps
+        }
+
+        var userData = mapOf("userObject" to tmpUsuario)
         documentReference.set(userData)
     }
 
@@ -227,6 +236,10 @@ object Controlador: AppCompatActivity(){
         var userID = user?.uid
         var ref = db.collection("Users").document(userID!!)
         ref.update("userObject.numSteps", steps)
+    }
+
+    fun updateUserMaxSteps(steps: Long){
+        tmpMaxSteps = steps
     }
 
     fun updateUser(){

@@ -28,6 +28,7 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.ramijemli.percentagechartview.callback.ProgressTextFormatter
 import kotlinx.android.synthetic.main.activity_inicio.*
+import java.lang.Exception
 import java.util.*
 
 class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
@@ -146,12 +147,17 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     override fun onResume() {
         super.onResume()
         //Little resume animation
-        var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
-        graph.setProgress(percentage * 0.3f, false)
-        if (percentage >= 100f){
-            graph.setProgress(100f, false)
-        }else {
-            graph.setProgress(percentage, false)
+        try {
+            var percentage: Float =
+                ((Controlador.usuario.numSteps.toFloat() / targetSteps.toFloat() * 100.0).toFloat())
+            graph.setProgress(percentage * 0.3f, false)
+            if (percentage >= 100f) {
+                graph.setProgress(100f, false)
+            } else {
+                graph.setProgress(percentage, false)
+            }
+        } catch (e: Exception){
+            Log.d("INICIO", e.toString())
         }
     }
 
@@ -272,9 +278,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     override fun step(timeNs: Long) {
         Controlador.usuario.numSteps++
         Controlador.updateUserSteps(Controlador.usuario.numSteps)
-        Log.v("STEPS", Controlador.usuario.numSteps.toString())
         var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
-
         if (percentage >= 100f){
             graph.setProgress(100f, false)
         } else {
