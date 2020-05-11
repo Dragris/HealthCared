@@ -3,6 +3,7 @@ package com.example.healthcared.UI
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.text.BoringLayout
 import android.util.Log
 import android.view.View
 import android.widget.*
@@ -23,6 +24,23 @@ class LogIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+
+        /**
+         * Comes from successful register
+         */
+        try {
+            var boolean: String = intent.getStringExtra("register") as String
+            if (boolean == "yes") {
+                Toast.makeText(
+                    baseContext, "Successfully registered",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        } catch (e: Exception){
+            //Do nothing
+        }
+
+
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         auth.signOut()
