@@ -157,7 +157,6 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
                 graph.setProgress(percentage, false)
             }
         } catch (e: Exception){
-            Log.d("INICIO", e.toString())
         }
     }
 
@@ -203,13 +202,6 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         finish()
     }
 
-    fun pause(view: View) {
-        // Funcion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
-        //var rutina = Rutina("GG", 1, "Toy Gordo", 5)
-        for (i in 0..(Controlador.usuario.rutinas.size-1)) {
-            Log.v("sgfd", Controlador.usuario.rutinas[i].rutinaName)
-        }
-    }
 
 
     /**

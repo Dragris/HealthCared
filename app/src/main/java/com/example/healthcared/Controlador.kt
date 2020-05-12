@@ -39,7 +39,6 @@ object Controlador: AppCompatActivity(){
     fun cargarDatos() {
         //Implementación de una carga de datos a las listas cuando se haga login
         //Puede ser init de la clase
-        Log.d("Algo", mapOf("Hola" to 0, "quetal" to "mubien").toString())
 
         var auth: FirebaseAuth = FirebaseAuth.getInstance()
         var fStore: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -47,7 +46,6 @@ object Controlador: AppCompatActivity(){
         var userId: String = auth.currentUser?.uid!!
 
         var documentReference: DocumentReference? = fStore.collection("Users").document(userId)
-        Log.d("User ID", userId)
 
         if (documentReference != null) {
             documentReference.get()
@@ -70,19 +68,14 @@ object Controlador: AppCompatActivity(){
                         usuario.registroPasos = usuario_Map["registroPasos"] as MutableList<Long>
                         var rutinas = usuario_Map["rutinas"] as List<*>
                         var dietas = usuario_Map["dietas"] as List<*>
-                        Log.d("DEBUGTHINGY", usuario.dietas.toString())
-                        Log.d("DEBUGTHINGY 2", usuario.registroPasos.toString())
-                        Log.d("Username", usuario_Map.toString())
 
                         usuario.dietas = mutableListOf()
                         for (dieta in 0 until dietas.size){
                             var tmpcomidas = dietas[dieta] as Map<*, *>
                             var comidas = tmpcomidas["comidas"] as List<*>
                             var auxComidas = mutableListOf<Comida>()
-                            Log.d("Comidas", comidas.toString())
                             for (comida in 0 until comidas.size){
                                 var aux = comidas[comida] as Map<*, *>
-                                Log.d("Comida", aux.toString())
                                 auxComidas.add(
                                     Comida(aux["foodName"] as String,
                                     aux["time"] as Long,
@@ -207,7 +200,6 @@ object Controlador: AppCompatActivity(){
 
     fun guardarDatos(){
         //Guardar datos en firebase para el usuario.
-        Log.d("Guardar", usuario.rutinas.toString())
         var auth: FirebaseAuth
         var db : FirebaseFirestore
         auth = FirebaseAuth.getInstance()
@@ -252,7 +244,6 @@ object Controlador: AppCompatActivity(){
     }
 
     override fun onPause(){
-        Log.d("On Pause", "Datos guardados")
         guardarDatos()
         super.onPause()
     }
