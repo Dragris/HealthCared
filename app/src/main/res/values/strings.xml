@@ -37,7 +37,7 @@
     <string name="current_ex">Current Exercise</string>
     <string name="next_ex">Next Exercise</string>
     <string name="timer">Timer</string>
-    <string name="pause">Pause</string>
+    <string name="pause">Start</string>
     <string name="resume">Resume</string>
     <string name="finish">Finish</string>
     <string name="next">Next</string>

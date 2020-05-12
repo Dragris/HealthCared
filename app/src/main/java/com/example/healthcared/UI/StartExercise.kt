@@ -20,7 +20,6 @@ class StartExercise : AppCompatActivity() {
         workout_title.text = title
         val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
         timer.base = SystemClock.elapsedRealtime()
-        timer.start()
     }
 
     fun goBack(view: View){
@@ -35,7 +34,7 @@ class StartExercise : AppCompatActivity() {
     fun pauseTimer(view: View){
         val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
         val button = findViewById<Button>(R.id.pause)
-        if (button.text == "Pause"){
+        if (button.text == "Pause") {
             time = timer.base - SystemClock.elapsedRealtime()
             timer.stop()
             button.text = "Resume"
@@ -52,6 +51,7 @@ class StartExercise : AppCompatActivity() {
         timer.stop()
         timer.base = SystemClock.elapsedRealtime()
         button.text = "Start"
+        time = 0
         //Finish routine
     }
 }

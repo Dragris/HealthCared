@@ -6,8 +6,10 @@ import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MotionEvent
 import android.view.View
 import android.widget.*
+import androidx.lifecycle.whenCreated
 import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.Rutina
 import com.example.healthcared.R
@@ -27,6 +29,7 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val arrayAdapter =  ArrayAdapter(this, android.R.layout.simple_spinner_item, days)
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinner_days!!.setAdapter(arrayAdapter)
+
     }
 
     fun goBack(view: View){
@@ -45,43 +48,48 @@ class CreatePlan : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         //THINGS
     }
 
-    fun changeOb(view: View){
-        //TODO que cambien de color los botones
-        var button = view as Button
-        button.isFocused
-        var name: String = button.text.toString()
-        if (name == "Lose Weight")  { objectiveTitle = "Toy Gordo" }
-        else if (name == "Cardio/Tonify") { objectiveTitle = "Cardio" }
-        else if (name == "Gain Strenght") { objectiveTitle = "Fuelsa" }
-        else { objectiveTitle = "Toy Mamadisimo" }
-    }
-
-    fun addPlan(view: View){
-
+    fun addPlan(view: View) {
         var name: String
-
-        if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == ""){
-            name = "Plan " + Controlador.usuario.cont.toString()
-            Controlador.usuario.cont += 1
+        val group = findViewById<RadioGroup>(R.id.group)
+        val objID = group.checkedRadioButtonId
+        if (objID == -1) {
+            Toast.makeText(baseContext, "Please select an objective", Toast.LENGTH_SHORT)
         } else {
-            name = findViewById<EditText>(R.id.plan_name_creator).text.toString()
-        }
+            val radioButton: RadioButton = findViewById(objID)
+            when (group.indexOfChild(radioButton)) {
+                0 -> objectiveTitle = "Toy Gordo"
+                1 -> objectiveTitle = "Cardio"
+                2 -> objectiveTitle = "Fuelsa"
+                3 -> objectiveTitle = "Mamadisimo"
+            }
 
-        if (planNameExists(name)) {
-            val toast = Toast.makeText(applicationContext, "You already have a routine with that name", Toast.LENGTH_LONG)
-            toast.show()
-        } else {
-            var auxdaysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
-            var daysxweek: Long = auxdaysxweek.toLong()
-            var auxskill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1 as Int
-            var skill: Long = auxskill.toLong()
-            var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
-            Controlador.usuario.rutinas.add(rutina)
-            val intent = Intent(this, ProgressBar::class.java)
-            intent.putExtra("title", "Creating Workout Routine")
-            startActivity(intent)
-            Controlador.updateUser()
-            finish()
+            if (findViewById<EditText>(R.id.plan_name_creator).text.toString() == "") {
+                name = "Plan " + Controlador.usuario.cont.toString()
+                Controlador.usuario.cont += 1
+            } else {
+                name = findViewById<EditText>(R.id.plan_name_creator).text.toString()
+            }
+
+            if (planNameExists(name)) {
+                val toast = Toast.makeText(
+                    applicationContext,
+                    "You already have a routine with that name",
+                    Toast.LENGTH_LONG
+                )
+                toast.show()
+            } else {
+                var auxdaysxweek: Int = findViewById<Spinner>(R.id.spinner_days).selectedItem as Int
+                var daysxweek: Long = auxdaysxweek.toLong()
+                var auxskill: Int = findViewById<SeekBar>(R.id.seekBar).progress + 1 as Int
+                var skill: Long = auxskill.toLong()
+                var rutina = Rutina(name, skill, objectiveTitle, daysxweek)
+                Controlador.usuario.rutinas.add(rutina)
+                val intent = Intent(this, ProgressBar::class.java)
+                intent.putExtra("title", "Creating Workout Routine")
+                startActivity(intent)
+                Controlador.updateUser()
+                finish()
+            }
         }
     }
 

@@ -233,7 +233,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     fun pauseTimer(view: View){
         val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
         val button = findViewById<Button>(R.id.pause)
-        if (button.text == "Pause"){
+        if (button.text == "Pause") {
             time = timer.base - SystemClock.elapsedRealtime()
             timer.stop()
             button.text = "Resume"
@@ -250,6 +250,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         timer.stop()
         timer.base = SystemClock.elapsedRealtime()
         button.text = "Start"
+        time = 0
         //Finish routine
     }
 
