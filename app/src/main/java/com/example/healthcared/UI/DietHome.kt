@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.widget.*
+import androidx.core.view.marginTop
 import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.Comida
 import com.example.healthcared.R
@@ -92,7 +93,15 @@ class DietHome : AppCompatActivity() {
             parent.addView(texts)
             layout.addView(parent, params)
         }
-
+        var tomorrowText: TextView = TextView(this)
+        tomorrowText.text = "Come back tomorrow to see new dishes!"
+        var parametro = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT)
+        parametro.setMargins(0,30,0,0)
+        tomorrowText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+        tomorrowText.gravity = android.view.Gravity.CENTER
+        layout.addView(tomorrowText, parametro)
 
     }
 

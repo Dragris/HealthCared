@@ -83,6 +83,15 @@ class PlanPreview : AppCompatActivity() {
             parent.addView(texts)
             layout.addView(parent, params)
         }
+        var tomorrowText: TextView = TextView(this)
+        tomorrowText.text = "Come back tomorrow to see what's your next workout!"
+        var parametro = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT)
+        parametro.setMargins(0,30,0,0)
+        tomorrowText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+        tomorrowText.gravity = android.view.Gravity.CENTER
+        layout.addView(tomorrowText, parametro)
     }
 
     fun goBack(view: View) {
