@@ -43,6 +43,12 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         activityLabel = this
         setContentView(R.layout.activity_inicio)
         if (Controlador.usuario.targetSteps != null) targetSteps = Controlador.usuario.targetSteps!!
+        try{
+            var steps = intent.getLongExtra("steps", 0)
+            Controlador.usuario.numSteps += steps
+        }catch (e :Exception){
+            //Pass
+        }
         var tmp_today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
         var today : Long = tmp_today.toLong()
         var lastDay: Long = Controlador.usuario.lastDay
