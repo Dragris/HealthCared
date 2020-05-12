@@ -31,7 +31,7 @@ class Profile : AppCompatActivity() {
     fun updateH(view: View){
         var height = findViewById<EditText>(R.id.email).text.toString()
         if (height != ""){
-            Controlador.usuario.height = height as Long
+            Controlador.usuario.height = height.toLong()
             Controlador.updateUser()
             Toast.makeText(this, "Changes will be applied in next restart", Toast.LENGTH_LONG).show()
         }
@@ -39,7 +39,7 @@ class Profile : AppCompatActivity() {
     fun updateW(view: View){
         var weight = findViewById<EditText>(R.id.fullname).text.toString()
         if (weight != ""){
-            Controlador.usuario.weight = weight as Long
+            Controlador.usuario.weight = weight.toLong()
             Controlador.updateUser()
             Toast.makeText(this, "Changes will be applied in next restart", Toast.LENGTH_LONG).show()
         }

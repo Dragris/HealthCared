@@ -59,7 +59,8 @@
             android:background="@drawable/button_shape"
             android:textSize="@dimen/header_text"
             android:text="@string/setting3"
-            android:layout_marginBottom="@dimen/margin2"/>
+            android:layout_marginBottom="@dimen/margin2"
+            android:onClick="goSupport"/>
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
@@ -68,7 +69,8 @@
             android:background="@drawable/button_shape"
             android:textSize="@dimen/header_text"
             android:text="@string/setting4"
-            android:layout_marginBottom="@dimen/margin2"/>
+            android:layout_marginBottom="@dimen/margin2"
+            android:onClick="goFaq"/>
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"

@@ -8,6 +8,8 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.os.*
 import android.view.View
+import android.widget.Button
+import android.widget.Chronometer
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.example.healthcared.R
@@ -28,6 +30,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     private lateinit var locationCallback: LocationCallback
     private var locationRequest: LocationRequest? = null
     private var locationUpdateState = false
+    var time: Long = 0
 
     companion object{
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1138
@@ -52,6 +55,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(p0: LocationResult) {
                 super.onLocationResult(p0)
@@ -68,6 +72,8 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
+        timer.base = SystemClock.elapsedRealtime()
     }
 
 
@@ -198,6 +204,33 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     fun settings(view: View) {
         val intent = Intent(this, Settings::class.java)
         startActivity(intent)
+    }
+
+
+    /**
+     * Funciones chrono
+     */
+    fun pauseTimer(view: View){
+        val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
+        val button = findViewById<Button>(R.id.pause)
+        if (button.text == "Pause"){
+            time = timer.base - SystemClock.elapsedRealtime()
+            timer.stop()
+            button.text = "Resume"
+        } else {
+            timer.base = time + SystemClock.elapsedRealtime()
+            timer.start()
+            button.text = "Pause"
+        }
+    }
+
+    fun finishTimer(view: View){
+        val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
+        val button = findViewById<Button>(R.id.pause)
+        timer.stop()
+        timer.base = SystemClock.elapsedRealtime()
+        button.text = "Start"
+        //Finish routine
     }
 }
 

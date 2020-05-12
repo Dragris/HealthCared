@@ -26,7 +26,7 @@ class DietHome : AppCompatActivity() {
         val textView = TextView(this)
         val text2 = TextView(this)
         textView.text = "REMEMBER!"
-        text2.text = "This diets are just recomendations"
+        text2.text = "These diets are just recommendations"
         textView.gravity = android.view.Gravity.CENTER
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
         text2.gravity = android.view.Gravity.CENTER

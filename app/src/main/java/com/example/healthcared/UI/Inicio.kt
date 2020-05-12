@@ -35,7 +35,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
-    private var targetSteps = 10L
+    private var targetSteps = 1000L
     lateinit var activityLabel: Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {

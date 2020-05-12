@@ -1,6 +1,7 @@
 package com.example.healthcared.UI
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -25,21 +26,19 @@ class Settings : AppCompatActivity() {
         startActivity(Intent(this,Inicio::class.java))
         finish()
     }
-    fun changeUsername(view: View){
-        //Change Username.
-    }
-    fun changePassword(view: View){
-        //Change Password.
-    }
-    fun changeDiet(view: View){
-        //Change diet
-    }
 
     fun goSupport(view: View){
-        //Support.
+        var lista = arrayOf("support@healthcared.com")
+        var intent = Intent(Intent.ACTION_SEND)
+        intent.putExtra(Intent.EXTRA_EMAIL, lista)
+        intent.type = "plain/text"
+        startActivity(Intent.createChooser(intent, "Choose an application"))
     }
     fun goFaq(view: View){
-        //Faq.
+        var link = "https://ubarcelona-my.sharepoint.com/:w:/g/personal/dlopezad7_alumnes_ub_edu/EUKfLg0-0KBNjT8hssqPusQBX9W2YXyn2BieUyq52TulKQ?e=Efzkxu"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+        startActivity(intent)
+
     }
     fun signOut(view: View){
         Controlador.guardarDatos()
