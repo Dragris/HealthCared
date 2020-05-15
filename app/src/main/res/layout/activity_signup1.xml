@@ -82,7 +82,7 @@
             android:layout_marginBottom="@dimen/margin2"
             android:inputType="textPassword"/>
         <EditText
-            android:textColor="@color/transparency_white"
+            android:textColor="@color/colorWhite"
             android:id="@+id/password_repeat"
             android:layout_width="match_parent"
             android:layout_height="@dimen/textbox_height"

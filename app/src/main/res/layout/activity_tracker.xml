@@ -61,24 +61,101 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <ScrollView
         android:layout_below="@id/toolbar_workout"
-        android:paddingBottom="@dimen/bot_margin"
-        android:layout_marginTop="@dimen/side_margin"
-        android:paddingHorizontal="@dimen/side_margin">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:map="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/map"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/gradient"
-            tools:context=".UI.Tracker"/>
-    </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="50"
+            android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/toolbar_workout"
+                android:layout_marginTop="@dimen/side_margin"
+                android:paddingHorizontal="@dimen/side_margin"
+                android:id="@+id/NIGGA"
+                android:layout_weight="20">
+
+                <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                    xmlns:map="http://schemas.android.com/apk/res-auto"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp"
+                    android:background="@drawable/gradient"
+                    android:layout_marginBottom="@dimen/default_gap"
+                    android:layout_marginHorizontal="@dimen/default_gap"
+                    tools:context=".UI.Tracker"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_below="@id/NIGGA"
+                android:layout_centerInParent="true"
+                android:layout_weight="10">
+
+                <TextView
+                    android:id="@+id/timer_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/timer"
+                    android:textSize="@dimen/header_text" />
+
+                <Chronometer
+                    android:id="@+id/chrono"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/timer_text"
+                    android:layout_marginTop="30dp"
+                    android:textSize="@dimen/header_text" />
+
+                <Button
+                    android:id="@+id/pause"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/buton_pading"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/timer_text"
+                    android:layout_marginLeft="@dimen/separation"
+                    android:layout_toRightOf="@id/timer_text"
+                    android:background="@drawable/button_shape"
+                    android:onClick="pauseTimer"
+                    android:text="@string/pause"
+                    android:textSize="@dimen/small_text" />
+
+                <Button
+                    android:id="@+id/finish"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="@dimen/buton_pading"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pause"
+                    android:layout_alignBaseline="@id/chrono"
+                    android:layout_alignLeft="@id/pause"
+                    android:background="@drawable/button_shape"
+                    android:onClick="finishTimer"
+                    android:text="@string/finish" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/chrono"
+                    android:layout_marginBottom="@dimen/default_gap"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:text="SAMPLE TEXT"
+                    android:id="@+id/stepText"/>
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

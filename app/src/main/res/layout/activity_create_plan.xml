@@ -75,39 +75,40 @@
                 android:text="@string/objective_form"
                 android:textSize="@dimen/normal_text"
                 android:layout_marginBottom="@dimen/new_margin"/>
-            <androidx.gridlayout.widget.GridLayout
+            <RadioGroup
+                android:id="@+id/group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:filterTouchesWhenObscured="true"
-                android:background="#00000000"
-                app:columnCount="2"
                 android:layout_marginBottom="@dimen/top_margin">
-                <Button
-                    android:layout_width="@dimen/button_size"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/transparency_white"
+                <RadioButton
+                    android:id="@+id/raido1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="@string/option1_obj"
-                    android:onClick="changeOb"/>
-                <Button
-                    android:layout_width="@dimen/button_size"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/transparency_white"
+                    android:textSize="@dimen/small_text"/>
+                <RadioButton
+                    android:id="@+id/radio2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="@string/option2_obj"
-                    android:onClick="changeOb"/>
-                <Button
-                    android:layout_width="@dimen/button_size"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/transparency_white"
+                    android:textSize="@dimen/small_text"/>
+                <RadioButton
+                    android:id="@+id/radio3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="@string/option3_obj"
-                    android:onClick="changeOb"/>
-                <Button
-                    android:layout_width="@dimen/button_size"
-                    android:layout_height="match_parent"
-                    android:backgroundTint="@color/transparency_white"
-                    android:focusedByDefault="true"
+                    android:textSize="@dimen/small_text"/>
+                <RadioButton
+                    android:id="@+id/radio4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
                     android:text="@string/option4_obj"
-                    android:onClick="changeOb"/>
-            </androidx.gridlayout.widget.GridLayout>
+                    android:textSize="@dimen/small_text"/>
+            </RadioGroup>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

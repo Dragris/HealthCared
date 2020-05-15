@@ -7,7 +7,7 @@ import kotlin.math.round
  * body indica la zona (superior, inferior, troncal) que ejercita el ejercicio.
  * repeatFactor es un factor añadido para calcular las repeticiones que harán falta por serie.
  */
-class Ejercicio(val ExerciceName:String, val youtubeLink: String, val diff: Int) {
+class Ejercicio(val ExerciceName:String, val youtubeLink: String, val diff: Long) {
     override fun toString(): String {
         var nombre = ExerciceName + " " + diff.toString()
         return nombre

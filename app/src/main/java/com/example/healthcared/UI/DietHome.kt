@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.widget.*
+import androidx.core.view.marginTop
 import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.Comida
 import com.example.healthcared.R
@@ -26,7 +27,7 @@ class DietHome : AppCompatActivity() {
         val textView = TextView(this)
         val text2 = TextView(this)
         textView.text = "REMEMBER!"
-        text2.text = "This diets are just recomendations"
+        text2.text = "These diets are just recommendations"
         textView.gravity = android.view.Gravity.CENTER
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
         text2.gravity = android.view.Gravity.CENTER
@@ -56,7 +57,7 @@ class DietHome : AppCompatActivity() {
                 name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 texts.addView(name)
             } else if (i == 2) {
-                name.text = "Lucnh"
+                name.text = "Lunch"
                 name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
                 texts.addView(name)
             } else {
@@ -66,7 +67,9 @@ class DietHome : AppCompatActivity() {
             }
             for (j in dietas){
                 for (z in j){
-                    if (z.time == i && z.dia == dia+1) {
+                    var auxi: Long = i.toLong()
+                    var auxDia: Long = (dia + 1).toLong()
+                    if (z.time == auxi && z.dia == auxDia) {
                         val food = TextView(this)
                         food.text = z.foodName
                         food.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16F)
@@ -90,7 +93,15 @@ class DietHome : AppCompatActivity() {
             parent.addView(texts)
             layout.addView(parent, params)
         }
-
+        var tomorrowText: TextView = TextView(this)
+        tomorrowText.text = "Come back tomorrow to see new dishes!"
+        var parametro = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT)
+        parametro.setMargins(0,30,0,0)
+        tomorrowText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+        tomorrowText.gravity = android.view.Gravity.CENTER
+        layout.addView(tomorrowText, parametro)
 
     }
 

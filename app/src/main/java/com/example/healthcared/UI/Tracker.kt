@@ -2,14 +2,25 @@ package com.example.healthcared.UI
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.hardware.Sensor
+import android.hardware.SensorEvent
+import android.hardware.SensorEventListener
+import android.hardware.SensorManager
 import android.location.Location
 import android.os.*
 import android.view.View
+import android.widget.Button
+import android.widget.Chronometer
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import com.example.healthcared.Controlador
+import com.example.healthcared.Modelo.Utils.StepDetector
+import com.example.healthcared.Modelo.Utils.StepListener
 import com.example.healthcared.R
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -21,13 +32,17 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 
 
-class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
+class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerClickListener,
+    SensorEventListener, StepListener {
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var lastLocation: Location
     private lateinit var locationCallback: LocationCallback
     private var locationRequest: LocationRequest? = null
     private var locationUpdateState = false
+    private var simpleStepDetector: StepDetector? = null
+    private var sensorManager: SensorManager? = null
+    var time: Long = 0
 
     companion object{
         private const val LOCATION_PERMISSION_REQUEST_CODE = 1138
@@ -52,6 +67,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         locationCallback = object : LocationCallback() {
             override fun onLocationResult(p0: LocationResult) {
                 super.onLocationResult(p0)
@@ -68,6 +84,18 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
+        timer.base = SystemClock.elapsedRealtime()
+
+        /**
+         * Pedometer block
+         */
+        // Get an instance of the SensorManager
+        sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+        simpleStepDetector = StepDetector()
+        simpleStepDetector!!.registerListener(this)
+        sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
+        findViewById<TextView>(R.id.stepText).text = "Yo've done ${Controlador.usuario.numSteps} steps"
     }
 
 
@@ -164,6 +192,11 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         }
     }
 
+    override fun finish() {
+        sensorManager?.unregisterListener(this)
+        super.finish()
+    }
+
     /**
      * Revisar que tiene permiso para localización en cualquier momento (dibujar ruta)
      */
@@ -180,13 +213,6 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         }
     }
 
-    fun routeDrawerPermissionChecker(){
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), BACKGROUND_LOCATION_CODE )
-            return
-        }
-    }
-
 
     /**
      * Funciones de la interfaz
@@ -198,6 +224,48 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     fun settings(view: View) {
         val intent = Intent(this, Settings::class.java)
         startActivity(intent)
+    }
+
+
+    /**
+     * Funciones chrono
+     */
+    fun pauseTimer(view: View){
+        val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
+        val button = findViewById<Button>(R.id.pause)
+        if (button.text == "Pause") {
+            time = timer.base - SystemClock.elapsedRealtime()
+            timer.stop()
+            button.text = "Resume"
+        } else {
+            timer.base = time + SystemClock.elapsedRealtime()
+            timer.start()
+            button.text = "Pause"
+        }
+    }
+
+    fun finishTimer(view: View){
+        val timer: Chronometer = findViewById<Chronometer>(R.id.chrono)
+        val button = findViewById<Button>(R.id.pause)
+        timer.stop()
+        timer.base = SystemClock.elapsedRealtime()
+        button.text = "Start"
+        time = 0
+        //Finish routine
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+        //Do nothing
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        if (event!!.sensor.type == Sensor.TYPE_ACCELEROMETER) {
+            simpleStepDetector!!.updateAccelerometer(event.timestamp, event.values[0], event.values[1], event.values[2])
+        }
+    }
+
+    override fun step(timeNs: Long) {
+        findViewById<TextView>(R.id.stepText).text = "You've done ${Controlador.usuario.numSteps} steps"
     }
 }
 

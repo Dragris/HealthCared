@@ -96,7 +96,7 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="@dimen/new_margin"
                 android:inputType="numberDecimal"
-                android:onClick="updateH"/>
+                />
             <Button
                 style="?android:attr/borderlessButtonStyle"
                 android:background="@drawable/button_shape"
@@ -105,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/header_text"
                 android:text="@string/personal_settings2"
-                android:layout_marginBottom="@dimen/top_margin"/>
+                android:layout_marginBottom="@dimen/top_margin"
+                android:onClick="updateH"/>
             <EditText
                 android:textColorHint="@color/colorWhite"
                 android:id="@+id/fullname"
@@ -117,7 +118,7 @@
                 android:paddingHorizontal="@dimen/new_margin"
                 android:layout_marginBottom="@dimen/new_margin"
                 android:inputType="numberDecimal"
-                android:onClick="updateW"/>
+                />
             <Button
                 android:id="@+id/butto"
                 android:layout_width="match_parent"
@@ -126,7 +127,30 @@
                 android:background="@drawable/button_shape"
                 android:textSize="@dimen/header_text"
                 android:text="@string/personal_settings1"
-                android:layout_marginBottom="@dimen/top_margin"/>
+                android:layout_marginBottom="@dimen/top_margin"
+                android:onClick="updateW"/>
+            <EditText
+                android:textColorHint="@color/colorWhite"
+                android:id="@+id/maxSteps"
+                android:textColor="@color/colorWhite"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/textbox_height"
+                android:hint="@string/birth"
+                android:textStyle="bold"
+                android:paddingHorizontal="@dimen/new_margin"
+                android:layout_marginBottom="@dimen/new_margin"
+                android:inputType="numberDecimal"
+                />
+            <Button
+                android:id="@+id/maxStepsButtton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:attr/borderlessButtonStyle"
+                android:background="@drawable/button_shape"
+                android:textSize="@dimen/header_text"
+                android:text="@string/personal_settings_maxSteps"
+                android:layout_marginBottom="@dimen/top_margin"
+                android:onClick="updateP"/>
             <RadioGroup
                 android:id="@+id/dietas"
                 android:layout_width="wrap_content"

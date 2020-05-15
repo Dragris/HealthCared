@@ -105,8 +105,9 @@ class Singup2 : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         var userData = mapOf("userObject" to newUser)
                         documentReference.set(userData)
 
-                        val intent = Intent(this, Inicio::class.java)
-                        Controlador.usuario = newUser
+                        val intent = Intent(this, LogIn::class.java)
+                        FirebaseAuth.getInstance().signOut()
+                        intent.putExtra("register", "yes")
                         startActivity(intent)
                     } else {
                         Log.w("createUserWithEmail", task.exception)

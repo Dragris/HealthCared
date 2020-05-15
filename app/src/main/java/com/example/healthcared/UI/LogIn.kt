@@ -1,17 +1,18 @@
 package com.example.healthcared.UI
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
+import android.text.BoringLayout
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.core.view.isInvisible
+import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcared.Controlador
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import kotlin.concurrent.thread
+import java.lang.Exception
 
 
 class LogIn : AppCompatActivity() {
@@ -23,6 +24,23 @@ class LogIn : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_in)
+
+        /**
+         * Comes from successful register
+         */
+        try {
+            var boolean: String = intent.getStringExtra("register") as String
+            if (boolean == "yes") {
+                Toast.makeText(
+                    baseContext, "Successfully registered",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        } catch (e: Exception){
+            //Do nothing
+        }
+
+
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
         auth.signOut()
@@ -61,12 +79,17 @@ class LogIn : AppCompatActivity() {
             .addOnSuccessListener {
                 currentUser = auth.currentUser
                 Controlador.cargarDatos()
-                Thread.sleep(5000)
-                val intent = Intent(this, Inicio::class.java)
-                startActivity(intent)
+                val handler = Handler()
+                handler.postDelayed(Runnable {
+                    val intent = Intent(this, Inicio::class.java)
+                    startActivity(intent)
+                }, 3000)
             }
             .addOnFailureListener {
-                Toast.makeText(baseContext,"Log-In failed",Toast.LENGTH_SHORT).show()
+                val string = it.toString()
+                var index = string.indexOf(':')
+                val domain: String? = if (index == -1) null else string.substring(index + 1)
+                Toast.makeText(baseContext, domain,Toast.LENGTH_SHORT).show()
                 updateUI(null)
                 findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
                 findViewById<TextView>(R.id.sign_up).visibility = View.VISIBLE

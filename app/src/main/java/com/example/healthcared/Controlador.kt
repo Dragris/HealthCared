@@ -5,10 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.healthcared.Modelo.*
 import com.example.healthcared.UI.LogIn
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
+import com.google.firebase.firestore.*
 import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firestore.v1.FirestoreGrpc
 import java.util.*
 
@@ -31,7 +29,7 @@ object Controlador: AppCompatActivity(){
     //Contnedores personales, cargar con log-in
 
     var usuario: Usuario = Usuario("Random", "Random", "Random", false, false)  //En caso de ser necesario mantener qué usuario es el que está conectado
-    var pasos: MutableCollection<Int>? =null
+    private var tmpMaxSteps: Long = 0
 
     //Contenedores de la app, cargar con inicio de la app
     var ejercicios: MutableCollection<Ejercicio>? =null
@@ -41,7 +39,6 @@ object Controlador: AppCompatActivity(){
     fun cargarDatos() {
         //Implementación de una carga de datos a las listas cuando se haga login
         //Puede ser init de la clase
-        Log.d("Algo", mapOf("Hola" to 0, "quetal" to "mubien").toString())
 
         var auth: FirebaseAuth = FirebaseAuth.getInstance()
         var fStore: FirebaseFirestore = FirebaseFirestore.getInstance()
@@ -49,34 +46,145 @@ object Controlador: AppCompatActivity(){
         var userId: String = auth.currentUser?.uid!!
 
         var documentReference: DocumentReference? = fStore.collection("Users").document(userId)
-        Log.d("User ID", userId)
 
         if (documentReference != null) {
             documentReference.get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         var usuario_Map : Map<String, Object> = document.data?.get("userObject") as Map<String, Object>
-
-                        //var tmp_usuario: Usuario? = usuario_Map.get("userObject")
-
-
                         usuario.fullname = usuario_Map["fullname"] as String
                         usuario.email = usuario_Map["email"] as String
                         usuario.gender = usuario_Map["gender"] as String
                         usuario.password = usuario_Map["password"] as String
 
                         usuario.targetSteps = usuario_Map["targetSteps"] as Long
+                        tmpMaxSteps = usuario_Map["targetSteps"] as Long
+
                         usuario.height = usuario_Map["height"] as Long
                         usuario.weight = usuario_Map["weight"] as Long
                         usuario.lastDay = usuario_Map["lastDay"] as Long
                         usuario.cont = usuario_Map["cont"] as Long
                         usuario.numSteps = usuario_Map["numSteps"] as Long
-                        usuario.rutinas = usuario_Map["rutinas"] as  MutableList<Rutina>
-                        usuario.dietas = usuario_Map["dietas"] as  MutableList<Dieta>
+                        usuario.registroPasos = usuario_Map["registroPasos"] as MutableList<Long>
+                        var rutinas = usuario_Map["rutinas"] as List<*>
+                        var dietas = usuario_Map["dietas"] as List<*>
 
-                       Log.d("Username", usuario_Map.toString())
+                        usuario.dietas = mutableListOf()
+                        for (dieta in 0 until dietas.size){
+                            var tmpcomidas = dietas[dieta] as Map<*, *>
+                            var comidas = tmpcomidas["comidas"] as List<*>
+                            var auxComidas = mutableListOf<Comida>()
+                            for (comida in 0 until comidas.size){
+                                var aux = comidas[comida] as Map<*, *>
+                                auxComidas.add(
+                                    Comida(aux["foodName"] as String,
+                                    aux["time"] as Long,
+                                    aux["recipeLink"] as String,
+                                    aux["dia"] as Long))
+                            }
+                            var aux = dietas[dieta] as Map<*, *>
+                            usuario.dietas.add(Dieta(aux["name"] as String, auxComidas))
+                        }
 
-                        //this.usuario = tmp_user
+
+                        usuario.rutinas = mutableListOf()
+                        if (rutinas.isNotEmpty()){
+                            var auxRutina = mutableListOf<Rutina>()
+                            for(rutina in 0 until rutinas.size){
+                                var thisRutina = rutinas[rutina] as Map<*, *>
+                                var rutina = Rutina(
+                                    thisRutina["rutinaName"] as String,
+                                    thisRutina["difficulty"] as Long,
+                                    thisRutina["obj"] as String,
+                                    thisRutina["daysxweek"] as Long)
+
+                                var lista1 = mutableListOf<Ejercicio>()
+                                var lista1DB = thisRutina["lista1"] as List<*>
+                                for(ejercicio in 0 until lista1DB.size){
+                                    var eje = lista1DB[ejercicio] as Map<*, *>
+                                    lista1.add(Ejercicio(
+                                        eje["exerciceName"] as String,
+                                        eje["youtubeLink"] as String,
+                                        eje["diff"] as Long
+                                    ))
+                                }
+
+                                var lista2 = mutableListOf<Ejercicio>()
+                                var lista2DB = thisRutina["lista2"] as List<*>
+                                for(ejercicio in 0 until lista2DB.size){
+                                    var eje = lista2DB[ejercicio] as Map<*, *>
+                                    lista2.add(Ejercicio(
+                                        eje["exerciceName"] as String,
+                                        eje["youtubeLink"] as String,
+                                        eje["diff"] as Long
+                                    ))
+                                }
+
+                                var lista3 = mutableListOf<Ejercicio>()
+                                var lista3DB = thisRutina["lista3"] as List<*>
+                                for(ejercicio in 0 until lista3DB.size){
+                                    var eje = lista3DB[ejercicio] as Map<*, *>
+                                    lista3.add(Ejercicio(
+                                        eje["exerciceName"] as String,
+                                        eje["youtubeLink"] as String,
+                                        eje["diff"] as Long
+                                    ))
+                                }
+
+                                var lista4 = mutableListOf<Ejercicio>()
+                                var lista4DB = thisRutina["lista4"] as List<*>
+                                for(ejercicio in 0 until lista4DB.size){
+                                    var eje = lista4DB[ejercicio] as Map<*, *>
+                                    lista4.add(Ejercicio(
+                                        eje["exerciceName"] as String,
+                                        eje["youtubeLink"] as String,
+                                        eje["diff"] as Long
+                                    ))
+                                }
+
+                                var lista5 = mutableListOf<Ejercicio>()
+                                var lista5DB = thisRutina["lista5"] as List<*>
+                                for(ejercicio in 0 until lista5DB.size){
+                                    var eje = lista5DB[ejercicio] as Map<*, *>
+                                    lista5.add(Ejercicio(
+                                        eje["exerciceName"] as String,
+                                        eje["youtubeLink"] as String,
+                                        eje["diff"] as Long
+                                    ))
+                                }
+
+                                var lista6 = mutableListOf<Ejercicio>()
+                                var lista6DB = thisRutina["lista6"] as List<*>
+                                for(ejercicio in 0 until lista6DB.size){
+                                    var eje = lista6DB[ejercicio] as Map<*, *>
+                                    lista6.add(Ejercicio(
+                                        eje["exerciceName"] as String,
+                                        eje["youtubeLink"] as String,
+                                        eje["diff"] as Long
+                                    ))
+                                }
+
+                                var lista7 = mutableListOf<Ejercicio>()
+                                var lista7DB = thisRutina["lista7"] as List<*>
+                                for(ejercicio in 0 until lista7DB.size){
+                                    var eje = lista7DB[ejercicio] as Map<*, *>
+                                    lista7.add(Ejercicio(
+                                        eje["exerciceName"] as String,
+                                        eje["youtubeLink"] as String,
+                                        eje["diff"] as Long
+                                    ))
+                                }
+                                rutina.lista1 = lista1
+                                rutina.lista2 = lista2
+                                rutina.lista3 = lista3
+                                rutina.lista4 = lista4
+                                rutina.lista5 = lista5
+                                rutina.lista6 = lista6
+                                rutina.lista7 = lista7
+                                auxRutina.add(rutina)
+                            }
+                            usuario.rutinas = auxRutina
+                        }
 
 
                     } else {
@@ -92,28 +200,58 @@ object Controlador: AppCompatActivity(){
 
     fun guardarDatos(){
         //Guardar datos en firebase para el usuario.
-         var auth: FirebaseAuth
-         var db : FirebaseFirestore
+        var auth: FirebaseAuth
+        var db : FirebaseFirestore
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
         val user = auth.currentUser
         var userID = user?.uid
         var documentReference = db.collection("Users").document(userID!!)
-        var userData = mapOf("userObject" to this.usuario)
+        var tmpUsuario = usuario
+
+        /**
+         * Update maxSteps in next restart
+         */
+        if(usuario.targetSteps != tmpMaxSteps){
+            tmpUsuario.targetSteps = tmpMaxSteps
+        }
+
+        var userData = mapOf("userObject" to tmpUsuario)
         documentReference.set(userData)
     }
 
+    fun updateUserSteps(steps:Long){
+        var auth: FirebaseAuth = FirebaseAuth.getInstance()
+        var db : FirebaseFirestore = FirebaseFirestore.getInstance()
+        val user = auth.currentUser
+        var userID = user?.uid
+        var ref = db.collection("Users").document(userID!!)
+        ref.update("userObject.numSteps", steps)
+    }
+
+    fun updateUserMaxSteps(steps: Long){
+        tmpMaxSteps = steps
+    }
+
+    fun updateUser(){
+        var auth: FirebaseAuth = FirebaseAuth.getInstance()
+        var db : FirebaseFirestore = FirebaseFirestore.getInstance()
+        val user = auth.currentUser
+        var userID = user?.uid
+        var ref = db.collection("Users").document(userID!!)
+        ref.update("userObject", usuario)
+    }
 
     override fun onPause(){
-        Log.d("On Pause", "Datos guardados")
         guardarDatos()
         super.onPause()
     }
 
+
     override fun onResume() {
         super.onResume()
-        guardarDatos()
+        updateUser()
     }
 
 

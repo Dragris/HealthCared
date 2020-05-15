@@ -28,13 +28,14 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.ramijemli.percentagechartview.callback.ProgressTextFormatter
 import kotlinx.android.synthetic.main.activity_inicio.*
+import java.lang.Exception
 import java.util.*
 
 class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
-    private var targetSteps = 10L
+    private var targetSteps = 1000L
     lateinit var activityLabel: Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +43,12 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         activityLabel = this
         setContentView(R.layout.activity_inicio)
         if (Controlador.usuario.targetSteps != null) targetSteps = Controlador.usuario.targetSteps!!
+        try{
+            var steps = intent.getLongExtra("steps", 0)
+            Controlador.usuario.numSteps += steps
+        }catch (e :Exception){
+            //Pass
+        }
         var tmp_today: Int = Calendar.getInstance().get(Calendar.YEAR) * 365 + Calendar.getInstance().get(Calendar.DAY_OF_YEAR)
         var today : Long = tmp_today.toLong()
         var lastDay: Long = Controlador.usuario.lastDay
@@ -115,7 +122,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
         Controlador.usuario.registroPasos.add(0, Controlador.usuario.numSteps)
         //Adding to list
-        for (i in 0..(int-1)){
+        for (i in 1..(int-1)){
             Controlador.usuario.registroPasos.add(0, 0)
         }
         var temp: MutableList<Long> = mutableListOf()
@@ -146,12 +153,16 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     override fun onResume() {
         super.onResume()
         //Little resume animation
-        var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
-        graph.setProgress(percentage * 0.3f, false)
-        if (percentage >= 100f){
-            graph.setProgress(100f, false)
-        }else {
-            graph.setProgress(percentage, false)
+        try {
+            var percentage: Float =
+                ((Controlador.usuario.numSteps.toFloat() / targetSteps.toFloat() * 100.0).toFloat())
+            graph.setProgress(percentage * 0.3f, false)
+            if (percentage >= 100f) {
+                graph.setProgress(100f, false)
+            } else {
+                graph.setProgress(percentage, false)
+            }
+        } catch (e: Exception){
         }
     }
 
@@ -197,13 +208,6 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         finish()
     }
 
-    fun pause(view: View) {
-        // Funcion usada pare crear rutinas (test) -> var rutina = Rutina("GG", 2, "Toy Gordo", 1)
-        //var rutina = Rutina("GG", 1, "Toy Gordo", 5)
-        for (i in 0..(Controlador.usuario.rutinas.size-1)) {
-            Log.v("sgfd", Controlador.usuario.rutinas[i].rutinaName)
-        }
-    }
 
 
     /**
@@ -271,9 +275,8 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
     override fun step(timeNs: Long) {
         Controlador.usuario.numSteps++
-        Log.v("STEPS", Controlador.usuario.numSteps.toString())
+        Controlador.updateUserSteps(Controlador.usuario.numSteps)
         var percentage: Float = ((Controlador.usuario.numSteps.toFloat()/targetSteps.toFloat() * 100.0).toFloat())
-
         if (percentage >= 100f){
             graph.setProgress(100f, false)
         } else {
