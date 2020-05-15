@@ -55,7 +55,11 @@ class PlanPreview : AppCompatActivity() {
             texts.gravity = android.view.Gravity.NO_GRAVITY
             var image = ImageView(this) //Exercise IMG
             image.setOnClickListener { showLink(i.youtubeLink) }
-            image.setImageResource(R.drawable.common_google_signin_btn_icon_light)
+            val params2 = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+            params2.setMargins(0,0,5,0)
+            image.setImageResource(R.drawable.yt)
             val name = TextView(this)
             name.text = i.ExerciceName
             name.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
@@ -79,7 +83,7 @@ class PlanPreview : AppCompatActivity() {
             }
 
 
-            parent.addView(image)
+            parent.addView(image, params2)
             parent.addView(texts)
             layout.addView(parent, params)
         }

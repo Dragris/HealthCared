@@ -151,6 +151,7 @@
                     android:layout_marginBottom="@dimen/default_gap"
                     android:layout_marginTop="@dimen/fab_margin"
                     android:text="SAMPLE TEXT"
+                    android:textSize="@dimen/header_text"
                     android:id="@+id/stepText"/>
 
 

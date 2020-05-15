@@ -95,7 +95,7 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
         simpleStepDetector = StepDetector()
         simpleStepDetector!!.registerListener(this)
         sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
-        findViewById<TextView>(R.id.stepText).text = "Yo've done ${Controlador.usuario.numSteps} steps"
+        findViewById<TextView>(R.id.stepText).text = "You've done ${Controlador.usuario.numSteps} steps"
     }
 
 

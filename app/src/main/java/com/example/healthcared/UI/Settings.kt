@@ -18,15 +18,16 @@ import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
-class Settings : AppCompatActivity(), SensorEventListener, StepListener {
+class Settings : AppCompatActivity(){
+    /*
     private var simpleStepDetector: StepDetector? = null
     private var sensorManager: SensorManager? = null
     private var steps: Long = 0
-
+*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
-
+/*
         /**
          * Pedometer block
          */
@@ -35,25 +36,30 @@ class Settings : AppCompatActivity(), SensorEventListener, StepListener {
         simpleStepDetector = StepDetector()
         simpleStepDetector!!.registerListener(this)
         sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
+
+        */
     }
 
     override fun onBackPressed() {
-        goToInicio()
+        //goToInicio()
         finish()
     }
     fun goBack(view: View){
-        goToInicio()
+        //goToInicio()
         finish()
     }
 
     fun goToInicio(){
         var intent = Intent(this, Inicio::class.java)
+        /*
         intent.putExtra("steps", steps)
+        */
         startActivity(intent)
     }
 
     override fun finish(){
-        sensorManager?.unregisterListener(this)
+        /*
+        sensorManager?.unregisterListener(this)*/
         super.finish()
     }
 
@@ -77,7 +83,7 @@ class Settings : AppCompatActivity(), SensorEventListener, StepListener {
         startActivity(login)
         finish()
     }
-
+/*
     override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
         //Do nothing
     }
@@ -91,4 +97,6 @@ class Settings : AppCompatActivity(), SensorEventListener, StepListener {
     override fun step(timeNs: Long) {
         steps++
     }
+   */
+
 }

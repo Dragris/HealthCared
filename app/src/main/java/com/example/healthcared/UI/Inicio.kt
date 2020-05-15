@@ -205,7 +205,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     fun settings(view: View) {
         val intent = Intent(this, Settings::class.java)
         startActivity(intent)
-        finish()
+        //finish()
     }
 
 
