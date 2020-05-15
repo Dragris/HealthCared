@@ -1,6 +1,7 @@
 package com.example.healthcared.UI
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.text.BoringLayout
@@ -50,6 +51,12 @@ class LogIn : AppCompatActivity() {
         findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
     }
 
+    fun settings(view: View){
+        var link = "https://ubarcelona-my.sharepoint.com/:w:/g/personal/avallsmo12_alumnes_ub_edu/EYzbAdWbAmpElirwjZaOhgMBw_HalsooLCWuunkEgH9sLw?e=DlGrFx"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
+        startActivity(intent)
+
+    }
     //btn Login
     fun login(view: View) {
         findViewById<Button>(R.id.login_btn).visibility = View.INVISIBLE

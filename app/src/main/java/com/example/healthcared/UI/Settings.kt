@@ -71,7 +71,7 @@ class Settings : AppCompatActivity(){
         startActivity(Intent.createChooser(intent, "Choose an application"))
     }
     fun goFaq(view: View){
-        var link = "https://ubarcelona-my.sharepoint.com/:w:/g/personal/dlopezad7_alumnes_ub_edu/EUKfLg0-0KBNjT8hssqPusQBX9W2YXyn2BieUyq52TulKQ?e=Efzkxu"
+        var link = "https://ubarcelona-my.sharepoint.com/:w:/g/personal/avallsmo12_alumnes_ub_edu/EYzbAdWbAmpElirwjZaOhgMBw_HalsooLCWuunkEgH9sLw?e=DlGrFx"
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
         startActivity(intent)
 
