@@ -49,8 +49,6 @@ class DietHome : AppCompatActivity() {
             var texts = LinearLayout(this)
             texts.orientation = LinearLayout.VERTICAL
             texts.gravity = android.view.Gravity.NO_GRAVITY
-            var image = ImageView(this) //Exercise IMG
-            image.setImageResource(R.drawable.common_google_signin_btn_icon_light)
             val name = TextView(this)
             if (i == 1){
                 name.text = "Breakfast"
@@ -89,19 +87,23 @@ class DietHome : AppCompatActivity() {
                     }
                 }
             }
-            parent.addView(image)
             parent.addView(texts)
             layout.addView(parent, params)
         }
         var tomorrowText: TextView = TextView(this)
         tomorrowText.text = "Come back tomorrow to see new dishes!"
+        var tap = TextView(this)
+        tap.text = "Tap the name of the dish to get the recipie!"
         var parametro = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT)
         parametro.setMargins(0,30,0,0)
         tomorrowText.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
         tomorrowText.gravity = android.view.Gravity.CENTER
+        tap.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
+        tap.gravity = android.view.Gravity.CENTER
         layout.addView(tomorrowText, parametro)
+        layout.addView(tap, parametro)
 
     }
 

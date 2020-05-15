@@ -46,7 +46,7 @@ class Rutina(val rutinaName: String, val difficulty: Long, val obj: String, val 
             rest = 90
         }
 
-        val dialibre: MutableList<Ejercicio> = mutableListOf(Ejercicio("Dia Libre", "https://i.makeagif.com/media/6-20-2015/KVTLDN.gif", 0))
+        val dialibre: MutableList<Ejercicio> = mutableListOf(Ejercicio("Off Day", "https://i.makeagif.com/media/6-20-2015/KVTLDN.gif", 0))
         var diasLibres = mutableListOf<MutableList<Ejercicio>>()
         for (i in 1..(7-daysxweek)) {
             diasLibres.add(dialibre)

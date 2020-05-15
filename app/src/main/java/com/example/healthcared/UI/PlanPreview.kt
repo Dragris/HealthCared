@@ -28,15 +28,44 @@ class PlanPreview : AppCompatActivity() {
         val layout = findViewById<LinearLayout>(R.id.layout)
 
         if (Controlador.usuario.findRutinaByName(title).obj == "Cardio"){
+            var img = ImageView(this)
+            img.setImageResource(R.drawable.cardio)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+            params.setMargins(0,0,0,30)
             val textView = TextView(this)
             val text2 = TextView(this)
             textView.text = "Make as much resps as you can"
             text2.text = "Rest as much as you need"
             textView.gravity = android.view.Gravity.CENTER
             text2.gravity = android.view.Gravity.CENTER
+            layout.addView(img, params)
             layout.addView(textView)
             layout.addView(text2)
+        } else if (Controlador.usuario.findRutinaByName(title).obj == "Toy Gordo"){
+            var img = ImageView(this)
+            img.setImageResource(R.drawable.wl)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+            layout.addView(img, params)
+        } else if (Controlador.usuario.findRutinaByName(title).obj == "Fuelsa") {
+            var img = ImageView(this)
+            img.setImageResource(R.drawable.fuelsa)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+            layout.addView(img, params)
+        } else {
+            var img = ImageView(this)
+            img.setImageResource(R.drawable.bulk)
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT)
+            layout.addView(img, params)
         }
+
         if (rutina.size == 1) {
             findViewById<ImageButton>(R.id.start).visibility = View.INVISIBLE
         } else {
@@ -56,9 +85,9 @@ class PlanPreview : AppCompatActivity() {
             var image = ImageView(this) //Exercise IMG
             image.setOnClickListener { showLink(i.youtubeLink) }
             val params2 = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT)
-            params2.setMargins(0,0,5,0)
+            params2.setMargins(0,0,20,0)
             image.setImageResource(R.drawable.yt)
             val name = TextView(this)
             name.text = i.ExerciceName
