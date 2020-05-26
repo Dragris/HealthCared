@@ -36,7 +36,7 @@ class PlanPreview : AppCompatActivity() {
             params.setMargins(0,0,0,30)
             val textView = TextView(this)
             val text2 = TextView(this)
-            textView.text = "Make as much resps as you can"
+            textView.text = "Make as much reps as you can"
             text2.text = "Rest as much as you need"
             textView.gravity = android.view.Gravity.CENTER
             text2.gravity = android.view.Gravity.CENTER

@@ -1,22 +1,23 @@
 package com.example.healthcared.UI
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
-import android.text.BoringLayout
 import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentActivity
 import com.example.healthcared.Controlador
 import com.example.healthcared.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import java.lang.Exception
 
 
 class LogIn : AppCompatActivity() {
+
     private lateinit var auth: FirebaseAuth
     private lateinit var username : EditText
     private lateinit var password: EditText
@@ -41,14 +42,18 @@ class LogIn : AppCompatActivity() {
             //Do nothing
         }
 
-
-        // Initialize Firebase Auth
-        auth = FirebaseAuth.getInstance()
-        auth.signOut()
-
         username = findViewById(R.id.username)
         password = findViewById(R.id.Upassword)
         findViewById<Button>(R.id.login_btn).visibility = View.VISIBLE
+
+        // Initialize Firebase Auth
+        auth = FirebaseAuth.getInstance()
+        //If user already log in
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            logInCurrentUser()
+        }
+
     }
 
     fun settings(view: View){
@@ -57,6 +62,23 @@ class LogIn : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+    fun logInCurrentUser(){
+        //Hacemos invisible el botón de log in
+        findViewById<Button>(R.id.login_btn).visibility = View.INVISIBLE
+        findViewById<TextView>(R.id.sign_up).visibility = View.INVISIBLE
+        findViewById<ProgressBar>(R.id.misTetas).visibility = View.VISIBLE
+
+        //Nos aseguramos que estén los datos con el tiempo de espera
+        Controlador.cargarDatos()
+        val handler = Handler()
+        handler.postDelayed(Runnable {
+            val intent = Intent(this, Inicio::class.java)
+            startActivity(intent)
+        }, 1000)
+    }
+
+
     //btn Login
     fun login(view: View) {
         findViewById<Button>(R.id.login_btn).visibility = View.INVISIBLE
@@ -86,6 +108,7 @@ class LogIn : AppCompatActivity() {
             .addOnSuccessListener {
                 currentUser = auth.currentUser
                 Controlador.cargarDatos()
+
                 val handler = Handler()
                 handler.postDelayed(Runnable {
                     val intent = Intent(this, Inicio::class.java)
