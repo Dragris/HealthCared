@@ -267,6 +267,28 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     override fun step(timeNs: Long) {
         findViewById<TextView>(R.id.stepText).text = "You've done ${Controlador.usuario.numSteps} steps"
     }
+
+    fun workouts(view: View) {
+        val intent = Intent(this, WorkoutHome::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun profile(view: View) {
+        val intent = Intent(this, Profile::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun diets(view: View) {
+        val intent = Intent(this, DietHome::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun home(view: View) {
+        finish()
+    }
 }
 
 

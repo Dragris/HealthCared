@@ -14,16 +14,12 @@
         android:layout_height="@dimen/toolbar"
         android:orientation="horizontal">
 
-        <ImageView
+        <Space
             android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/abc_vector_test"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:clickable="true"
-            android:onClick="goBack"
-            android:contentDescription="@string/back_text"/>
+            android:layout_weight="1"/>
 
         <TextView
             android:id="@+id/workout_title"
@@ -64,7 +60,8 @@
     <ScrollView
         android:layout_below="@id/toolbar_workout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@id/icons">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -158,5 +155,56 @@
             </RelativeLayout>
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/icons"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/new_margin"
+        android:paddingVertical="@dimen/new_margin"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/tracker_btn"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="workouts"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/workouts_btn"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="home"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/home2"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="diets"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/diets_btn"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="profile"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/profile_btn"/>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -17,10 +17,29 @@ class Profile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        var email = findViewById<EditText>(R.id.email)
+        var fullname = findViewById<EditText>(R.id.fullname)
+        var maxsteps = findViewById<EditText>(R.id.maxSteps)
+
+        email.hint = ""
+        fullname.hint = ""
+        maxsteps.hint = ""
+
+        email.setText(Controlador.usuario.height.toString())
+        fullname.setText(Controlador.usuario.weight.toString())
+        maxsteps.setText(Controlador.usuario.targetSteps.toString())
     }
 
     fun goBack(view: View){
         finish()
+    }
+
+    fun save(view: View){
+        updateD(view)
+        updateH(view)
+        updateP(view)
+        updateW(view)
+        goBack(view)
     }
 
     fun settings (view: View){

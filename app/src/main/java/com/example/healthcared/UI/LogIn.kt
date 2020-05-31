@@ -75,7 +75,7 @@ class LogIn : AppCompatActivity() {
         handler.postDelayed(Runnable {
             val intent = Intent(this, Inicio::class.java)
             startActivity(intent)
-        }, 1000)
+        }, 3000)
     }
 
 

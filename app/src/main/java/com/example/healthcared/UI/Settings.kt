@@ -65,10 +65,15 @@ class Settings : AppCompatActivity(){
 
     fun goSupport(view: View){
         var lista = arrayOf("support@healthcared.com")
-        var intent = Intent(Intent.ACTION_SEND)
-        intent.putExtra(Intent.EXTRA_EMAIL, lista)
-        intent.type = "plain/text"
-        startActivity(Intent.createChooser(intent, "Choose an application"))
+        var intent = Intent(Intent.ACTION_SENDTO).apply {
+            data = Uri.parse("mailto:"+"support@healthcared.com")
+            //putExtra(Intent.EXTRA_EMAIL, lista)
+            //type = "plain/text"
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(Intent.createChooser(intent, "Choose an application"))
+        }
+
     }
     fun goFaq(view: View){
         var link = "https://ubarcelona-my.sharepoint.com/:w:/g/personal/avallsmo12_alumnes_ub_edu/EYzbAdWbAmpElirwjZaOhgMBw_HalsooLCWuunkEgH9sLw?e=DlGrFx"
