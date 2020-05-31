@@ -1,12 +1,15 @@
 package com.example.healthcared.UI
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
 import android.view.View
 import android.widget.*
+import androidx.core.app.ActivityCompat
 import androidx.core.view.marginTop
 import com.example.healthcared.Controlador
 import com.example.healthcared.Modelo.Comida
@@ -125,6 +128,50 @@ class DietHome : AppCompatActivity() {
         val calendar: Calendar = Calendar.getInstance()
         val day: Int = calendar.get(Calendar.DAY_OF_WEEK)-1
         return day
+    }
+
+    fun tracker(view: View) {
+        trackerPermissionCheck()
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1138
+    }
+
+    fun trackerPermissionCheck() {
+        //Check location permissions
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                DietHome.LOCATION_PERMISSION_REQUEST_CODE
+            )
+            return
+        }
+        //If already given
+        val intent = Intent(this, Tracker::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun profile(view: View) {
+        val intent = Intent(this, Profile::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun workouts(view: View) {
+        val intent = Intent(this, WorkoutHome::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    fun home(view: View) {
+        finish()
     }
 }
 
