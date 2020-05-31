@@ -27,6 +27,7 @@ import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.ramijemli.percentagechartview.callback.ProgressTextFormatter
+import com.tomer.fadingtextview.FadingTextView
 import kotlinx.android.synthetic.main.activity_inicio.*
 import java.lang.Exception
 import java.util.*
@@ -37,6 +38,7 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     private var sensorManager: SensorManager? = null
     private var targetSteps = 1000L
     lateinit var activityLabel: Activity
+    var fading_txt: FadingTextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,6 +110,8 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         simpleStepDetector = StepDetector()
         simpleStepDetector!!.registerListener(this)
         sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
+
+        fading_txt = findViewById(R.id.fading_text)
 
     }
 

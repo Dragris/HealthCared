@@ -64,6 +64,7 @@
         android:paddingHorizontal="@dimen/margin2"
         android:layout_above="@id/icons"
         android:weightSum="9">
+
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -96,13 +97,23 @@
         android:id="@+id/stepText"/>
 </RelativeLayout>
 
+        <com.tomer.fadingtextview.FadingTextView
+            android:id="@+id/fading_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="40dp"
+            app:texts="@array/welcome_msg"
+            app:timeout="1500"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"/>
+
         <com.github.mikephil.charting.charts.BarChart
-            android:layout_marginTop="@dimen/default_gap"
             android:id="@+id/barChart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="5"
-            android:layout_marginBottom="@dimen/side_margin"/>
+            android:layout_marginTop="@dimen/default_gap"
+            android:layout_marginBottom="@dimen/side_margin"
+            android:layout_weight="5" />
     </LinearLayout>
 
     <LinearLayout
@@ -123,14 +134,16 @@
             android:onClick="tracker"
             android:layout_weight="1"
             app:srcCompat="@drawable/tracker_btn"/>
+
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="11dp"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
             android:onClick="workouts"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/workouts_btn"/>
+            app:srcCompat="@drawable/workouts_btn" />
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

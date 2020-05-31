@@ -69,4 +69,5 @@ dependencies {
     implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-locationlayer:0.11.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.0'
+    implementation 'com.tomer:fadingtextview:2.5'
 }
