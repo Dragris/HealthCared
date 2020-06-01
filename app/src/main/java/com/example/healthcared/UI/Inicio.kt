@@ -31,6 +31,9 @@ import com.tomer.fadingtextview.FadingTextView
 import kotlinx.android.synthetic.main.activity_inicio.*
 import java.lang.Exception
 import java.util.*
+import android.os.Handler
+import android.view.animation.AnimationUtils
+import android.widget.Toast
 
 class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
 
@@ -39,8 +42,8 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     private var targetSteps = 1000L
     lateinit var activityLabel: Activity
 
-    var fading_txt : FadingTextView? = null
-
+    var fading_txt : TextView? = null
+    var fading_txt_2 : TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityLabel = this
@@ -112,7 +115,43 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         simpleStepDetector!!.registerListener(this)
         sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
 
+
+
+        val animation = AnimationUtils.loadAnimation(this, R.anim.fade_out)
+        val animation2 = AnimationUtils.loadAnimation(this, R.anim.fades)
+
         fading_txt = findViewById(R.id.fading_text)
+
+        fading_txt_2 = findViewById(R.id.fading_text_2)
+
+
+
+        try {
+            var boolean: String = intent.getStringExtra("login") as String
+            if (boolean == "yes") {
+                Handler().postDelayed({
+                    fading_txt?.startAnimation(animation)
+                    fading_txt?.visibility = View.INVISIBLE
+
+
+                    Handler().postDelayed({
+                        fading_txt_2?.startAnimation(animation2)
+                        fading_txt_2?.visibility = View.VISIBLE
+
+                        Handler().postDelayed({
+                            fading_txt_2?.startAnimation(animation)
+                            fading_txt_2?.visibility = View.INVISIBLE
+                        }, 4000)
+
+                    }, 2000)
+
+                }, 3000)
+            }
+        } catch (e: Exception){
+            //Do nothing
+        }
+
+
 
 
 

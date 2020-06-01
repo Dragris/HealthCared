@@ -74,6 +74,7 @@ class LogIn : AppCompatActivity() {
         val handler = Handler()
         handler.postDelayed(Runnable {
             val intent = Intent(this, Inicio::class.java)
+            intent.putExtra("login", "yes")
             startActivity(intent)
         }, 3000)
     }
@@ -112,6 +113,7 @@ class LogIn : AppCompatActivity() {
                 val handler = Handler()
                 handler.postDelayed(Runnable {
                     val intent = Intent(this, Inicio::class.java)
+                    intent.putExtra("login", "yes")
                     startActivity(intent)
                 }, 3000)
             }
