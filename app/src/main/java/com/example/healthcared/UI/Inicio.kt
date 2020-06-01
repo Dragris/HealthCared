@@ -38,7 +38,8 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
     private var sensorManager: SensorManager? = null
     private var targetSteps = 1000L
     lateinit var activityLabel: Activity
-    var fading_txt: FadingTextView? = null
+
+    var fading_txt : FadingTextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,6 +113,9 @@ class Inicio : AppCompatActivity(), SensorEventListener, StepListener {
         sensorManager!!.registerListener(this, sensorManager!!.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_FASTEST)
 
         fading_txt = findViewById(R.id.fading_text)
+
+
+
 
     }
 

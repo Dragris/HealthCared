@@ -2,6 +2,7 @@
 <resources>
 
     <string-array name="welcome_msg">
-        <item>Welcome back!</item>
+        <item>Welcome to HealthCared!</item>
+        <item>Check out your weekly summary</item>
     </string-array>
 </resources>

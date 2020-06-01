@@ -101,9 +101,9 @@
             android:id="@+id/fading_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="40dp"
+            android:textSize="30dp"
             app:texts="@array/welcome_msg"
-            app:timeout="1500"
+            app:timeout="2000"
             android:layout_centerInParent="true"
             android:layout_gravity="center"/>
 
