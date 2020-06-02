@@ -116,7 +116,7 @@
             android:layout_weight="1"
             android:clickable="true"
             android:focusable="true"
-            app:srcCompat="@drawable/diets_btn" />
+            app:srcCompat="@drawable/diet2" />
 
         <ImageView
             android:layout_width="wrap_content"

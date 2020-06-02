@@ -172,7 +172,7 @@
             android:clickable="true"
             android:focusable="true"
             android:layout_weight="1"
-            app:srcCompat="@drawable/tracker_btn"/>
+            app:srcCompat="@drawable/trac2"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
