@@ -277,7 +277,6 @@ class Tracker() : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerCli
     fun profile(view: View) {
         val intent = Intent(this, Profile::class.java)
         startActivity(intent)
-        finish()
     }
 
     fun diets(view: View) {

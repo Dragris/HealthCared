@@ -67,7 +67,6 @@ class WorkoutHome : AppCompatActivity() {
     fun profile(view: View) {
         val intent = Intent(this, Profile::class.java)
         startActivity(intent)
-        finish()
     }
 
     fun diets(view: View) {

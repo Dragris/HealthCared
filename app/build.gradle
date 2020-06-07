@@ -13,8 +13,7 @@ android {
         multiDexEnabled true
         targetSdkVersion 29
         versionCode 1
-        versionName "0.1.2"
-        setProperty("archivesBaseName", "HealthCared-$versionName")
+        setProperty("archivesBaseName", "HealthCared")
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -23,6 +22,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+        android.applicationVariants.all { variant ->    variant.outputs.all {
+            def appName = "HealthCared"
+            outputFileName = appName+".apk"
+        }}
     }
 
 // To inline the bytecode built with JVM target 1.8 into
